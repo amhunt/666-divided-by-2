@@ -7,64 +7,69 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA475CA51CA8DBA100D308A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA475CA41CA8DBA100D308A9 /* AppDelegate.swift */; };
-		DA475CA71CA8DBA100D308A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA475CA61CA8DBA100D308A9 /* ViewController.swift */; };
-		DA475CAA1CA8DBA100D308A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA475CA81CA8DBA100D308A9 /* Main.storyboard */; };
-		DA475CAC1CA8DBA100D308A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA475CAB1CA8DBA100D308A9 /* Assets.xcassets */; };
-		DA475CAF1CA8DBA100D308A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA475CAD1CA8DBA100D308A9 /* LaunchScreen.storyboard */; };
-		DA475CBA1CA8DBA100D308A9 /* PitchslappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA475CB91CA8DBA100D308A9 /* PitchslappTests.swift */; };
-		DA475CC51CA8DBA100D308A9 /* PitchslappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA475CC41CA8DBA100D308A9 /* PitchslappUITests.swift */; };
+		B8E3D7672F119F415DF34EF4 /* Pods_Pitchslapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */; };
+		DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190301CA9847D00FEDE0D /* AppDelegate.swift */; };
+		DA7190331CA9847D00FEDE0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190321CA9847D00FEDE0D /* ViewController.swift */; };
+		DA7190361CA9847D00FEDE0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7190341CA9847D00FEDE0D /* Main.storyboard */; };
+		DA7190381CA9847D00FEDE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7190371CA9847D00FEDE0D /* Assets.xcassets */; };
+		DA71903B1CA9847D00FEDE0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */; };
+		DA7190461CA9847D00FEDE0D /* PitchslappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190451CA9847D00FEDE0D /* PitchslappTests.swift */; };
+		DA7190511CA9847D00FEDE0D /* PitchslappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DA475CB61CA8DBA100D308A9 /* PBXContainerItemProxy */ = {
+		DA7190421CA9847D00FEDE0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DA475C991CA8DBA100D308A9 /* Project object */;
+			containerPortal = DA7190251CA9847D00FEDE0D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DA475CA01CA8DBA100D308A9;
+			remoteGlobalIDString = DA71902C1CA9847D00FEDE0D;
 			remoteInfo = Pitchslapp;
 		};
-		DA475CC11CA8DBA100D308A9 /* PBXContainerItemProxy */ = {
+		DA71904D1CA9847D00FEDE0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DA475C991CA8DBA100D308A9 /* Project object */;
+			containerPortal = DA7190251CA9847D00FEDE0D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DA475CA01CA8DBA100D308A9;
+			remoteGlobalIDString = DA71902C1CA9847D00FEDE0D;
 			remoteInfo = Pitchslapp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DA475CA11CA8DBA100D308A9 /* Pitchslapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pitchslapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA475CA41CA8DBA100D308A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA475CA61CA8DBA100D308A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DA475CA91CA8DBA100D308A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DA475CAB1CA8DBA100D308A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DA475CAE1CA8DBA100D308A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DA475CB01CA8DBA100D308A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA475CB51CA8DBA100D308A9 /* PitchslappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchslappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA475CB91CA8DBA100D308A9 /* PitchslappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappTests.swift; sourceTree = "<group>"; };
-		DA475CBB1CA8DBA100D308A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA475CC01CA8DBA100D308A9 /* PitchslappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchslappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA475CC41CA8DBA100D308A9 /* PitchslappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappUITests.swift; sourceTree = "<group>"; };
-		DA475CC61CA8DBA100D308A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.release.xcconfig"; sourceTree = "<group>"; };
+		CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.debug.xcconfig"; sourceTree = "<group>"; };
+		DA71902D1CA9847D00FEDE0D /* Pitchslapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pitchslapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA7190301CA9847D00FEDE0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DA7190321CA9847D00FEDE0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DA7190351CA9847D00FEDE0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DA7190371CA9847D00FEDE0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA71903A1CA9847D00FEDE0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DA71903C1CA9847D00FEDE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA7190411CA9847D00FEDE0D /* PitchslappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchslappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA7190451CA9847D00FEDE0D /* PitchslappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappTests.swift; sourceTree = "<group>"; };
+		DA7190471CA9847D00FEDE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA71904C1CA9847D00FEDE0D /* PitchslappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchslappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappUITests.swift; sourceTree = "<group>"; };
+		DA7190521CA9847D00FEDE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitchslapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		DA475C9E1CA8DBA100D308A9 /* Frameworks */ = {
+		DA71902A1CA9847D00FEDE0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8E3D7672F119F415DF34EF4 /* Pods_Pitchslapp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA71903E1CA9847D00FEDE0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA475CB21CA8DBA100D308A9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA475CBD1CA8DBA100D308A9 /* Frameworks */ = {
+		DA7190491CA9847D00FEDE0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -74,53 +79,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DA475C981CA8DBA100D308A9 = {
+		589D9AED0CEB53F2A6D29316 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DA475CA31CA8DBA100D308A9 /* Pitchslapp */,
-				DA475CB81CA8DBA100D308A9 /* PitchslappTests */,
-				DA475CC31CA8DBA100D308A9 /* PitchslappUITests */,
-				DA475CA21CA8DBA100D308A9 /* Products */,
+				CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */,
+				CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BA90421040DAD1C2E52D50A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA7190241CA9847D00FEDE0D = {
+			isa = PBXGroup;
+			children = (
+				DA71902F1CA9847D00FEDE0D /* Pitchslapp */,
+				DA7190441CA9847D00FEDE0D /* PitchslappTests */,
+				DA71904F1CA9847D00FEDE0D /* PitchslappUITests */,
+				DA71902E1CA9847D00FEDE0D /* Products */,
+				589D9AED0CEB53F2A6D29316 /* Pods */,
+				BA90421040DAD1C2E52D50A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		DA475CA21CA8DBA100D308A9 /* Products */ = {
+		DA71902E1CA9847D00FEDE0D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DA475CA11CA8DBA100D308A9 /* Pitchslapp.app */,
-				DA475CB51CA8DBA100D308A9 /* PitchslappTests.xctest */,
-				DA475CC01CA8DBA100D308A9 /* PitchslappUITests.xctest */,
+				DA71902D1CA9847D00FEDE0D /* Pitchslapp.app */,
+				DA7190411CA9847D00FEDE0D /* PitchslappTests.xctest */,
+				DA71904C1CA9847D00FEDE0D /* PitchslappUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DA475CA31CA8DBA100D308A9 /* Pitchslapp */ = {
+		DA71902F1CA9847D00FEDE0D /* Pitchslapp */ = {
 			isa = PBXGroup;
 			children = (
-				DA475CA41CA8DBA100D308A9 /* AppDelegate.swift */,
-				DA475CA61CA8DBA100D308A9 /* ViewController.swift */,
-				DA475CA81CA8DBA100D308A9 /* Main.storyboard */,
-				DA475CAB1CA8DBA100D308A9 /* Assets.xcassets */,
-				DA475CAD1CA8DBA100D308A9 /* LaunchScreen.storyboard */,
-				DA475CB01CA8DBA100D308A9 /* Info.plist */,
+				DA7190301CA9847D00FEDE0D /* AppDelegate.swift */,
+				DA7190321CA9847D00FEDE0D /* ViewController.swift */,
+				DA7190341CA9847D00FEDE0D /* Main.storyboard */,
+				DA7190371CA9847D00FEDE0D /* Assets.xcassets */,
+				DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */,
+				DA71903C1CA9847D00FEDE0D /* Info.plist */,
 			);
 			path = Pitchslapp;
 			sourceTree = "<group>";
 		};
-		DA475CB81CA8DBA100D308A9 /* PitchslappTests */ = {
+		DA7190441CA9847D00FEDE0D /* PitchslappTests */ = {
 			isa = PBXGroup;
 			children = (
-				DA475CB91CA8DBA100D308A9 /* PitchslappTests.swift */,
-				DA475CBB1CA8DBA100D308A9 /* Info.plist */,
+				DA7190451CA9847D00FEDE0D /* PitchslappTests.swift */,
+				DA7190471CA9847D00FEDE0D /* Info.plist */,
 			);
 			path = PitchslappTests;
 			sourceTree = "<group>";
 		};
-		DA475CC31CA8DBA100D308A9 /* PitchslappUITests */ = {
+		DA71904F1CA9847D00FEDE0D /* PitchslappUITests */ = {
 			isa = PBXGroup;
 			children = (
-				DA475CC41CA8DBA100D308A9 /* PitchslappUITests.swift */,
-				DA475CC61CA8DBA100D308A9 /* Info.plist */,
+				DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */,
+				DA7190521CA9847D00FEDE0D /* Info.plist */,
 			);
 			path = PitchslappUITests;
 			sourceTree = "<group>";
@@ -128,13 +152,16 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA475CA01CA8DBA100D308A9 /* Pitchslapp */ = {
+		DA71902C1CA9847D00FEDE0D /* Pitchslapp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA475CC91CA8DBA100D308A9 /* Build configuration list for PBXNativeTarget "Pitchslapp" */;
+			buildConfigurationList = DA7190551CA9847D00FEDE0D /* Build configuration list for PBXNativeTarget "Pitchslapp" */;
 			buildPhases = (
-				DA475C9D1CA8DBA100D308A9 /* Sources */,
-				DA475C9E1CA8DBA100D308A9 /* Frameworks */,
-				DA475C9F1CA8DBA100D308A9 /* Resources */,
+				981457AAD802D0DCF2547E71 /* Check Pods Manifest.lock */,
+				DA7190291CA9847D00FEDE0D /* Sources */,
+				DA71902A1CA9847D00FEDE0D /* Frameworks */,
+				DA71902B1CA9847D00FEDE0D /* Resources */,
+				61D5FC65F604A6238DF1C389 /* Embed Pods Frameworks */,
+				0DFFF174B447384F7E9617B1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -142,69 +169,69 @@
 			);
 			name = Pitchslapp;
 			productName = Pitchslapp;
-			productReference = DA475CA11CA8DBA100D308A9 /* Pitchslapp.app */;
+			productReference = DA71902D1CA9847D00FEDE0D /* Pitchslapp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DA475CB41CA8DBA100D308A9 /* PitchslappTests */ = {
+		DA7190401CA9847D00FEDE0D /* PitchslappTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA475CCC1CA8DBA100D308A9 /* Build configuration list for PBXNativeTarget "PitchslappTests" */;
+			buildConfigurationList = DA7190581CA9847D00FEDE0D /* Build configuration list for PBXNativeTarget "PitchslappTests" */;
 			buildPhases = (
-				DA475CB11CA8DBA100D308A9 /* Sources */,
-				DA475CB21CA8DBA100D308A9 /* Frameworks */,
-				DA475CB31CA8DBA100D308A9 /* Resources */,
+				DA71903D1CA9847D00FEDE0D /* Sources */,
+				DA71903E1CA9847D00FEDE0D /* Frameworks */,
+				DA71903F1CA9847D00FEDE0D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DA475CB71CA8DBA100D308A9 /* PBXTargetDependency */,
+				DA7190431CA9847D00FEDE0D /* PBXTargetDependency */,
 			);
 			name = PitchslappTests;
 			productName = PitchslappTests;
-			productReference = DA475CB51CA8DBA100D308A9 /* PitchslappTests.xctest */;
+			productReference = DA7190411CA9847D00FEDE0D /* PitchslappTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DA475CBF1CA8DBA100D308A9 /* PitchslappUITests */ = {
+		DA71904B1CA9847D00FEDE0D /* PitchslappUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA475CCF1CA8DBA100D308A9 /* Build configuration list for PBXNativeTarget "PitchslappUITests" */;
+			buildConfigurationList = DA71905B1CA9847D00FEDE0D /* Build configuration list for PBXNativeTarget "PitchslappUITests" */;
 			buildPhases = (
-				DA475CBC1CA8DBA100D308A9 /* Sources */,
-				DA475CBD1CA8DBA100D308A9 /* Frameworks */,
-				DA475CBE1CA8DBA100D308A9 /* Resources */,
+				DA7190481CA9847D00FEDE0D /* Sources */,
+				DA7190491CA9847D00FEDE0D /* Frameworks */,
+				DA71904A1CA9847D00FEDE0D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DA475CC21CA8DBA100D308A9 /* PBXTargetDependency */,
+				DA71904E1CA9847D00FEDE0D /* PBXTargetDependency */,
 			);
 			name = PitchslappUITests;
 			productName = PitchslappUITests;
-			productReference = DA475CC01CA8DBA100D308A9 /* PitchslappUITests.xctest */;
+			productReference = DA71904C1CA9847D00FEDE0D /* PitchslappUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		DA475C991CA8DBA100D308A9 /* Project object */ = {
+		DA7190251CA9847D00FEDE0D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Social Coderz";
 				TargetAttributes = {
-					DA475CA01CA8DBA100D308A9 = {
+					DA71902C1CA9847D00FEDE0D = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
-					DA475CB41CA8DBA100D308A9 = {
+					DA7190401CA9847D00FEDE0D = {
 						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = DA475CA01CA8DBA100D308A9;
+						TestTargetID = DA71902C1CA9847D00FEDE0D;
 					};
-					DA475CBF1CA8DBA100D308A9 = {
+					DA71904B1CA9847D00FEDE0D = {
 						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = DA475CA01CA8DBA100D308A9;
+						TestTargetID = DA71902C1CA9847D00FEDE0D;
 					};
 				};
 			};
-			buildConfigurationList = DA475C9C1CA8DBA100D308A9 /* Build configuration list for PBXProject "Pitchslapp" */;
+			buildConfigurationList = DA7190281CA9847D00FEDE0D /* Build configuration list for PBXProject "Pitchslapp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -212,37 +239,37 @@
 				en,
 				Base,
 			);
-			mainGroup = DA475C981CA8DBA100D308A9;
-			productRefGroup = DA475CA21CA8DBA100D308A9 /* Products */;
+			mainGroup = DA7190241CA9847D00FEDE0D;
+			productRefGroup = DA71902E1CA9847D00FEDE0D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA475CA01CA8DBA100D308A9 /* Pitchslapp */,
-				DA475CB41CA8DBA100D308A9 /* PitchslappTests */,
-				DA475CBF1CA8DBA100D308A9 /* PitchslappUITests */,
+				DA71902C1CA9847D00FEDE0D /* Pitchslapp */,
+				DA7190401CA9847D00FEDE0D /* PitchslappTests */,
+				DA71904B1CA9847D00FEDE0D /* PitchslappUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DA475C9F1CA8DBA100D308A9 /* Resources */ = {
+		DA71902B1CA9847D00FEDE0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA475CAF1CA8DBA100D308A9 /* LaunchScreen.storyboard in Resources */,
-				DA475CAC1CA8DBA100D308A9 /* Assets.xcassets in Resources */,
-				DA475CAA1CA8DBA100D308A9 /* Main.storyboard in Resources */,
+				DA71903B1CA9847D00FEDE0D /* LaunchScreen.storyboard in Resources */,
+				DA7190381CA9847D00FEDE0D /* Assets.xcassets in Resources */,
+				DA7190361CA9847D00FEDE0D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA475CB31CA8DBA100D308A9 /* Resources */ = {
+		DA71903F1CA9847D00FEDE0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA475CBE1CA8DBA100D308A9 /* Resources */ = {
+		DA71904A1CA9847D00FEDE0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,60 +278,108 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0DFFF174B447384F7E9617B1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61D5FC65F604A6238DF1C389 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		981457AAD802D0DCF2547E71 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		DA475C9D1CA8DBA100D308A9 /* Sources */ = {
+		DA7190291CA9847D00FEDE0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA475CA71CA8DBA100D308A9 /* ViewController.swift in Sources */,
-				DA475CA51CA8DBA100D308A9 /* AppDelegate.swift in Sources */,
+				DA7190331CA9847D00FEDE0D /* ViewController.swift in Sources */,
+				DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA475CB11CA8DBA100D308A9 /* Sources */ = {
+		DA71903D1CA9847D00FEDE0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA475CBA1CA8DBA100D308A9 /* PitchslappTests.swift in Sources */,
+				DA7190461CA9847D00FEDE0D /* PitchslappTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA475CBC1CA8DBA100D308A9 /* Sources */ = {
+		DA7190481CA9847D00FEDE0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA475CC51CA8DBA100D308A9 /* PitchslappUITests.swift in Sources */,
+				DA7190511CA9847D00FEDE0D /* PitchslappUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DA475CB71CA8DBA100D308A9 /* PBXTargetDependency */ = {
+		DA7190431CA9847D00FEDE0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DA475CA01CA8DBA100D308A9 /* Pitchslapp */;
-			targetProxy = DA475CB61CA8DBA100D308A9 /* PBXContainerItemProxy */;
+			target = DA71902C1CA9847D00FEDE0D /* Pitchslapp */;
+			targetProxy = DA7190421CA9847D00FEDE0D /* PBXContainerItemProxy */;
 		};
-		DA475CC21CA8DBA100D308A9 /* PBXTargetDependency */ = {
+		DA71904E1CA9847D00FEDE0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DA475CA01CA8DBA100D308A9 /* Pitchslapp */;
-			targetProxy = DA475CC11CA8DBA100D308A9 /* PBXContainerItemProxy */;
+			target = DA71902C1CA9847D00FEDE0D /* Pitchslapp */;
+			targetProxy = DA71904D1CA9847D00FEDE0D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DA475CA81CA8DBA100D308A9 /* Main.storyboard */ = {
+		DA7190341CA9847D00FEDE0D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DA475CA91CA8DBA100D308A9 /* Base */,
+				DA7190351CA9847D00FEDE0D /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		DA475CAD1CA8DBA100D308A9 /* LaunchScreen.storyboard */ = {
+		DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DA475CAE1CA8DBA100D308A9 /* Base */,
+				DA71903A1CA9847D00FEDE0D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -312,7 +387,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		DA475CC71CA8DBA100D308A9 /* Debug */ = {
+		DA7190531CA9847D00FEDE0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -357,7 +432,7 @@
 			};
 			name = Debug;
 		};
-		DA475CC81CA8DBA100D308A9 /* Release */ = {
+		DA7190541CA9847D00FEDE0D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -395,8 +470,9 @@
 			};
 			name = Release;
 		};
-		DA475CCA1CA8DBA100D308A9 /* Debug */ = {
+		DA7190561CA9847D00FEDE0D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Pitchslapp/Info.plist;
@@ -406,8 +482,9 @@
 			};
 			name = Debug;
 		};
-		DA475CCB1CA8DBA100D308A9 /* Release */ = {
+		DA7190571CA9847D00FEDE0D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Pitchslapp/Info.plist;
@@ -417,7 +494,7 @@
 			};
 			name = Release;
 		};
-		DA475CCD1CA8DBA100D308A9 /* Debug */ = {
+		DA7190591CA9847D00FEDE0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -429,7 +506,7 @@
 			};
 			name = Debug;
 		};
-		DA475CCE1CA8DBA100D308A9 /* Release */ = {
+		DA71905A1CA9847D00FEDE0D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -441,7 +518,7 @@
 			};
 			name = Release;
 		};
-		DA475CD01CA8DBA100D308A9 /* Debug */ = {
+		DA71905C1CA9847D00FEDE0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = PitchslappUITests/Info.plist;
@@ -453,7 +530,7 @@
 			};
 			name = Debug;
 		};
-		DA475CD11CA8DBA100D308A9 /* Release */ = {
+		DA71905D1CA9847D00FEDE0D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = PitchslappUITests/Info.plist;
@@ -468,40 +545,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DA475C9C1CA8DBA100D308A9 /* Build configuration list for PBXProject "Pitchslapp" */ = {
+		DA7190281CA9847D00FEDE0D /* Build configuration list for PBXProject "Pitchslapp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA475CC71CA8DBA100D308A9 /* Debug */,
-				DA475CC81CA8DBA100D308A9 /* Release */,
+				DA7190531CA9847D00FEDE0D /* Debug */,
+				DA7190541CA9847D00FEDE0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA475CC91CA8DBA100D308A9 /* Build configuration list for PBXNativeTarget "Pitchslapp" */ = {
+		DA7190551CA9847D00FEDE0D /* Build configuration list for PBXNativeTarget "Pitchslapp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA475CCA1CA8DBA100D308A9 /* Debug */,
-				DA475CCB1CA8DBA100D308A9 /* Release */,
+				DA7190561CA9847D00FEDE0D /* Debug */,
+				DA7190571CA9847D00FEDE0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		DA475CCC1CA8DBA100D308A9 /* Build configuration list for PBXNativeTarget "PitchslappTests" */ = {
+		DA7190581CA9847D00FEDE0D /* Build configuration list for PBXNativeTarget "PitchslappTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA475CCD1CA8DBA100D308A9 /* Debug */,
-				DA475CCE1CA8DBA100D308A9 /* Release */,
+				DA7190591CA9847D00FEDE0D /* Debug */,
+				DA71905A1CA9847D00FEDE0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		DA475CCF1CA8DBA100D308A9 /* Build configuration list for PBXNativeTarget "PitchslappUITests" */ = {
+		DA71905B1CA9847D00FEDE0D /* Build configuration list for PBXNativeTarget "PitchslappUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA475CD01CA8DBA100D308A9 /* Debug */,
-				DA475CD11CA8DBA100D308A9 /* Release */,
+				DA71905C1CA9847D00FEDE0D /* Debug */,
+				DA71905D1CA9847D00FEDE0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = DA475C991CA8DBA100D308A9 /* Project object */;
+	rootObject = DA7190251CA9847D00FEDE0D /* Project object */;
 }

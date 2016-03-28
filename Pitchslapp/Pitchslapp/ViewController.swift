@@ -2,11 +2,12 @@
 //  ViewController.swift
 //  Pitchslapp
 //
-//  Created by Zachary Stecker on 3/27/16.
+//  Created by Zachary Stecker on 3/28/16.
 //  Copyright © 2016 Social Coderz. All rights reserved.
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 

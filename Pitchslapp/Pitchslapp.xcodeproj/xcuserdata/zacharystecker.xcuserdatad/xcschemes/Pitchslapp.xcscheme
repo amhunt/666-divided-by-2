@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA475CA01CA8DBA100D308A9"
+               BlueprintIdentifier = "DA71902C1CA9847D00FEDE0D"
                BuildableName = "Pitchslapp.app"
                BlueprintName = "Pitchslapp"
                ReferencedContainer = "container:Pitchslapp.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA475CB41CA8DBA100D308A9"
+               BlueprintIdentifier = "DA7190401CA9847D00FEDE0D"
                BuildableName = "PitchslappTests.xctest"
                BlueprintName = "PitchslappTests"
                ReferencedContainer = "container:Pitchslapp.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA475CBF1CA8DBA100D308A9"
+               BlueprintIdentifier = "DA71904B1CA9847D00FEDE0D"
                BuildableName = "PitchslappUITests.xctest"
                BlueprintName = "PitchslappUITests"
                ReferencedContainer = "container:Pitchslapp.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA475CA01CA8DBA100D308A9"
+            BlueprintIdentifier = "DA71902C1CA9847D00FEDE0D"
             BuildableName = "Pitchslapp.app"
             BlueprintName = "Pitchslapp"
             ReferencedContainer = "container:Pitchslapp.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA475CA01CA8DBA100D308A9"
+            BlueprintIdentifier = "DA71902C1CA9847D00FEDE0D"
             BuildableName = "Pitchslapp.app"
             BlueprintName = "Pitchslapp"
             ReferencedContainer = "container:Pitchslapp.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA475CA01CA8DBA100D308A9"
+            BlueprintIdentifier = "DA71902C1CA9847D00FEDE0D"
             BuildableName = "Pitchslapp.app"
             BlueprintName = "Pitchslapp"
             ReferencedContainer = "container:Pitchslapp.xcodeproj">
