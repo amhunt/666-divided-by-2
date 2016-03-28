@@ -1,0 +1,43 @@
+<html>
+<head>
+<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+</head>
+<body>    
+<script type="text/javascript">
+var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/");
+ref.set({
+  title: "Hello World!",
+  author: "Firebase",
+  location: {
+    city: "San Francisco",
+    state: "California",
+    zip: 94103
+  }
+});
+ref.child("location/city").on("value", function(snapshot) {
+  //alert(snapshot.val());  // Alerts "San Francisco"
+});
+// myFirebaseRef.createUser({
+//   email    : "slut@firebase.com",
+//   password : "imaho"
+// }, function(error, userData) {
+//   if (error) {
+//     console.log("Error creating user:", error);
+//   } else {
+//     console.log("Successfully created user account with uid:", userData.uid);
+//   }
+// });
+ref.authWithPassword({
+  email    : "slut@firebase.com",
+  password : "imaho"
+}, function(error, authData) {
+  if (error) {
+    console.log("Login Failed!", error);
+  } else {
+    console.log("Authenticated successfully with payload:", authData);
+    console.log(authData.uid);
+  }
+}, {remember: "sessionOnly"});
+</script>
+</body>
+</html>
