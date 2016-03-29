@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		B8E3D7672F119F415DF34EF4 /* Pods_Pitchslapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */; };
+		DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */; };
 		DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190301CA9847D00FEDE0D /* AppDelegate.swift */; };
-		DA7190331CA9847D00FEDE0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190321CA9847D00FEDE0D /* ViewController.swift */; };
 		DA7190361CA9847D00FEDE0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7190341CA9847D00FEDE0D /* Main.storyboard */; };
 		DA7190381CA9847D00FEDE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7190371CA9847D00FEDE0D /* Assets.xcassets */; };
 		DA71903B1CA9847D00FEDE0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */; };
 		DA7190461CA9847D00FEDE0D /* PitchslappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190451CA9847D00FEDE0D /* PitchslappTests.swift */; };
 		DA7190511CA9847D00FEDE0D /* PitchslappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */; };
+		DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */; };
+		DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502C1CAB1348003DFF24 /* SongItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +39,9 @@
 /* Begin PBXFileReference section */
 		CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.release.xcconfig"; sourceTree = "<group>"; };
 		CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.debug.xcconfig"; sourceTree = "<group>"; };
+		DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
 		DA71902D1CA9847D00FEDE0D /* Pitchslapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pitchslapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7190301CA9847D00FEDE0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA7190321CA9847D00FEDE0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DA7190351CA9847D00FEDE0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA7190371CA9847D00FEDE0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA71903A1CA9847D00FEDE0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +52,8 @@
 		DA71904C1CA9847D00FEDE0D /* PitchslappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchslappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappUITests.swift; sourceTree = "<group>"; };
 		DA7190521CA9847D00FEDE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		DAE2502C1CAB1348003DFF24 /* SongItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongItem.swift; sourceTree = "<group>"; };
 		E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitchslapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,11 +126,13 @@
 			isa = PBXGroup;
 			children = (
 				DA7190301CA9847D00FEDE0D /* AppDelegate.swift */,
-				DA7190321CA9847D00FEDE0D /* ViewController.swift */,
 				DA7190341CA9847D00FEDE0D /* Main.storyboard */,
 				DA7190371CA9847D00FEDE0D /* Assets.xcassets */,
 				DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */,
 				DA71903C1CA9847D00FEDE0D /* Info.plist */,
+				DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */,
+				DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */,
+				DAE2502C1CAB1348003DFF24 /* SongItem.swift */,
 			);
 			path = Pitchslapp;
 			sourceTree = "<group>";
@@ -331,8 +337,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA7190331CA9847D00FEDE0D /* ViewController.swift in Sources */,
+				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
+				DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */,
 				DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */,
+				DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

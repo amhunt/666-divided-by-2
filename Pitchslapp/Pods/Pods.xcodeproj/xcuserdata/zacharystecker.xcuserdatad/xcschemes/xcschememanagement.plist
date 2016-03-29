@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FirebaseUI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Pitchslapp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>B7AC9326D819482593FE118E915409D7</key>
+		<key>24C01BE0ED967FF6CE7D133C8E2CA7A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EE7369B9761D7C1BC74348BEF3C88DCD</key>
+		<key>7F869A0A80C706D6A6D4698DC0918B37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7AC9326D819482593FE118E915409D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
