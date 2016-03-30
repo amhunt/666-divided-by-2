@@ -1,43 +1,52 @@
 <html>
-<head>
-<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
-</head>
-<body>    
-<script type="text/javascript">
-var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/");
-ref.set({
-  title: "Hello World!",
-  author: "Firebase",
-  location: {
-    city: "San Francisco",
-    state: "California",
-    zip: 94103
-  }
-});
-ref.child("location/city").on("value", function(snapshot) {
-  //alert(snapshot.val());  // Alerts "San Francisco"
-});
-// myFirebaseRef.createUser({
-//   email    : "slut@firebase.com",
-//   password : "imaho"
-// }, function(error, userData) {
-//   if (error) {
-//     console.log("Error creating user:", error);
-//   } else {
-//     console.log("Successfully created user account with uid:", userData.uid);
-//   }
-// });
-ref.authWithPassword({
-  email    : "slut@firebase.com",
-  password : "imaho"
-}, function(error, authData) {
-  if (error) {
-    console.log("Login Failed!", error);
-  } else {
-    console.log("Authenticated successfully with payload:", authData);
-    console.log(authData.uid);
-  }
-}, {remember: "sessionOnly"});
-</script>
-</body>
+  <head>
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'>
+    </script>
+
+  </head>
+  <body>  
+    <div id='messagesDiv'></div>
+
+    <input type='text' id='nameInput' placeholder='Name'>
+    <br>
+    <input type='text' id='soloInput' placeholder='Solo'>
+    <br>
+    <input type='text' id='keyInput' placeholder='Key of Song'>
+
+    <ul id="records"></ul>
+    <form><input type="text"><button>add</button></form>  
+    <script>
+    var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/-KE2t-HbseflgtLhuV8-/songs");
+      alert("ref " + ref.groups)
+
+      $('#keyInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var group = $('#soloInput').val();
+          var keyVal = $('#keyInput').val();
+          ref.push({
+            solo: name,
+            name: group,
+            key: keyVal
+          });
+          $('#nameInput').val(' ');
+          $('#soloInput').val(' ');
+          $('#keyInput').val('Thanks! Your song has been added!');
+        }
+      });
+      ref.on('child_added', function(snapshot) {
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.solo, message.key);
+      });
+      function displayChatMessage(name, solo, key) {
+        $('<div/>').text(solo).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+      };
+
+      ref.on('child_removed', function(snapshot) {
+          $('#messagesDiv').find('[data-id="'+snapshot.name()+'"]').remove();
+      });
+  </script>
+  </body>
 </html>
