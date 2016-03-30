@@ -8,14 +8,13 @@
   <body>  
     <div id='messagesDiv'></div>
 
-    <input type='text' id='nameInput' placeholder='Name'>
+    <input type='text' id='nameInput' placeholder='Name of Song'>
     <br>
-    <input type='text' id='soloInput' placeholder='Solo'>
+    <input type='text' id='soloInput' placeholder='Name of Soloist'>
     <br>
     <input type='text' id='keyInput' placeholder='Key of Song'>
 
     <ul id="records"></ul>
-    <form><input type="text"><button>add</button></form>  
     <script>
     var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/-KE2t-HbseflgtLhuV8-/songs");
       alert("ref " + ref.groups)
@@ -23,16 +22,16 @@
       $('#keyInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
-          var group = $('#soloInput').val();
+          var solo = $('#soloInput').val();
           var keyVal = $('#keyInput').val();
           ref.push({
-            solo: name,
-            name: group,
+            solo: solo,
+            name: name,
             key: keyVal
           });
           $('#nameInput').val(' ');
           $('#soloInput').val(' ');
-          $('#keyInput').val('Thanks! Your song has been added!');
+          $('#keyInput').val('Your song has been added!');
         }
       });
       ref.on('child_added', function(snapshot) {
