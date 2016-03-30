@@ -34,4 +34,12 @@ struct SongItem {
         ref = snapshot.ref
     }
     
+    func toAnyObject() -> AnyObject {
+        return [
+            "name": name,
+            "key": key,
+            "solo": soloist
+        ]
+    }
+    
 }

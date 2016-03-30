@@ -56,10 +56,51 @@ class SongsTableViewController: UITableViewController {
         
         cell.textLabel?.text = songItem.name
         cell.detailTextLabel?.text = songItem.soloist
-                
+        
         return cell
     }
     
+    @IBAction func addButtonDidTouch(sender: AnyObject) {
+        let alert = UIAlertController(title: "Add a Song",
+            message: "Enter information here",
+            preferredStyle: .Alert)
+        
+        let saveAction = UIAlertAction(title: "Save",
+            style: .Default) { (action: UIAlertAction!) -> Void in
+                
+                let nameField = alert.textFields![0] as UITextField
+                let keyField = alert.textFields![1] as UITextField
+                let soloField = alert.textFields![2] as UITextField
+                let songItem = SongItem(name: nameField.text!, key: keyField.text!, soloist: soloField.text!)
+                let songItemRef = self.myRootRef.childByAppendingPath("groups").childByAppendingPath("-KE2t-HbseflgtLhuV8-").childByAppendingPath("songs").childByAutoId()
+                songItemRef.setValue(songItem.toAnyObject())
+                self.tableView.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+            style: .Default) { (action: UIAlertAction!) -> Void in
+        }
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "Title"
+        }
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "Key"
+        }
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "Soloist"
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert,
+            animated: true,
+            completion: nil)
+    }
     
     
     
