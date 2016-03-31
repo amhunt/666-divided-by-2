@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B8E3D7672F119F415DF34EF4 /* Pods_Pitchslapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */; };
 		DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */; };
+		DA60DA2B1CACE05400E7F2B1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */; };
+		DA60DA2D1CACE62600E7F2B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2C1CACE62600E7F2B1 /* User.swift */; };
+		DA60DA301CACEFBC00E7F2B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */; };
 		DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190301CA9847D00FEDE0D /* AppDelegate.swift */; };
 		DA7190361CA9847D00FEDE0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7190341CA9847D00FEDE0D /* Main.storyboard */; };
 		DA7190381CA9847D00FEDE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7190371CA9847D00FEDE0D /* Assets.xcassets */; };
@@ -40,6 +43,9 @@
 		CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.release.xcconfig"; sourceTree = "<group>"; };
 		CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.debug.xcconfig"; sourceTree = "<group>"; };
 		DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
+		DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DA60DA2C1CACE62600E7F2B1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DA71902D1CA9847D00FEDE0D /* Pitchslapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pitchslapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7190301CA9847D00FEDE0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA7190351CA9847D00FEDE0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +106,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DA60DA2E1CACEE4500E7F2B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DAE2502C1CAB1348003DFF24 /* SongItem.swift */,
+				DA60DA2C1CACE62600E7F2B1 /* User.swift */,
+				DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		DA7190241CA9847D00FEDE0D = {
 			isa = PBXGroup;
 			children = (
@@ -125,14 +141,15 @@
 		DA71902F1CA9847D00FEDE0D /* Pitchslapp */ = {
 			isa = PBXGroup;
 			children = (
+				DA60DA2E1CACEE4500E7F2B1 /* Models */,
 				DA7190301CA9847D00FEDE0D /* AppDelegate.swift */,
 				DA7190341CA9847D00FEDE0D /* Main.storyboard */,
 				DA7190371CA9847D00FEDE0D /* Assets.xcassets */,
 				DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */,
 				DA71903C1CA9847D00FEDE0D /* Info.plist */,
 				DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */,
-				DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */,
-				DAE2502C1CAB1348003DFF24 /* SongItem.swift */,
+				DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */,
+				DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */,
 			);
 			path = Pitchslapp;
 			sourceTree = "<group>";
@@ -226,6 +243,7 @@
 				TargetAttributes = {
 					DA71902C1CA9847D00FEDE0D = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 8685DL3W42;
 					};
 					DA7190401CA9847D00FEDE0D = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -339,7 +357,10 @@
 			files = (
 				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
 				DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */,
+				DA60DA301CACEFBC00E7F2B1 /* SettingsViewController.swift in Sources */,
+				DA60DA2D1CACE62600E7F2B1 /* User.swift in Sources */,
 				DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */,
+				DA60DA2B1CACE05400E7F2B1 /* LoginViewController.swift in Sources */,
 				DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,10 +504,13 @@
 			baseConfigurationReference = CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pitchslapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.socialcoderz.Pitchslapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -495,10 +519,13 @@
 			baseConfigurationReference = CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pitchslapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.socialcoderz.Pitchslapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

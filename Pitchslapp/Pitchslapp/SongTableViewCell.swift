@@ -10,4 +10,9 @@ import UIKit
 
 class SongTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var soloLabel: UILabel!
+    @IBOutlet weak var keyLabel: UILabel!
+    
+    
 }

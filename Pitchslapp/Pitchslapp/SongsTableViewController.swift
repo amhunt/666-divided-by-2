@@ -13,17 +13,7 @@ import Foundation
 class SongsTableViewController: UITableViewController {
     var myRootRef = Firebase(url:"https://popping-inferno-1963.firebaseio.com")
     var songs = [SongItem]()
-    
-    override func viewDidLoad() {
-//        let groups = myRootRef.childByAppendingPath("groups")
-//        let group1 = groups.childByAutoId()
-//        let song1 = ["name":"Love Yourself", "solo":"Charlie Coburn", "key":"Ab"]
-//        let song2 = ["name":"Kiss Him Goodbye", "solo":"Will Plunkett", "key":"C#"]
-//        group1.childByAppendingPath("name").setValue("Footnotes")
-//        let songref = group1.childByAppendingPath("songs")
-//        songref.childByAutoId().setValue(song1)
-//        songref.childByAutoId().setValue(song2)
-    }
+    var user: User!
     
     override func viewDidAppear(animated: Bool) {
         let songsRef = myRootRef.childByAppendingPath("groups").childByAppendingPath("-KE2t-HbseflgtLhuV8-").childByAppendingPath("songs")
@@ -43,6 +33,14 @@ class SongsTableViewController: UITableViewController {
             }, withCancelBlock: { error in
                 print(error.description)
         })
+        
+        myRootRef.observeAuthEventWithBlock { (authData) in
+            if authData != nil {
+                self.user = User(authData: authData)
+            } else {
+                self.performSegueWithIdentifier("LogoutSegue", sender: nil)
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,14 +48,23 @@ class SongsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SongCell")! as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongTableViewCell
         
         let songItem = songs[indexPath.row]
         
-        cell.textLabel?.text = songItem.name
-        cell.detailTextLabel?.text = songItem.soloist
+        cell.titleLabel?.text = songItem.name
+        cell.soloLabel?.text = songItem.soloist
+        cell.keyLabel?.text = songItem.key
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let songItem = songs[indexPath.row]
+            songItem.ref?.removeValue()
+            tableView.reloadData()
+        }
     }
     
     @IBAction func addButtonDidTouch(sender: AnyObject) {
@@ -102,6 +109,22 @@ class SongsTableViewController: UITableViewController {
             completion: nil)
     }
     
-    
+    @IBAction func logoutButtonDidTouch(sender: AnyObject) {
+        let alert = UIAlertController(title: "Logout?", message: "Confirm to logout of your account.", preferredStyle: .Alert)
+        
+        let logoutAction = UIAlertAction(title: "Logout", style: .Default) { (action: UIAlertAction!) -> Void in
+                self.myRootRef.unauth()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+            style: .Default) { (action: UIAlertAction!) -> Void in
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(logoutAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+
     
 }
