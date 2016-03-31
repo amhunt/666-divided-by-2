@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B8E3D7672F119F415DF34EF4 /* Pods_Pitchslapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */; };
 		DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */; };
+		DA2F68FE1CAD70440028033E /* SignupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */; };
+		DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */; };
 		DA60DA2B1CACE05400E7F2B1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */; };
 		DA60DA2D1CACE62600E7F2B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2C1CACE62600E7F2B1 /* User.swift */; };
 		DA60DA301CACEFBC00E7F2B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */; };
@@ -43,6 +45,8 @@
 		CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.release.xcconfig"; sourceTree = "<group>"; };
 		CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.debug.xcconfig"; sourceTree = "<group>"; };
 		DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
+		DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupFormViewController.swift; sourceTree = "<group>"; };
+		DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 		DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DA60DA2C1CACE62600E7F2B1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -144,12 +148,14 @@
 				DA60DA2E1CACEE4500E7F2B1 /* Models */,
 				DA7190301CA9847D00FEDE0D /* AppDelegate.swift */,
 				DA7190341CA9847D00FEDE0D /* Main.storyboard */,
+				DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */,
 				DA7190371CA9847D00FEDE0D /* Assets.xcassets */,
 				DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */,
 				DA71903C1CA9847D00FEDE0D /* Info.plist */,
 				DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */,
 				DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */,
 				DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */,
+				DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */,
 			);
 			path = Pitchslapp;
 			sourceTree = "<group>";
@@ -356,7 +362,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
+				DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */,
 				DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */,
+				DA2F68FE1CAD70440028033E /* SignupFormViewController.swift in Sources */,
 				DA60DA301CACEFBC00E7F2B1 /* SettingsViewController.swift in Sources */,
 				DA60DA2D1CACE62600E7F2B1 /* User.swift in Sources */,
 				DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */,

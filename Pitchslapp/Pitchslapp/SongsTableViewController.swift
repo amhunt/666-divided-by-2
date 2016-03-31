@@ -110,9 +110,9 @@ class SongsTableViewController: UITableViewController {
     }
     
     @IBAction func logoutButtonDidTouch(sender: AnyObject) {
-        let alert = UIAlertController(title: "Logout?", message: "Confirm to logout of your account.", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout of your account?", preferredStyle: .Alert)
         
-        let logoutAction = UIAlertAction(title: "Logout", style: .Default) { (action: UIAlertAction!) -> Void in
+        let logoutAction = UIAlertAction(title: "Logout", style: .Destructive) { (action: UIAlertAction!) -> Void in
                 self.myRootRef.unauth()
         }
         
@@ -124,6 +124,14 @@ class SongsTableViewController: UITableViewController {
         alert.addAction(logoutAction)
         
         presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowSong" {
+            let destination = segue.destinationViewController as! SongInfoViewController
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            destination.song = songs[indexPath.row]
+        }
     }
 
     
