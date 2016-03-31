@@ -12,6 +12,8 @@ import UIKit
 import Firebase
 
 class SignupFormViewController: FormViewController {
+    
+    var ref = Firebase(url:"https://popping-inferno-1963.firebaseio.com")
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -22,6 +24,7 @@ class SignupFormViewController: FormViewController {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "submit:")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancel:")
+        
     }
     
     func cancel(_: UIBarButtonItem!) {

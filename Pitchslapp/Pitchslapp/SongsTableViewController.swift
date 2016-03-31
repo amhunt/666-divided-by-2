@@ -14,33 +14,44 @@ class SongsTableViewController: UITableViewController {
     var myRootRef = Firebase(url:"https://popping-inferno-1963.firebaseio.com")
     var songs = [SongItem]()
     var user: User!
+    var groupKey: String?
     
     override func viewDidAppear(animated: Bool) {
-        let songsRef = myRootRef.childByAppendingPath("groups").childByAppendingPath("-KE2t-HbseflgtLhuV8-").childByAppendingPath("songs")
-
-        songsRef.observeEventType(.Value, withBlock: { snapshot in
-            var newSongs = [SongItem]()
-            
-            for item in snapshot.children {
-                let songItem = SongItem(snapshot: item as! FDataSnapshot)
-                newSongs.append(songItem)
-            }
-            
-            self.songs = newSongs
-            self.songs.sortInPlace({$0.name < $1.name})
-            self.tableView.reloadData()
-            
-            }, withCancelBlock: { error in
-                print(error.description)
-        })
-        
         myRootRef.observeAuthEventWithBlock { (authData) in
             if authData != nil {
                 self.user = User(authData: authData)
+                
+                // get user's group id
+                self.myRootRef.childByAppendingPath("users").childByAppendingPath(self.user.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                    // try to get it from the group-choose segue (first-time users)
+                    // otherwise, check the user data
+                    if self.groupKey == nil {
+                        self.groupKey = snapshot.value["groupid"] as? String
+                    }
+                    
+                    // populate table with songs for that group
+                    let songsRef = self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs")
+                    songsRef.observeEventType(.Value, withBlock: { snapshot in
+                        var newSongs = [SongItem]()
+                        
+                        for item in snapshot.children {
+                            let songItem = SongItem(snapshot: item as! FDataSnapshot)
+                            newSongs.append(songItem)
+                        }
+                        
+                        self.songs = newSongs
+                        self.songs.sortInPlace({$0.name < $1.name})
+                        self.tableView.reloadData()
+                        
+                        }, withCancelBlock: { error in
+                            print(error.description)
+                    })
+                })
             } else {
                 self.performSegueWithIdentifier("LogoutSegue", sender: nil)
             }
         }
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,7 +90,7 @@ class SongsTableViewController: UITableViewController {
                 let keyField = alert.textFields![1] as UITextField
                 let soloField = alert.textFields![2] as UITextField
                 let songItem = SongItem(name: nameField.text!, key: keyField.text!, soloist: soloField.text!)
-                let songItemRef = self.myRootRef.childByAppendingPath("groups").childByAppendingPath("-KE2t-HbseflgtLhuV8-").childByAppendingPath("songs").childByAutoId()
+                let songItemRef = self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAutoId()
                 songItemRef.setValue(songItem.toAnyObject())
                 self.tableView.reloadData()
         }

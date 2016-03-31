@@ -12,7 +12,7 @@ import Firebase
 struct User {
     let uid: String
     let email: String
-    let groupKey: String
+    var groupKey: String
     
     // Initialize from Firebase
     init(authData: FAuthData) {
@@ -21,10 +21,23 @@ struct User {
         groupKey = "will change"
     }
     
+    init(snapshot: FDataSnapshot) {
+        uid = snapshot.key
+        email = snapshot.value["login"] as! String
+        groupKey = snapshot.value["groupid"] as! String
+    }
+    
     // Initialize from arbitrary data
-    init(uid: String, email: String) {
+    init(uid: String, email: String, group: String) {
         self.uid = uid
         self.email = email
-        self.groupKey = "will change"
+        self.groupKey = group
+    }
+    
+    func toAnyObject() -> AnyObject {
+        return [
+            "email": self.email,
+            "groupid": self.groupKey
+        ]
     }
 }

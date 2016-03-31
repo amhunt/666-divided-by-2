@@ -17,8 +17,6 @@ class SongInfoViewController: UITableViewController {
     @IBOutlet weak var soloistLabel: UILabel!
     @IBOutlet weak var keyLabel: UILabel!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = song.name

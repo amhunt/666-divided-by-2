@@ -17,14 +17,27 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    func checkIfUserExists(authData: FAuthData) -> Void {
+        let usersRef = ref.childByAppendingPath("users")
+        usersRef.childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if snapshot.value["login"] != nil {
+                self.performSegueWithIdentifier("LoginSegue", sender: nil)
+            } else {
+                let email = authData.providerData["email"] as! String
+                self.ref.childByAppendingPath("users").childByAppendingPath(authData.uid).setValue(["login":email])
+                self.performSegueWithIdentifier("PickGroup", sender: nil)
+                print("should pick group")
+            }
+        })
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         ref.observeAuthEventWithBlock { (authData) -> Void in
             if authData != nil {
-                self.performSegueWithIdentifier("LoginSegue", sender: nil)
+               self.checkIfUserExists(authData)
             }
-            
         }
     }
     
@@ -46,6 +59,8 @@ class LoginViewController: UIViewController {
                 
                 let emailField = alert.textFields![0]
                 let passwordField = alert.textFields![1]
+                
+                self.emailTextField.text = emailField.text
                 
                 self.ref.createUser(emailField.text, password: passwordField.text) { (error: NSError!) in
                     if error == nil {
