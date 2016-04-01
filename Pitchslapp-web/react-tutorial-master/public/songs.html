@@ -14,34 +14,40 @@
   </head>
   <body>
     <div id='messagesDiv'></div>
-    <input type='text' id='nameInput' placeholder='Group Name'>
+    <input type='text' id='nameInput' placeholder='Name of Song'>
     <br>
-    <input type='text' id='schoolInput' placeholder='School Name'>
+    <input type='text' id='soloInput' placeholder='Name of Soloist'>
+    <br>
+    <input type='text' id='keyInput' placeholder='Key of Song'>
 
     <ul id="records"></ul>
     <div id="content"></div>
     <script type="text/babel">
-      var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups");
-      $('#schoolInput').keypress(function (e) {
+    var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/-KE2t-HbseflgtLhuV8-/songs");
+
+      $('#keyInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
-          var school = $('#schoolInput').val();
+          var solo = $('#soloInput').val();
+          var keyVal = $('#keyInput').val();
           ref.push({
+            solo: solo,
             name: name,
-            school: school
+            key: keyVal
           });
+          $('#messagesDiv')[0].remove();
+          $('#messagesDiv')[1].remove();
           $('#nameInput').val(' ');
-          $('#schoolInput').val(' has been added');
+          $('#soloInput').val(' ');
+          $('#keyInput').val('Your song has been added!');
         }
       });
-
       ref.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        displayChatMessage(message.name, message.school);
+        displayChatMessage(message.name, message.solo, message.key);
       });
-
-      function displayChatMessage(name, school) {
-        $('<div/>').text(school).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+      function displayChatMessage(name, solo, key) {
+        $('<div/>').text(solo).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>
