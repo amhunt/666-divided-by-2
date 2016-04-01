@@ -97,7 +97,7 @@ class SongsTableViewController: UITableViewController {
         let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
             let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
             let url = NSURL(fileURLWithPath: path)
-            let stopAlert = UIAlertController(title: "Stop pitch", message: "Slap that pitch!", preferredStyle: .Alert)
+            let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Slap that pitch!", preferredStyle: .Alert)
             let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
                 if self.player != nil {
                     self.player.stop()
@@ -117,9 +117,18 @@ class SongsTableViewController: UITableViewController {
         }
         pitch.backgroundColor = UIColor.purpleColor()
         let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
-            let songItem = self.songs[indexPath.row]
-            songItem.ref?.removeValue()
-            self.tableView.reloadData()
+            let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + self.songs[indexPath.row].name + "?", preferredStyle: .Alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
+                let songItem = self.songs[indexPath.row]
+                songItem.ref?.removeValue()
+                self.tableView.reloadData()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
+                self.tableView.editing = false
+            }
+            confirmDeleteAlert.addAction(cancelAction)
+            confirmDeleteAlert.addAction(deleteAction)
+            self.presentViewController(confirmDeleteAlert, animated: true, completion: nil)
         }
         return [pitch, delete]
     }

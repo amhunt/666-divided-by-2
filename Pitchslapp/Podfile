@@ -6,9 +6,7 @@ use_frameworks!
 
 target 'Pitchslapp' do
     pod 'Firebase', '>= 2.5.1'
-    pod 'FirebaseUI', '~> 0.2.0'
     pod 'SwiftForms'
-    pod 'AudioPlayerSwift'
 end
 
 target 'PitchslappTests' do

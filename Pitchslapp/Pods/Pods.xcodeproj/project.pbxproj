@@ -7,231 +7,149 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		010FBA818A3FD887CEF2A675FF68A862 /* FormCheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152A74C0874A3CE63AA4A24A8B30366A /* FormCheckCell.swift */; };
-		012A7E018F3D34F159894EBD7EACACF9 /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 24556C73BC210437280DE4460A934892 /* Empty.m */; };
-		17419BBF717A1111A1C70EF3FEB57D7A /* FirebaseArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 597E205FF2915717C6F7F9EF0144B84A /* FirebaseArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		191DE2EB9A35585AE0A88BA9F833A1F4 /* FTransactionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D1F3E4ADCD1DE5E5FF7672D4F3715B4 /* FTransactionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1C04A7CD5B70C4561F6D98C882731C65 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE607EA7A6814A54E427B4B1DDCF03D1 /* Security.framework */; };
-		1C3EF85CD30E6FF2E51471BD5B3CEB29 /* Firebase.h in Headers */ = {isa = PBXBuildFile; fileRef = BB160A9F4646E898F22759D8495A200B /* Firebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1D925BB011B04DDED982C7946571A67A /* FAuthType.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E1611E1F0C2771B4B10F8A0DEAB807A /* FAuthType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1D9D7FF5237C8CC91EF58DC45AC274FB /* Firebase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC6BA9E9022FA9F3A5C957FFA1F6399 /* Firebase-dummy.m */; };
-		1EBBEA373349EBE610F38B42820F908E /* FormOptionsSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B617073E11CAACA444BD39C5EF6FC4 /* FormOptionsSelectorController.swift */; };
-		1EBBFD02B5F4CF145A0211B25FD8C65B /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26D1C1DEC73AA9369A8F10503608105 /* Firebase.framework */; };
-		239B10F388840841389B7F09648735B1 /* FEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC27F6886862123F0C52E1BAB6FE3D8 /* FEventType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2646261D0B29C73C6084590AA6EF366A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D1CECFD95030D3BB5214CC4EA5346B /* SystemConfiguration.framework */; };
-		279CD8557BE73C02D20FC1B0BE910340 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E5E8AA5E37AD8B8D4B117E24DB6A98 /* UIKit.framework */; };
-		28C2BB6640B3A4A0664FA95C7F4C630A /* SwiftForms-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFB904CB5BC30E270CE08B57FE32C40 /* SwiftForms-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2CA5EBCF28ECEE438B1DA54A214D5434 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823360E0F8CADE04EF5642F41BFF496 /* FormRowDescriptor.swift */; };
-		2EC96845D446C4827162A5335122541A /* FormSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AE055804B5CD89686B642468EC358 /* FormSelector.swift */; };
-		2F1496011DBBB75777645194AAAFE92D /* FirebaseApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 978A90C9D846F5BFE6B8E6E9C96AD9A9 /* FirebaseApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FDE184793CC31C3BB000D42DBE29D6E /* XCodeMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = DCB44EC88571AB5B8CD954176B2F782F /* XCodeMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3933AE3647E1FAEB21B35AFA5774D1A7 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0F44DBD56A422FD9622DD5DD3B19E8 /* FormDescriptor.swift */; };
-		3CC4B3F0170922C98703227530EF7784 /* FirebaseArrayDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 15036080C5D2008ACAB6E58EF5A577C8 /* FirebaseArrayDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EB0E9735B1A31C2579D25F50398D2DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10562779A8098BB2EC4D76B830498832 /* Foundation.framework */; };
-		42C88F6B557D88EE7E30AB609D5B110D /* FormTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F0123E53D0A83D7F0BD7FCCFF8F9C1 /* FormTextViewCell.swift */; };
-		4B0EFAAA29109D9A705A27EFFA10FAE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10562779A8098BB2EC4D76B830498832 /* Foundation.framework */; };
-		4D75CF0089B20355B17A851513C4A002 /* FQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 673963AEF8478075EF564CD9F961212E /* FQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5A54B99CE48B125018D5001915E3869F /* FirebaseUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD04BB4C2A16D4BA7F15CC4CA49A8A07 /* FirebaseUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60F9139BDD38565B78214C4FC5F5729D /* Firebase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D307EEE29CDE7DD38A5A81881B02C43 /* Firebase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		643745689C50096C65BE28E945668FA8 /* FormPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B3DD9DDB72099BA492BEC765EBFC7 /* FormPickerCell.swift */; };
-		6646DA26298257396C7FFE141BB84CC3 /* FirebaseServerValue.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE48AD20CD71182C6B47C885BB3A13A /* FirebaseServerValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6A7CC4BF4B21D69CEBD7C54E00D33E28 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C6E4BC05F87991A1D2C7A9E764C0A3 /* CFNetwork.framework */; };
-		70AC5F71D3A3DDC4AABF25236B766141 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F581C81CBB56215FDABD29BFEE11D /* FormButtonCell.swift */; };
-		73BB324A0B65A50018C0E47D22DA6702 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19330008CD5A88CAE4B7BB3D2923AF /* FormViewController.swift */; };
-		77E532AD01DB15B2CE342AB098A0797F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10562779A8098BB2EC4D76B830498832 /* Foundation.framework */; };
-		7F30FCEF51C9691C05F993CCF8BA0CE0 /* Pods-Pitchslapp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C5C6EA733D842784BEAB3C82AEB53A /* Pods-Pitchslapp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		804A92B33DEAA85190C27DC3C14EEC5E /* FormSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B98FEFA51DB0CFC998DB7B0688D05C /* FormSwitchCell.swift */; };
-		85A3F94939B24D276157C77BD67A6394 /* FirebaseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 22997372182E5B1DF6996E3BDF679C40 /* FirebaseArray.m */; };
-		8D53B93A9CA3F768B744ED1DDF455D50 /* FirebaseTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BD6A930C0859C154F5CD6E72F828A /* FirebaseTableViewDataSource.m */; };
-		9A3392971F5835501EE43718579A9681 /* FirebaseCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B6CF5D9F26CC453913BE90145D0A8B20 /* FirebaseCollectionViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C65A6C5E2B7E806A9EFEACF1E4A2833 /* FormSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04876DBDF2830A481CAC983E52FB6A2 /* FormSliderCell.swift */; };
-		9F9D6E9346F15F6310D0648E8498529D /* FirebaseUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BDBCAF3AB5BA0ADCC6FC05CF5103C3C /* FirebaseUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A21041255391D8B1AD29B844A98EF294 /* FirebaseCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D68E6E69D65ACD7C0EBD4B843BB6C82 /* FirebaseCollectionViewDataSource.m */; };
-		A2F14496B9E50C8482AE6E504C9A1757 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10562779A8098BB2EC4D76B830498832 /* Foundation.framework */; };
-		A49100BA0688F4FE8DD3EC2CA3680B65 /* FirebaseDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FEB7F4DC523C9A0708CA39032D36497 /* FirebaseDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A9F014DB1EE964B3DBE2DB5ED17479F2 /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D64EB2457CD0442FA2AD94B6A5EC1 /* FormBaseCell.swift */; };
-		ADA44A67E2BDEC471DF748B4EA33ABC7 /* FormSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C101BEB913B8B0EF47FF9BBABDBAE59 /* FormSelectorCell.swift */; };
-		B9B175160D087A6261BEB13EEC51C5D9 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705C841680F862AC8288A70B0BCE5F33 /* Firebase.framework */; };
-		C05F2C0CCE82C9E977FD726EE74B1186 /* FormStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F95611E0E2733C7C43988DFA49BFC /* FormStepperCell.swift */; };
-		C14990E1E8CBD1C88B83F4197E5EDCAB /* AudioPlayerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8091B9715B1D604D87C2A70D6CCDAAAF /* AudioPlayerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C23FCF31260D47CEC1494A292DAA1A1E /* FAuthData.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D164C7718820EE171D9DA8862B77653 /* FAuthData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C57D04D847BC08A8FD948518068EF452 /* FirebaseUI.m in Sources */ = {isa = PBXBuildFile; fileRef = FB954C0807537ACE29112404CF7BB4DC /* FirebaseUI.m */; };
-		C812FCD023FD88F34DEF2FD7A5A8C628 /* AudioPlayerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D08ED99302C86B8FD92805543B61CB2F /* AudioPlayerSwift-dummy.m */; };
-		CA3CFCF57A0A93B8353A30A366578294 /* FirebaseDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 86FE442E51F97B9415F19C8971C0D89D /* FirebaseDataSource.m */; };
-		CAE604D5C45B383922371CF6DF57DC5B /* FormValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD2D8E4DF2A7DD5296D1F2C746A394D /* FormValueCell.swift */; };
-		CB755B8DEDDA6F7983AF6A5CE314B5B6 /* FormDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8257899C3D503FF71BEDC2B5053A25 /* FormDateCell.swift */; };
-		CF636815B03E427C8ADEFD17D64EEBB9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE607EA7A6814A54E427B4B1DDCF03D1 /* Security.framework */; };
-		CFABA8401760900CFC6DF3BBB28BD1FA /* FirebaseTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C57136FE46530D7988EA7FCD373347E /* FirebaseTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D16EFA6C078D45B3AB0BDD40C91B5388 /* FormTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D47FC9686DCB1690B8EE1D8F475E3 /* FormTitleCell.swift */; };
-		D2695EDA18FBC82B847E57024DAF70FC /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC371374050621ADFB9096CDEC71A7 /* AudioPlayer.swift */; };
-		DA0D3976712312F2A5193172E4CC4772 /* FormSegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B67D35BC8EDBC0A7EF8AF46240933 /* FormSegmentedControlCell.swift */; };
-		DB05A9DD8244D10C28B6915C514AE15F /* FMutableData.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF9EDBF505F0B168D335C1B6357B1C4 /* FMutableData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE627861760646356F33EC8B2FD3BCC9 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A54849F1D0F510474F57A482313048 /* FormSectionDescriptor.swift */; };
-		E1A883FEBDEED9B85D90D6BE2080F218 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D1CECFD95030D3BB5214CC4EA5346B /* SystemConfiguration.framework */; };
-		E3FBB5B462A14E8ACC9B340227DE4BE1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C6E4BC05F87991A1D2C7A9E764C0A3 /* CFNetwork.framework */; };
-		E51FAE43A69FC03C89C328E1E0BE14BC /* Pods-Pitchslapp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BA1A714E77E2001AF9565C7941BB1C /* Pods-Pitchslapp-dummy.m */; };
-		E5CEB1DCF7FA8981D8C952927BCDED3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10562779A8098BB2EC4D76B830498832 /* Foundation.framework */; };
-		E60FA42EEC3ECC48701DB55986D25D69 /* FConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A33FC386C0D25B2DF5C8F93DEF6EFA /* FConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E8B534D15D2B25919ACD898217266891 /* FDataSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 0598E5EBF0EA01E7F7EF1D8F7BC4C4A5 /* FDataSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBC65BB9927DF4CDECC333C496D3B7CE /* SwiftForms-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB32B20AD57B077D47C94E89AEE3A4B /* SwiftForms-dummy.m */; };
-		F5B078D46D3988431E6F5DA7B1B4B480 /* FormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE44DE7C3ADB444AF6DEB8245B15B38 /* FormTextFieldCell.swift */; };
-		F603AD0C5FC1C51C2D43D54FD8420711 /* FirebaseUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5927DF643866AFFD455B3825CE44BD /* FirebaseUI-dummy.m */; };
+		012A7E018F3D34F159894EBD7EACACF9 /* Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B381A52C7AEF1896592DA64F01D4411 /* Empty.m */; };
+		043DD9FD6D53400DA7EBA1DCF76A9529 /* FormSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC12E70D16783959D6546EE930C5A18 /* FormSwitchCell.swift */; };
+		046CD8A79D3D154FBC1DE89136EA2AA5 /* FormSegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198310C384C1E76469FA073CD1E37C8 /* FormSegmentedControlCell.swift */; };
+		07BDD713FD13CAAB5A9EAFB008FD2855 /* FormRowDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DC67EF5A82E788DEAA72AEAE239414 /* FormRowDescriptor.swift */; };
+		191DE2EB9A35585AE0A88BA9F833A1F4 /* FTransactionResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 56E774E5A742082B80ACAD398D8489B4 /* FTransactionResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C04A7CD5B70C4561F6D98C882731C65 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6204446BD9150A17B12E81B4A6F9CA8 /* Security.framework */; };
+		1C3EF85CD30E6FF2E51471BD5B3CEB29 /* Firebase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B0376A207F88505926448A99042820A /* Firebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D925BB011B04DDED982C7946571A67A /* FAuthType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A66460F803693B7AB8A738E5BE4F604 /* FAuthType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D9D7FF5237C8CC91EF58DC45AC274FB /* Firebase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A834FDD20E00724CDC309128C13624 /* Firebase-dummy.m */; };
+		239B10F388840841389B7F09648735B1 /* FEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = A013E232C1E011A9D3F0CD815F507729 /* FEventType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A0947C8B4290F16EACD7F61EBCD0C85 /* FormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54EDBE5719A089A6338716976963E2A /* FormTextFieldCell.swift */; };
+		2B0DED6B006A9B11BB812B4222E9E7CA /* FormStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3DA6516337905BA9DCFA6069AF3ABB /* FormStepperCell.swift */; };
+		2F1496011DBBB75777645194AAAFE92D /* FirebaseApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7632F5E7460F6099F5384BD155D48382 /* FirebaseApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34EBBA8440934DCCEE307CC07DD567BD /* SwiftForms-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8109ABBB5A790770BC9BBED846EE060 /* SwiftForms-dummy.m */; };
+		353474EC1234D8EB8E57A37E3538068B /* FormCheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAEEA8FFFEF3C63088A913D0BB69576 /* FormCheckCell.swift */; };
+		36E2CC48E077BD216D43AFB829373282 /* FormTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08E27E992BC843624CAE1C4FAB78768 /* FormTextViewCell.swift */; };
+		409C43A7D03175D418342600A6079E6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */; };
+		40BABB1D4E003052735B0CD8F12F0830 /* FormSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABE5D55665B3A62CC793FE078870D29 /* FormSelectorCell.swift */; };
+		4B0EFAAA29109D9A705A27EFFA10FAE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */; };
+		4D75CF0089B20355B17A851513C4A002 /* FQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 34BD21AB8B3262C5AFBAF558F265D021 /* FQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5129068C4255CE5F579B95787BDFEF93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */; };
+		57E196A1BDAE4978BBDAE8D51A2CBE50 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702A686A9E84A0EFF2B052D89C61B519 /* FormViewController.swift */; };
+		60F9139BDD38565B78214C4FC5F5729D /* Firebase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 554CC9DBE82DB9E7BC5333BD25C8F35F /* Firebase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61226CDCBE9251AB1A5D45398EF2B108 /* FormDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E18A42900243C727F9B0CF76CE09362 /* FormDescriptor.swift */; };
+		6646DA26298257396C7FFE141BB84CC3 /* FirebaseServerValue.h in Headers */ = {isa = PBXBuildFile; fileRef = D75B2F23FE34D7301B40D10964B703A8 /* FirebaseServerValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		668207A9CEE04D20EF225004549F0511 /* FormTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644117A4A6BA7FE4B9B3B75694E6EFD /* FormTitleCell.swift */; };
+		6D8D88BFB10D67282BC3BF1E30B02E3C /* FormBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AD51F24E9DEFECC5AD9545AADC4E49 /* FormBaseCell.swift */; };
+		74BA7A101FD40B394B78D5BD8DDAFFAD /* Pods-Pitchslapp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BA1A714E77E2001AF9565C7941BB1C /* Pods-Pitchslapp-dummy.m */; };
+		770844BEE8A4B88435F78985B22832CC /* FormPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AAAA3B031EAF8E7D31E0AA5E70029 /* FormPickerCell.swift */; };
+		7EC70C6A9A9669FDA618ECF8E7572904 /* FormSectionDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA85F3D8662D4A450CD5702F71236A26 /* FormSectionDescriptor.swift */; };
+		9DB346E6EDFD9FD845ECD166C98B49E5 /* FormSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F009EE05A82F3E0EEB0DFE67108465E /* FormSliderCell.swift */; };
+		9F3ECAB630F57F73D81C4A40213B05C8 /* FormValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A656D740F41F6947F81C93A6AB05A9 /* FormValueCell.swift */; };
+		A395DC2A1749883D4ED5515999343CBC /* FormDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C02223F865CB10F45ED7D3B4C542F20 /* FormDateCell.swift */; };
+		A8A093D997E883CAF35DE677A9B1EDBD /* Pods-Pitchslapp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C5C6EA733D842784BEAB3C82AEB53A /* Pods-Pitchslapp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF369E6605EF3FFA4E2210A3ADC16A59 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851147C23E19F71FA2D2355726B50E59 /* FormButtonCell.swift */; };
+		B542030AD0EE7A7358BDCDA059BC4804 /* FormOptionsSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAEC14DA4CDF968C4537DEEA62820A /* FormOptionsSelectorController.swift */; };
+		C23FCF31260D47CEC1494A292DAA1A1E /* FAuthData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7519F328D3076AFF891E16941819CE3B /* FAuthData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB1B638594F59814FF0F93865906C7A8 /* SwiftForms-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CADDC31A97C5B8C424820A17CE3F8FE /* SwiftForms-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB05A9DD8244D10C28B6915C514AE15F /* FMutableData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4C053EE4A6574A06140942FD5DE21B /* FMutableData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF32908012223948F35D6282484F30E9 /* FormSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D968BE5B38A6A0E77AF8B2DB226FD49 /* FormSelector.swift */; };
+		E1A883FEBDEED9B85D90D6BE2080F218 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6166BE40C18BC6BF0EED92CAB212EC33 /* SystemConfiguration.framework */; };
+		E3FBB5B462A14E8ACC9B340227DE4BE1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F85758B54CB0D843A3E97DFFB2F21F /* CFNetwork.framework */; };
+		E60FA42EEC3ECC48701DB55986D25D69 /* FConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D8A5D00CA861274DDC0339306C36F39A /* FConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8B534D15D2B25919ACD898217266891 /* FDataSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = EC1DBE9AEE968FCC7011AA98BE94185E /* FDataSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		49239E25563B14E50B3180E2464B35A0 /* PBXContainerItemProxy */ = {
+		529D0DF5E386CFEB300A9F2751D18823 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 80149029D5CDC710AF2AE432C5256495;
+			remoteGlobalIDString = 74950BFFEC9AA3A46FD783910C2BF12A;
 			remoteInfo = SwiftForms;
 		};
-		719C1A57D184F7516990E0AAB8197788 /* PBXContainerItemProxy */ = {
+		98AAFC780E1584A09A1275F1B659C427 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B7AC9326D819482593FE118E915409D7;
 			remoteInfo = Firebase;
-		};
-		77B8040B02E6BDF4D20A1934F1898B8E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B7AC9326D819482593FE118E915409D7;
-			remoteInfo = Firebase;
-		};
-		94561EF6BE93DA6075219C3F256B9370 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7F869A0A80C706D6A6D4698DC0918B37;
-			remoteInfo = FirebaseUI;
-		};
-		A8B48DE6EA1E6CCC09D906D736D6DC0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 36325DFCBCB7959CC6D962AA1890B2E6;
-			remoteInfo = AudioPlayerSwift;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0598E5EBF0EA01E7F7EF1D8F7BC4C4A5 /* FDataSnapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FDataSnapshot.h; sourceTree = "<group>"; };
-		0CD2D8E4DF2A7DD5296D1F2C746A394D /* FormValueCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormValueCell.swift; path = SwiftForms/cells/base/FormValueCell.swift; sourceTree = "<group>"; };
-		0D307EEE29CDE7DD38A5A81881B02C43 /* Firebase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-umbrella.h"; sourceTree = "<group>"; };
-		0DE44DE7C3ADB444AF6DEB8245B15B38 /* FormTextFieldCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTextFieldCell.swift; path = SwiftForms/cells/FormTextFieldCell.swift; sourceTree = "<group>"; };
-		0E1611E1F0C2771B4B10F8A0DEAB807A /* FAuthType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthType.h; sourceTree = "<group>"; };
-		0EC6BA9E9022FA9F3A5C957FFA1F6399 /* Firebase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Firebase-dummy.m"; sourceTree = "<group>"; };
-		0F0F44DBD56A422FD9622DD5DD3B19E8 /* FormDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormDescriptor.swift; path = SwiftForms/descriptors/FormDescriptor.swift; sourceTree = "<group>"; };
-		10562779A8098BB2EC4D76B830498832 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		15036080C5D2008ACAB6E58EF5A577C8 /* FirebaseArrayDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseArrayDelegate.h; path = FirebaseUI/API/FirebaseArrayDelegate.h; sourceTree = "<group>"; };
-		152A74C0874A3CE63AA4A24A8B30366A /* FormCheckCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormCheckCell.swift; path = SwiftForms/cells/FormCheckCell.swift; sourceTree = "<group>"; };
+		05DC67EF5A82E788DEAA72AEAE239414 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormRowDescriptor.swift; path = SwiftForms/descriptors/FormRowDescriptor.swift; sourceTree = "<group>"; };
+		0B0376A207F88505926448A99042820A /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		1017CFBC9AB5794478885548C7A4B000 /* libFirebaseStatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libFirebaseStatic.a; sourceTree = "<group>"; };
+		13586D6DE891D226425EFC1B3DD3CC15 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15F84B2D86CE9D920944656BE2D1C161 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C57136FE46530D7988EA7FCD373347E /* FirebaseTableViewDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseTableViewDataSource.h; path = FirebaseUI/API/FirebaseTableViewDataSource.h; sourceTree = "<group>"; };
-		1E9A57BC0F6C6D4C95D950A83AFA5F2B /* Firebase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Firebase.modulemap; sourceTree = "<group>"; };
-		1F9E8B5D11277C5EE880E59E8E2C61F0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22997372182E5B1DF6996E3BDF679C40 /* FirebaseArray.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FirebaseArray.m; path = FirebaseUI/Implementation/FirebaseArray.m; sourceTree = "<group>"; };
-		22E32F9FBC169C353009C3F5629F9181 /* AudioPlayerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AudioPlayerSwift.xcconfig; sourceTree = "<group>"; };
-		22EAB9D4B28E996893190807E2CFE034 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		244AE055804B5CD89686B642468EC358 /* FormSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSelector.swift; path = SwiftForms/controllers/FormSelector.swift; sourceTree = "<group>"; };
-		24556C73BC210437280DE4460A934892 /* Empty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Empty.m; sourceTree = "<group>"; };
-		259B67D35BC8EDBC0A7EF8AF46240933 /* FormSegmentedControlCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSegmentedControlCell.swift; path = SwiftForms/cells/FormSegmentedControlCell.swift; sourceTree = "<group>"; };
-		2AE44899BA3EBA8CC05147D748834AC1 /* SwiftForms.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftForms.modulemap; sourceTree = "<group>"; };
-		2C101BEB913B8B0EF47FF9BBABDBAE59 /* FormSelectorCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSelectorCell.swift; path = SwiftForms/cells/FormSelectorCell.swift; sourceTree = "<group>"; };
-		2D1F3E4ADCD1DE5E5FF7672D4F3715B4 /* FTransactionResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FTransactionResult.h; sourceTree = "<group>"; };
-		2D68E6E69D65ACD7C0EBD4B843BB6C82 /* FirebaseCollectionViewDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FirebaseCollectionViewDataSource.m; path = FirebaseUI/Implementation/FirebaseCollectionViewDataSource.m; sourceTree = "<group>"; };
-		34B7C35C1707E4AD3E6511704B2C1E25 /* SwiftForms-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftForms-prefix.pch"; sourceTree = "<group>"; };
+		16A15F67C09A890D7F68C497DBEA418C /* SwiftForms.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftForms.modulemap; sourceTree = "<group>"; };
+		16AD51F24E9DEFECC5AD9545AADC4E49 /* FormBaseCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormBaseCell.swift; path = SwiftForms/cells/base/FormBaseCell.swift; sourceTree = "<group>"; };
+		1E18A42900243C727F9B0CF76CE09362 /* FormDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormDescriptor.swift; path = SwiftForms/descriptors/FormDescriptor.swift; sourceTree = "<group>"; };
+		24370FADBBE0A53C533F008CB0C2F007 /* Pods_Pitchslapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitchslapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C02223F865CB10F45ED7D3B4C542F20 /* FormDateCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormDateCell.swift; path = SwiftForms/cells/FormDateCell.swift; sourceTree = "<group>"; };
+		34BD21AB8B3262C5AFBAF558F265D021 /* FQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FQuery.h; sourceTree = "<group>"; };
 		35DFC7AA7DD16004750396190E85F3D2 /* Pods-Pitchslapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pitchslapp.release.xcconfig"; sourceTree = "<group>"; };
-		363D64EB2457CD0442FA2AD94B6A5EC1 /* FormBaseCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormBaseCell.swift; path = SwiftForms/cells/base/FormBaseCell.swift; sourceTree = "<group>"; };
 		36DF59517C24558C9E2728A86A222D02 /* Pods-Pitchslapp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Pitchslapp.modulemap"; sourceTree = "<group>"; };
-		42F0123E53D0A83D7F0BD7FCCFF8F9C1 /* FormTextViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTextViewCell.swift; path = SwiftForms/cells/FormTextViewCell.swift; sourceTree = "<group>"; };
-		4453AE488C1D2717E233AFF1481E97A5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46A8B2ABCE76AE8A79C8D89B4A18E6F2 /* SwiftForms.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftForms.xcconfig; sourceTree = "<group>"; };
 		48C5C6EA733D842784BEAB3C82AEB53A /* Pods-Pitchslapp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pitchslapp-umbrella.h"; sourceTree = "<group>"; };
-		48E5E8AA5E37AD8B8D4B117E24DB6A98 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		4AFB904CB5BC30E270CE08B57FE32C40 /* SwiftForms-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftForms-umbrella.h"; sourceTree = "<group>"; };
-		4D3B3DD9DDB72099BA492BEC765EBFC7 /* FormPickerCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormPickerCell.swift; path = SwiftForms/cells/FormPickerCell.swift; sourceTree = "<group>"; };
-		506B494048000CD12F08A166AF7559C2 /* FirebaseUI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FirebaseUI-prefix.pch"; sourceTree = "<group>"; };
-		5916E4907419AFF73772D7992F3CC702 /* AudioPlayerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AudioPlayerSwift-prefix.pch"; sourceTree = "<group>"; };
-		597E205FF2915717C6F7F9EF0144B84A /* FirebaseArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseArray.h; path = FirebaseUI/API/FirebaseArray.h; sourceTree = "<group>"; };
-		5BDBCAF3AB5BA0ADCC6FC05CF5103C3C /* FirebaseUI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseUI.h; path = FirebaseUI/API/FirebaseUI.h; sourceTree = "<group>"; };
-		5BF44D77F5D5A2DB41D4C3B7914DDE3E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D1021B322732529A283C86F0654B7DE /* Pods_Pitchslapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitchslapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C471ADD208461BEF26558B447219262 /* Firebase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Firebase.modulemap; sourceTree = "<group>"; };
+		54B8FD2B585EDF4286E346033A54278A /* SwiftForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		554CC9DBE82DB9E7BC5333BD25C8F35F /* Firebase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-umbrella.h"; sourceTree = "<group>"; };
+		55EAEC14DA4CDF968C4537DEEA62820A /* FormOptionsSelectorController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormOptionsSelectorController.swift; path = SwiftForms/controllers/FormOptionsSelectorController.swift; sourceTree = "<group>"; };
+		56E774E5A742082B80ACAD398D8489B4 /* FTransactionResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FTransactionResult.h; sourceTree = "<group>"; };
+		5D3DA6516337905BA9DCFA6069AF3ABB /* FormStepperCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormStepperCell.swift; path = SwiftForms/cells/FormStepperCell.swift; sourceTree = "<group>"; };
+		60F85758B54CB0D843A3E97DFFB2F21F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		6166BE40C18BC6BF0EED92CAB212EC33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		669DE420A468CF51A489838DE5D25720 /* Pods-Pitchslapp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pitchslapp-resources.sh"; sourceTree = "<group>"; };
-		673963AEF8478075EF564CD9F961212E /* FQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FQuery.h; sourceTree = "<group>"; };
-		6D164C7718820EE171D9DA8862B77653 /* FAuthData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthData.h; sourceTree = "<group>"; };
-		6FEB7F4DC523C9A0708CA39032D36497 /* FirebaseDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseDataSource.h; path = FirebaseUI/API/FirebaseDataSource.h; sourceTree = "<group>"; };
-		705C841680F862AC8288A70B0BCE5F33 /* Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D968BE5B38A6A0E77AF8B2DB226FD49 /* FormSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSelector.swift; path = SwiftForms/controllers/FormSelector.swift; sourceTree = "<group>"; };
+		6F009EE05A82F3E0EEB0DFE67108465E /* FormSliderCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSliderCell.swift; path = SwiftForms/cells/FormSliderCell.swift; sourceTree = "<group>"; };
+		702A686A9E84A0EFF2B052D89C61B519 /* FormViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormViewController.swift; path = SwiftForms/controllers/FormViewController.swift; sourceTree = "<group>"; };
+		73220008D1FE534A48179B01806D3C8B /* SwiftForms-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftForms-prefix.pch"; sourceTree = "<group>"; };
+		735AAAA3B031EAF8E7D31E0AA5E70029 /* FormPickerCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormPickerCell.swift; path = SwiftForms/cells/FormPickerCell.swift; sourceTree = "<group>"; };
+		73A656D740F41F6947F81C93A6AB05A9 /* FormValueCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormValueCell.swift; path = SwiftForms/cells/base/FormValueCell.swift; sourceTree = "<group>"; };
+		7519F328D3076AFF891E16941819CE3B /* FAuthData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthData.h; sourceTree = "<group>"; };
+		7632F5E7460F6099F5384BD155D48382 /* FirebaseApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseApp.h; sourceTree = "<group>"; };
 		779115F790FA31116EAB7E582ACBDB41 /* Pods-Pitchslapp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pitchslapp-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7823360E0F8CADE04EF5642F41BFF496 /* FormRowDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormRowDescriptor.swift; path = SwiftForms/descriptors/FormRowDescriptor.swift; sourceTree = "<group>"; };
-		8091B9715B1D604D87C2A70D6CCDAAAF /* AudioPlayerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AudioPlayerSwift-umbrella.h"; sourceTree = "<group>"; };
-		86FE442E51F97B9415F19C8971C0D89D /* FirebaseDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FirebaseDataSource.m; path = FirebaseUI/Implementation/FirebaseDataSource.m; sourceTree = "<group>"; };
-		8A7F581C81CBB56215FDABD29BFEE11D /* FormButtonCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormButtonCell.swift; path = SwiftForms/cells/FormButtonCell.swift; sourceTree = "<group>"; };
+		77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7A66460F803693B7AB8A738E5BE4F604 /* FAuthType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FAuthType.h; sourceTree = "<group>"; };
+		837E26048716F21231D8D726AE9D82A0 /* Firebase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.xcconfig; sourceTree = "<group>"; };
+		851147C23E19F71FA2D2355726B50E59 /* FormButtonCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormButtonCell.swift; path = SwiftForms/cells/FormButtonCell.swift; sourceTree = "<group>"; };
+		8644117A4A6BA7FE4B9B3B75694E6EFD /* FormTitleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTitleCell.swift; path = SwiftForms/cells/base/FormTitleCell.swift; sourceTree = "<group>"; };
+		8ABE5D55665B3A62CC793FE078870D29 /* FormSelectorCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSelectorCell.swift; path = SwiftForms/cells/FormSelectorCell.swift; sourceTree = "<group>"; };
+		8CADDC31A97C5B8C424820A17CE3F8FE /* SwiftForms-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftForms-umbrella.h"; sourceTree = "<group>"; };
 		958B348329FC23444487FE2A6DF0FAAB /* Pods-Pitchslapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pitchslapp.debug.xcconfig"; sourceTree = "<group>"; };
-		978A90C9D846F5BFE6B8E6E9C96AD9A9 /* FirebaseApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseApp.h; sourceTree = "<group>"; };
-		99E3E460D310E5C41EAF4EBB8CF18C5A /* AudioPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AudioPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C6F95611E0E2733C7C43988DFA49BFC /* FormStepperCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormStepperCell.swift; path = SwiftForms/cells/FormStepperCell.swift; sourceTree = "<group>"; };
-		9F0E7131B4827985381BD76EF7D41EB9 /* SwiftForms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftForms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5AC371374050621ADFB9096CDEC71A7 /* AudioPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = Source/AudioPlayer.swift; sourceTree = "<group>"; };
-		A6476E4A299FFCCEF736CF7B3C64B3DE /* AudioPlayerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AudioPlayerSwift.modulemap; sourceTree = "<group>"; };
-		A7C6E4BC05F87991A1D2C7A9E764C0A3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		AE607EA7A6814A54E427B4B1DDCF03D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		B30BD6A930C0859C154F5CD6E72F828A /* FirebaseTableViewDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FirebaseTableViewDataSource.m; path = FirebaseUI/Implementation/FirebaseTableViewDataSource.m; sourceTree = "<group>"; };
-		B5A33FC386C0D25B2DF5C8F93DEF6EFA /* FConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FConfig.h; sourceTree = "<group>"; };
-		B6CF5D9F26CC453913BE90145D0A8B20 /* FirebaseCollectionViewDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseCollectionViewDataSource.h; path = FirebaseUI/API/FirebaseCollectionViewDataSource.h; sourceTree = "<group>"; };
-		B6ECC7F6B7921EC8BF74B78DFEC5627D /* FirebaseUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FirebaseUI.modulemap; sourceTree = "<group>"; };
-		B96D47FC9686DCB1690B8EE1D8F475E3 /* FormTitleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTitleCell.swift; path = SwiftForms/cells/base/FormTitleCell.swift; sourceTree = "<group>"; };
-		BA5927DF643866AFFD455B3825CE44BD /* FirebaseUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FirebaseUI-dummy.m"; sourceTree = "<group>"; };
+		974679277F42CC58559DB11004B227F6 /* Firebase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-prefix.pch"; sourceTree = "<group>"; };
+		9A4C053EE4A6574A06140942FD5DE21B /* FMutableData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMutableData.h; sourceTree = "<group>"; };
+		9B381A52C7AEF1896592DA64F01D4411 /* Empty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Empty.m; sourceTree = "<group>"; };
+		A013E232C1E011A9D3F0CD815F507729 /* FEventType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FEventType.h; sourceTree = "<group>"; };
+		A08E27E992BC843624CAE1C4FAB78768 /* FormTextViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTextViewCell.swift; path = SwiftForms/cells/FormTextViewCell.swift; sourceTree = "<group>"; };
+		B54EDBE5719A089A6338716976963E2A /* FormTextFieldCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormTextFieldCell.swift; path = SwiftForms/cells/FormTextFieldCell.swift; sourceTree = "<group>"; };
+		B6132CFE4B60F856A13DCF61978D51A7 /* Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6AA766BAE47245C3E80794FCEB88802 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7BB14C3C10C7F66D14B29730492034A /* SwiftForms.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftForms.xcconfig; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BB160A9F4646E898F22759D8495A200B /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
-		BF7D3C3F255CE3CCABDAAAE7B258B4A8 /* Firebase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.xcconfig; sourceTree = "<group>"; };
-		C1D1CECFD95030D3BB5214CC4EA5346B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		CAF9EDBF505F0B168D335C1B6357B1C4 /* FMutableData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMutableData.h; sourceTree = "<group>"; };
-		CB19330008CD5A88CAE4B7BB3D2923AF /* FormViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormViewController.swift; path = SwiftForms/controllers/FormViewController.swift; sourceTree = "<group>"; };
-		CBB32B20AD57B077D47C94E89AEE3A4B /* SwiftForms-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftForms-dummy.m"; sourceTree = "<group>"; };
-		CDA6E3643D19981FEEFABB4ED6DCBBB1 /* Firebase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Firebase-prefix.pch"; sourceTree = "<group>"; };
-		D08ED99302C86B8FD92805543B61CB2F /* AudioPlayerSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AudioPlayerSwift-dummy.m"; sourceTree = "<group>"; };
-		D0B617073E11CAACA444BD39C5EF6FC4 /* FormOptionsSelectorController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormOptionsSelectorController.swift; path = SwiftForms/controllers/FormOptionsSelectorController.swift; sourceTree = "<group>"; };
-		D476625D0B106DEB9627723A6F88DB00 /* libFirebaseStatic.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libFirebaseStatic.a; sourceTree = "<group>"; };
-		D64DAE6ABDE5EC9BDC5D02FAB23F5853 /* FirebaseUI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseUI.xcconfig; sourceTree = "<group>"; };
-		D8B98FEFA51DB0CFC998DB7B0688D05C /* FormSwitchCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSwitchCell.swift; path = SwiftForms/cells/FormSwitchCell.swift; sourceTree = "<group>"; };
-		D9C71F69F5AD7A5F9C11065A853CE92F /* Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCB44EC88571AB5B8CD954176B2F782F /* XCodeMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XCodeMacros.h; path = FirebaseUI/XCodeMacros.h; sourceTree = "<group>"; };
-		DE8257899C3D503FF71BEDC2B5053A25 /* FormDateCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormDateCell.swift; path = SwiftForms/cells/FormDateCell.swift; sourceTree = "<group>"; };
-		E336D00042994C67717F6B9046E85F7E /* FirebaseUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC12E70D16783959D6546EE930C5A18 /* FormSwitchCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSwitchCell.swift; path = SwiftForms/cells/FormSwitchCell.swift; sourceTree = "<group>"; };
+		C6204446BD9150A17B12E81B4A6F9CA8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		D75B2F23FE34D7301B40D10964B703A8 /* FirebaseServerValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseServerValue.h; sourceTree = "<group>"; };
+		D8A5D00CA861274DDC0339306C36F39A /* FConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FConfig.h; sourceTree = "<group>"; };
+		DBAEEA8FFFEF3C63088A913D0BB69576 /* FormCheckCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormCheckCell.swift; path = SwiftForms/cells/FormCheckCell.swift; sourceTree = "<group>"; };
 		E86251B6A5EF5EB809EC3C59050163EF /* Pods-Pitchslapp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pitchslapp-frameworks.sh"; sourceTree = "<group>"; };
-		EAC27F6886862123F0C52E1BAB6FE3D8 /* FEventType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FEventType.h; sourceTree = "<group>"; };
+		E9A834FDD20E00724CDC309128C13624 /* Firebase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Firebase-dummy.m"; sourceTree = "<group>"; };
+		EC1DBE9AEE968FCC7011AA98BE94185E /* FDataSnapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FDataSnapshot.h; sourceTree = "<group>"; };
 		EDDF991F8E52372D1653ABAC6C9AA7BD /* Pods-Pitchslapp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pitchslapp-acknowledgements.plist"; sourceTree = "<group>"; };
-		EEE48AD20CD71182C6B47C885BB3A13A /* FirebaseServerValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FirebaseServerValue.h; sourceTree = "<group>"; };
-		F04876DBDF2830A481CAC983E52FB6A2 /* FormSliderCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSliderCell.swift; path = SwiftForms/cells/FormSliderCell.swift; sourceTree = "<group>"; };
-		F26D1C1DEC73AA9369A8F10503608105 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Firebase.framework; sourceTree = DEVELOPER_DIR; };
-		F5A54849F1D0F510474F57A482313048 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSectionDescriptor.swift; path = SwiftForms/descriptors/FormSectionDescriptor.swift; sourceTree = "<group>"; };
+		F198310C384C1E76469FA073CD1E37C8 /* FormSegmentedControlCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSegmentedControlCell.swift; path = SwiftForms/cells/FormSegmentedControlCell.swift; sourceTree = "<group>"; };
+		F8109ABBB5A790770BC9BBED846EE060 /* SwiftForms-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftForms-dummy.m"; sourceTree = "<group>"; };
 		F9BA1A714E77E2001AF9565C7941BB1C /* Pods-Pitchslapp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pitchslapp-dummy.m"; sourceTree = "<group>"; };
-		FB954C0807537ACE29112404CF7BB4DC /* FirebaseUI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FirebaseUI.m; path = FirebaseUI/Implementation/FirebaseUI.m; sourceTree = "<group>"; };
-		FD04BB4C2A16D4BA7F15CC4CA49A8A07 /* FirebaseUI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FirebaseUI-umbrella.h"; sourceTree = "<group>"; };
+		FA85F3D8662D4A450CD5702F71236A26 /* FormSectionDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormSectionDescriptor.swift; path = SwiftForms/descriptors/FormSectionDescriptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		536CB45BD0D9A043CE117281836E8DDE /* Frameworks */ = {
+		2B6E6F9B001E9CC46ACE7696D5B76B36 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A7CC4BF4B21D69CEBD7C54E00D33E28 /* CFNetwork.framework in Frameworks */,
-				B9B175160D087A6261BEB13EEC51C5D9 /* Firebase.framework in Frameworks */,
-				1EBBFD02B5F4CF145A0211B25FD8C65B /* Firebase.framework in Frameworks */,
-				E5CEB1DCF7FA8981D8C952927BCDED3A /* Foundation.framework in Frameworks */,
-				CF636815B03E427C8ADEFD17D64EEBB9 /* Security.framework in Frameworks */,
-				2646261D0B29C73C6084590AA6EF366A /* SystemConfiguration.framework in Frameworks */,
-				279CD8557BE73C02D20FC1B0BE910340 /* UIKit.framework in Frameworks */,
+				409C43A7D03175D418342600A6079E6C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A764988A3367895BAB4C0453E8C292F3 /* Frameworks */ = {
+		6D8537498CC247FDE5A83AC4E361556B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EB0E9735B1A31C2579D25F50398D2DF /* Foundation.framework in Frameworks */,
+				5129068C4255CE5F579B95787BDFEF93 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,140 +164,77 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C82264CD9088711A2FAB114E95B73EA7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				77E532AD01DB15B2CE342AB098A0797F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED3AA03B7CD4B0151FB6150EE637314C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A2F14496B9E50C8482AE6E504C9A1757 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		269DC471C9373455DB3E425F20DBA856 /* Support Files */ = {
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B6ECC7F6B7921EC8BF74B78DFEC5627D /* FirebaseUI.modulemap */,
-				D64DAE6ABDE5EC9BDC5D02FAB23F5853 /* FirebaseUI.xcconfig */,
-				BA5927DF643866AFFD455B3825CE44BD /* FirebaseUI-dummy.m */,
-				506B494048000CD12F08A166AF7559C2 /* FirebaseUI-prefix.pch */,
-				FD04BB4C2A16D4BA7F15CC4CA49A8A07 /* FirebaseUI-umbrella.h */,
-				5BF44D77F5D5A2DB41D4C3B7914DDE3E /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/FirebaseUI";
-			sourceTree = "<group>";
-		};
-		2B12563995A4A681B2C31D32CC594E3F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				77A67BF6B481EAEB26EF907203587C06 /* AudioPlayerSwift */,
-				C9891020FBBD7C9152032E85ECB0C1EE /* Firebase */,
-				2E02805584293556B2E6E91411425420 /* FirebaseUI */,
-				64C64525B5C27E72BACA7572C24CBD23 /* SwiftForms */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		2E02805584293556B2E6E91411425420 /* FirebaseUI */ = {
-			isa = PBXGroup;
-			children = (
-				597E205FF2915717C6F7F9EF0144B84A /* FirebaseArray.h */,
-				22997372182E5B1DF6996E3BDF679C40 /* FirebaseArray.m */,
-				15036080C5D2008ACAB6E58EF5A577C8 /* FirebaseArrayDelegate.h */,
-				B6CF5D9F26CC453913BE90145D0A8B20 /* FirebaseCollectionViewDataSource.h */,
-				2D68E6E69D65ACD7C0EBD4B843BB6C82 /* FirebaseCollectionViewDataSource.m */,
-				6FEB7F4DC523C9A0708CA39032D36497 /* FirebaseDataSource.h */,
-				86FE442E51F97B9415F19C8971C0D89D /* FirebaseDataSource.m */,
-				1C57136FE46530D7988EA7FCD373347E /* FirebaseTableViewDataSource.h */,
-				B30BD6A930C0859C154F5CD6E72F828A /* FirebaseTableViewDataSource.m */,
-				5BDBCAF3AB5BA0ADCC6FC05CF5103C3C /* FirebaseUI.h */,
-				FB954C0807537ACE29112404CF7BB4DC /* FirebaseUI.m */,
-				DCB44EC88571AB5B8CD954176B2F782F /* XCodeMacros.h */,
-				269DC471C9373455DB3E425F20DBA856 /* Support Files */,
-			);
-			path = FirebaseUI;
-			sourceTree = "<group>";
-		};
-		55DC2EC00EB5CDD9919EC5202E10B718 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				705C841680F862AC8288A70B0BCE5F33 /* Firebase.framework */,
-				F7AEC427B17F26B224D3126C3BB7113E /* iOS */,
+				843A690C4A272ACCFA5202DC4499C74E /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		620CE83F1B04BD2B44BFDC8FEB92B50B /* Support Files */ = {
+		17B84B7074F73FE5E52A732E9CFDBB00 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F9E8B5D11277C5EE880E59E8E2C61F0 /* Info.plist */,
-				2AE44899BA3EBA8CC05147D748834AC1 /* SwiftForms.modulemap */,
-				46A8B2ABCE76AE8A79C8D89B4A18E6F2 /* SwiftForms.xcconfig */,
-				CBB32B20AD57B077D47C94E89AEE3A4B /* SwiftForms-dummy.m */,
-				34B7C35C1707E4AD3E6511704B2C1E25 /* SwiftForms-prefix.pch */,
-				4AFB904CB5BC30E270CE08B57FE32C40 /* SwiftForms-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftForms";
-			sourceTree = "<group>";
-		};
-		622B567786C46ECBC285662D7ABEAAE8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				99E3E460D310E5C41EAF4EBB8CF18C5A /* AudioPlayer.framework */,
-				D9C71F69F5AD7A5F9C11065A853CE92F /* Firebase.framework */,
-				E336D00042994C67717F6B9046E85F7E /* FirebaseUI.framework */,
-				5D1021B322732529A283C86F0654B7DE /* Pods_Pitchslapp.framework */,
-				9F0E7131B4827985381BD76EF7D41EB9 /* SwiftForms.framework */,
+				B6132CFE4B60F856A13DCF61978D51A7 /* Firebase.framework */,
+				24370FADBBE0A53C533F008CB0C2F007 /* Pods_Pitchslapp.framework */,
+				54B8FD2B585EDF4286E346033A54278A /* SwiftForms.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		64C64525B5C27E72BACA7572C24CBD23 /* SwiftForms */ = {
+		27FCB09A7D0D939AE39A2F5B76C4418A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				363D64EB2457CD0442FA2AD94B6A5EC1 /* FormBaseCell.swift */,
-				8A7F581C81CBB56215FDABD29BFEE11D /* FormButtonCell.swift */,
-				152A74C0874A3CE63AA4A24A8B30366A /* FormCheckCell.swift */,
-				DE8257899C3D503FF71BEDC2B5053A25 /* FormDateCell.swift */,
-				0F0F44DBD56A422FD9622DD5DD3B19E8 /* FormDescriptor.swift */,
-				D0B617073E11CAACA444BD39C5EF6FC4 /* FormOptionsSelectorController.swift */,
-				4D3B3DD9DDB72099BA492BEC765EBFC7 /* FormPickerCell.swift */,
-				7823360E0F8CADE04EF5642F41BFF496 /* FormRowDescriptor.swift */,
-				F5A54849F1D0F510474F57A482313048 /* FormSectionDescriptor.swift */,
-				259B67D35BC8EDBC0A7EF8AF46240933 /* FormSegmentedControlCell.swift */,
-				244AE055804B5CD89686B642468EC358 /* FormSelector.swift */,
-				2C101BEB913B8B0EF47FF9BBABDBAE59 /* FormSelectorCell.swift */,
-				F04876DBDF2830A481CAC983E52FB6A2 /* FormSliderCell.swift */,
-				9C6F95611E0E2733C7C43988DFA49BFC /* FormStepperCell.swift */,
-				D8B98FEFA51DB0CFC998DB7B0688D05C /* FormSwitchCell.swift */,
-				0DE44DE7C3ADB444AF6DEB8245B15B38 /* FormTextFieldCell.swift */,
-				42F0123E53D0A83D7F0BD7FCCFF8F9C1 /* FormTextViewCell.swift */,
-				B96D47FC9686DCB1690B8EE1D8F475E3 /* FormTitleCell.swift */,
-				0CD2D8E4DF2A7DD5296D1F2C746A394D /* FormValueCell.swift */,
-				CB19330008CD5A88CAE4B7BB3D2923AF /* FormViewController.swift */,
-				620CE83F1B04BD2B44BFDC8FEB92B50B /* Support Files */,
+				624E05F9EE662AEBBAFF20E4249C224E /* Firebase */,
+				C2EE12A31616FCAD329785D3205DF18B /* SwiftForms */,
 			);
-			path = SwiftForms;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		77A67BF6B481EAEB26EF907203587C06 /* AudioPlayerSwift */ = {
+		52FCE63E45AB54BED092E79B9B4C5B60 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A5AC371374050621ADFB9096CDEC71A7 /* AudioPlayer.swift */,
-				A6F638B7EDB2153CB78726482A87DE2E /* Support Files */,
+				4C471ADD208461BEF26558B447219262 /* Firebase.modulemap */,
+				837E26048716F21231D8D726AE9D82A0 /* Firebase.xcconfig */,
+				E9A834FDD20E00724CDC309128C13624 /* Firebase-dummy.m */,
+				974679277F42CC58559DB11004B227F6 /* Firebase-prefix.pch */,
+				554CC9DBE82DB9E7BC5333BD25C8F35F /* Firebase-umbrella.h */,
+				13586D6DE891D226425EFC1B3DD3CC15 /* Info.plist */,
 			);
-			path = AudioPlayerSwift;
+			name = "Support Files";
+			path = "../Target Support Files/Firebase";
+			sourceTree = "<group>";
+		};
+		6056A4EA17695D5455F573E9CD643059 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1017CFBC9AB5794478885548C7A4B000 /* libFirebaseStatic.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		624E05F9EE662AEBBAFF20E4249C224E /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				9B381A52C7AEF1896592DA64F01D4411 /* Empty.m */,
+				7519F328D3076AFF891E16941819CE3B /* FAuthData.h */,
+				7A66460F803693B7AB8A738E5BE4F604 /* FAuthType.h */,
+				D8A5D00CA861274DDC0339306C36F39A /* FConfig.h */,
+				EC1DBE9AEE968FCC7011AA98BE94185E /* FDataSnapshot.h */,
+				A013E232C1E011A9D3F0CD815F507729 /* FEventType.h */,
+				0B0376A207F88505926448A99042820A /* Firebase.h */,
+				7632F5E7460F6099F5384BD155D48382 /* FirebaseApp.h */,
+				D75B2F23FE34D7301B40D10964B703A8 /* FirebaseServerValue.h */,
+				9A4C053EE4A6574A06140942FD5DE21B /* FMutableData.h */,
+				34BD21AB8B3262C5AFBAF558F265D021 /* FQuery.h */,
+				56E774E5A742082B80ACAD398D8489B4 /* FTransactionResult.h */,
+				6056A4EA17695D5455F573E9CD643059 /* Frameworks */,
+				52FCE63E45AB54BED092E79B9B4C5B60 /* Support Files */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		7A19EC287E5B56D6BD2A55B5EE46931F /* Pods-Pitchslapp */ = {
@@ -404,68 +259,64 @@
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				55DC2EC00EB5CDD9919EC5202E10B718 /* Frameworks */,
-				2B12563995A4A681B2C31D32CC594E3F /* Pods */,
-				622B567786C46ECBC285662D7ABEAAE8 /* Products */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				27FCB09A7D0D939AE39A2F5B76C4418A /* Pods */,
+				17B84B7074F73FE5E52A732E9CFDBB00 /* Products */,
 				F798452662ABF337F78DF0327AF9E674 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		A6F638B7EDB2153CB78726482A87DE2E /* Support Files */ = {
+		843A690C4A272ACCFA5202DC4499C74E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				A6476E4A299FFCCEF736CF7B3C64B3DE /* AudioPlayerSwift.modulemap */,
-				22E32F9FBC169C353009C3F5629F9181 /* AudioPlayerSwift.xcconfig */,
-				D08ED99302C86B8FD92805543B61CB2F /* AudioPlayerSwift-dummy.m */,
-				5916E4907419AFF73772D7992F3CC702 /* AudioPlayerSwift-prefix.pch */,
-				8091B9715B1D604D87C2A70D6CCDAAAF /* AudioPlayerSwift-umbrella.h */,
-				22EAB9D4B28E996893190807E2CFE034 /* Info.plist */,
+				60F85758B54CB0D843A3E97DFFB2F21F /* CFNetwork.framework */,
+				77C49D928448B31FB9A7D5AE5C8D6C4E /* Foundation.framework */,
+				C6204446BD9150A17B12E81B4A6F9CA8 /* Security.framework */,
+				6166BE40C18BC6BF0EED92CAB212EC33 /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C2EE12A31616FCAD329785D3205DF18B /* SwiftForms */ = {
+			isa = PBXGroup;
+			children = (
+				16AD51F24E9DEFECC5AD9545AADC4E49 /* FormBaseCell.swift */,
+				851147C23E19F71FA2D2355726B50E59 /* FormButtonCell.swift */,
+				DBAEEA8FFFEF3C63088A913D0BB69576 /* FormCheckCell.swift */,
+				2C02223F865CB10F45ED7D3B4C542F20 /* FormDateCell.swift */,
+				1E18A42900243C727F9B0CF76CE09362 /* FormDescriptor.swift */,
+				55EAEC14DA4CDF968C4537DEEA62820A /* FormOptionsSelectorController.swift */,
+				735AAAA3B031EAF8E7D31E0AA5E70029 /* FormPickerCell.swift */,
+				05DC67EF5A82E788DEAA72AEAE239414 /* FormRowDescriptor.swift */,
+				FA85F3D8662D4A450CD5702F71236A26 /* FormSectionDescriptor.swift */,
+				F198310C384C1E76469FA073CD1E37C8 /* FormSegmentedControlCell.swift */,
+				6D968BE5B38A6A0E77AF8B2DB226FD49 /* FormSelector.swift */,
+				8ABE5D55665B3A62CC793FE078870D29 /* FormSelectorCell.swift */,
+				6F009EE05A82F3E0EEB0DFE67108465E /* FormSliderCell.swift */,
+				5D3DA6516337905BA9DCFA6069AF3ABB /* FormStepperCell.swift */,
+				BAC12E70D16783959D6546EE930C5A18 /* FormSwitchCell.swift */,
+				B54EDBE5719A089A6338716976963E2A /* FormTextFieldCell.swift */,
+				A08E27E992BC843624CAE1C4FAB78768 /* FormTextViewCell.swift */,
+				8644117A4A6BA7FE4B9B3B75694E6EFD /* FormTitleCell.swift */,
+				73A656D740F41F6947F81C93A6AB05A9 /* FormValueCell.swift */,
+				702A686A9E84A0EFF2B052D89C61B519 /* FormViewController.swift */,
+				CE7828AD50CCE2C3744A266ACEECA962 /* Support Files */,
+			);
+			path = SwiftForms;
+			sourceTree = "<group>";
+		};
+		CE7828AD50CCE2C3744A266ACEECA962 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6AA766BAE47245C3E80794FCEB88802 /* Info.plist */,
+				16A15F67C09A890D7F68C497DBEA418C /* SwiftForms.modulemap */,
+				B7BB14C3C10C7F66D14B29730492034A /* SwiftForms.xcconfig */,
+				F8109ABBB5A790770BC9BBED846EE060 /* SwiftForms-dummy.m */,
+				73220008D1FE534A48179B01806D3C8B /* SwiftForms-prefix.pch */,
+				8CADDC31A97C5B8C424820A17CE3F8FE /* SwiftForms-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/AudioPlayerSwift";
-			sourceTree = "<group>";
-		};
-		B7F99AB2EB5CEAA052F2E00F3D42EB9D /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1E9A57BC0F6C6D4C95D950A83AFA5F2B /* Firebase.modulemap */,
-				BF7D3C3F255CE3CCABDAAAE7B258B4A8 /* Firebase.xcconfig */,
-				0EC6BA9E9022FA9F3A5C957FFA1F6399 /* Firebase-dummy.m */,
-				CDA6E3643D19981FEEFABB4ED6DCBBB1 /* Firebase-prefix.pch */,
-				0D307EEE29CDE7DD38A5A81881B02C43 /* Firebase-umbrella.h */,
-				4453AE488C1D2717E233AFF1481E97A5 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Firebase";
-			sourceTree = "<group>";
-		};
-		C9891020FBBD7C9152032E85ECB0C1EE /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				24556C73BC210437280DE4460A934892 /* Empty.m */,
-				6D164C7718820EE171D9DA8862B77653 /* FAuthData.h */,
-				0E1611E1F0C2771B4B10F8A0DEAB807A /* FAuthType.h */,
-				B5A33FC386C0D25B2DF5C8F93DEF6EFA /* FConfig.h */,
-				0598E5EBF0EA01E7F7EF1D8F7BC4C4A5 /* FDataSnapshot.h */,
-				EAC27F6886862123F0C52E1BAB6FE3D8 /* FEventType.h */,
-				BB160A9F4646E898F22759D8495A200B /* Firebase.h */,
-				978A90C9D846F5BFE6B8E6E9C96AD9A9 /* FirebaseApp.h */,
-				EEE48AD20CD71182C6B47C885BB3A13A /* FirebaseServerValue.h */,
-				CAF9EDBF505F0B168D335C1B6357B1C4 /* FMutableData.h */,
-				673963AEF8478075EF564CD9F961212E /* FQuery.h */,
-				2D1F3E4ADCD1DE5E5FF7672D4F3715B4 /* FTransactionResult.h */,
-				EC3D17B3582A64625CA6D298A317B3A8 /* Frameworks */,
-				B7F99AB2EB5CEAA052F2E00F3D42EB9D /* Support Files */,
-			);
-			path = Firebase;
-			sourceTree = "<group>";
-		};
-		EC3D17B3582A64625CA6D298A317B3A8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D476625D0B106DEB9627723A6F88DB00 /* libFirebaseStatic.a */,
-			);
-			name = Frameworks;
+			path = "../Target Support Files/SwiftForms";
 			sourceTree = "<group>";
 		};
 		F798452662ABF337F78DF0327AF9E674 /* Targets Support Files */ = {
@@ -476,35 +327,14 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		F7AEC427B17F26B224D3126C3BB7113E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				A7C6E4BC05F87991A1D2C7A9E764C0A3 /* CFNetwork.framework */,
-				F26D1C1DEC73AA9369A8F10503608105 /* Firebase.framework */,
-				10562779A8098BB2EC4D76B830498832 /* Foundation.framework */,
-				AE607EA7A6814A54E427B4B1DDCF03D1 /* Security.framework */,
-				C1D1CECFD95030D3BB5214CC4EA5346B /* SystemConfiguration.framework */,
-				48E5E8AA5E37AD8B8D4B117E24DB6A98 /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		179FE51EC9BEAC5C5E6A17364D91A720 /* Headers */ = {
+		170522DA4B0FFFF5F4E79E7CDBB8A794 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F30FCEF51C9691C05F993CCF8BA0CE0 /* Pods-Pitchslapp-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B65D362D066A8B1DD5B17ACAAD19C72 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C14990E1E8CBD1C88B83F4197E5EDCAB /* AudioPlayerSwift-umbrella.h in Headers */,
+				CB1B638594F59814FF0F93865906C7A8 /* SwiftForms-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,95 +357,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED3486FCD4B7D8EF46522E2616D2BCDD /* Headers */ = {
+		EE2CD87657C350DDC99B5EC8419415C5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17419BBF717A1111A1C70EF3FEB57D7A /* FirebaseArray.h in Headers */,
-				3CC4B3F0170922C98703227530EF7784 /* FirebaseArrayDelegate.h in Headers */,
-				9A3392971F5835501EE43718579A9681 /* FirebaseCollectionViewDataSource.h in Headers */,
-				A49100BA0688F4FE8DD3EC2CA3680B65 /* FirebaseDataSource.h in Headers */,
-				CFABA8401760900CFC6DF3BBB28BD1FA /* FirebaseTableViewDataSource.h in Headers */,
-				5A54B99CE48B125018D5001915E3869F /* FirebaseUI-umbrella.h in Headers */,
-				9F9D6E9346F15F6310D0648E8498529D /* FirebaseUI.h in Headers */,
-				2FDE184793CC31C3BB000D42DBE29D6E /* XCodeMacros.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FAED4883DDDEC697E6ABDD9D42A0613B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28C2BB6640B3A4A0664FA95C7F4C630A /* SwiftForms-umbrella.h in Headers */,
+				A8A093D997E883CAF35DE677A9B1EDBD /* Pods-Pitchslapp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		36325DFCBCB7959CC6D962AA1890B2E6 /* AudioPlayerSwift */ = {
+		2D26A9E47BF0BE6577423144EDDE9B9C /* Pods-Pitchslapp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FC05A15F8D1913D7D057A2D6FC1227D /* Build configuration list for PBXNativeTarget "AudioPlayerSwift" */;
+			buildConfigurationList = 13179893A78D05C50E4CA1A612B7A88D /* Build configuration list for PBXNativeTarget "Pods-Pitchslapp" */;
 			buildPhases = (
-				114F6B35F840A275DDD6A7990434DCFB /* Sources */,
-				A764988A3367895BAB4C0453E8C292F3 /* Frameworks */,
-				2B65D362D066A8B1DD5B17ACAAD19C72 /* Headers */,
+				FB4B110DF7C61B5D14CA8AEFAFFA4532 /* Sources */,
+				6D8537498CC247FDE5A83AC4E361556B /* Frameworks */,
+				EE2CD87657C350DDC99B5EC8419415C5 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = AudioPlayerSwift;
-			productName = AudioPlayerSwift;
-			productReference = 99E3E460D310E5C41EAF4EBB8CF18C5A /* AudioPlayer.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		7348545B5199B6C01C0632234EB668AC /* Pods-Pitchslapp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ACBBA0BCB24F30C4AB81571B765B4FAD /* Build configuration list for PBXNativeTarget "Pods-Pitchslapp" */;
-			buildPhases = (
-				1FF1F3F404F835F9D1EA4E733D3D7281 /* Sources */,
-				C82264CD9088711A2FAB114E95B73EA7 /* Frameworks */,
-				179FE51EC9BEAC5C5E6A17364D91A720 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D66EA1CC298E5ECF7505A764E449F2C7 /* PBXTargetDependency */,
-				DFDD1A8A7DD194B0DA01ECD7FE569B9C /* PBXTargetDependency */,
-				A07511AB7FE92B1F9D0BEFFE93C108E1 /* PBXTargetDependency */,
-				9AE02A3E0B38F6055CB6C3A8DC4F837F /* PBXTargetDependency */,
+				723E1688CA602C23C1B2942A30901DAE /* PBXTargetDependency */,
+				8A38FD78540755C128CB85912185090E /* PBXTargetDependency */,
 			);
 			name = "Pods-Pitchslapp";
 			productName = "Pods-Pitchslapp";
-			productReference = 5D1021B322732529A283C86F0654B7DE /* Pods_Pitchslapp.framework */;
+			productReference = 24370FADBBE0A53C533F008CB0C2F007 /* Pods_Pitchslapp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7F869A0A80C706D6A6D4698DC0918B37 /* FirebaseUI */ = {
+		74950BFFEC9AA3A46FD783910C2BF12A /* SwiftForms */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3C98459C37B4900B80313ABDE86C711 /* Build configuration list for PBXNativeTarget "FirebaseUI" */;
+			buildConfigurationList = 1FEC0B2AEFB372FF60015E4146F731A4 /* Build configuration list for PBXNativeTarget "SwiftForms" */;
 			buildPhases = (
-				9238BD01A950FDFF15B6E65315AB8B82 /* Sources */,
-				536CB45BD0D9A043CE117281836E8DDE /* Frameworks */,
-				ED3486FCD4B7D8EF46522E2616D2BCDD /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DA6CAF74EEA0124CD14AA7348BF39B21 /* PBXTargetDependency */,
-			);
-			name = FirebaseUI;
-			productName = FirebaseUI;
-			productReference = E336D00042994C67717F6B9046E85F7E /* FirebaseUI.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		80149029D5CDC710AF2AE432C5256495 /* SwiftForms */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7B62BA4C89EC135028805D85A64AB8CC /* Build configuration list for PBXNativeTarget "SwiftForms" */;
-			buildPhases = (
-				2E0CE4607ACFF60EE52748EF30BA2C41 /* Sources */,
-				ED3AA03B7CD4B0151FB6150EE637314C /* Frameworks */,
-				FAED4883DDDEC697E6ABDD9D42A0613B /* Headers */,
+				1A1197AF43033F962F93663627238862 /* Sources */,
+				2B6E6F9B001E9CC46ACE7696D5B76B36 /* Frameworks */,
+				170522DA4B0FFFF5F4E79E7CDBB8A794 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -623,7 +401,7 @@
 			);
 			name = SwiftForms;
 			productName = SwiftForms;
-			productReference = 9F0E7131B4827985381BD76EF7D41EB9 /* SwiftForms.framework */;
+			productReference = 54B8FD2B585EDF4286E346033A54278A /* SwiftForms.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B7AC9326D819482593FE118E915409D7 /* Firebase */ = {
@@ -640,7 +418,7 @@
 			);
 			name = Firebase;
 			productName = Firebase;
-			productReference = D9C71F69F5AD7A5F9C11065A853CE92F /* Firebase.framework */;
+			productReference = B6132CFE4B60F856A13DCF61978D51A7 /* Firebase.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -660,62 +438,43 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 622B567786C46ECBC285662D7ABEAAE8 /* Products */;
+			productRefGroup = 17B84B7074F73FE5E52A732E9CFDBB00 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				36325DFCBCB7959CC6D962AA1890B2E6 /* AudioPlayerSwift */,
 				B7AC9326D819482593FE118E915409D7 /* Firebase */,
-				7F869A0A80C706D6A6D4698DC0918B37 /* FirebaseUI */,
-				7348545B5199B6C01C0632234EB668AC /* Pods-Pitchslapp */,
-				80149029D5CDC710AF2AE432C5256495 /* SwiftForms */,
+				2D26A9E47BF0BE6577423144EDDE9B9C /* Pods-Pitchslapp */,
+				74950BFFEC9AA3A46FD783910C2BF12A /* SwiftForms */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		114F6B35F840A275DDD6A7990434DCFB /* Sources */ = {
+		1A1197AF43033F962F93663627238862 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2695EDA18FBC82B847E57024DAF70FC /* AudioPlayer.swift in Sources */,
-				C812FCD023FD88F34DEF2FD7A5A8C628 /* AudioPlayerSwift-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1FF1F3F404F835F9D1EA4E733D3D7281 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E51FAE43A69FC03C89C328E1E0BE14BC /* Pods-Pitchslapp-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2E0CE4607ACFF60EE52748EF30BA2C41 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A9F014DB1EE964B3DBE2DB5ED17479F2 /* FormBaseCell.swift in Sources */,
-				70AC5F71D3A3DDC4AABF25236B766141 /* FormButtonCell.swift in Sources */,
-				010FBA818A3FD887CEF2A675FF68A862 /* FormCheckCell.swift in Sources */,
-				CB755B8DEDDA6F7983AF6A5CE314B5B6 /* FormDateCell.swift in Sources */,
-				3933AE3647E1FAEB21B35AFA5774D1A7 /* FormDescriptor.swift in Sources */,
-				1EBBEA373349EBE610F38B42820F908E /* FormOptionsSelectorController.swift in Sources */,
-				643745689C50096C65BE28E945668FA8 /* FormPickerCell.swift in Sources */,
-				2CA5EBCF28ECEE438B1DA54A214D5434 /* FormRowDescriptor.swift in Sources */,
-				DE627861760646356F33EC8B2FD3BCC9 /* FormSectionDescriptor.swift in Sources */,
-				DA0D3976712312F2A5193172E4CC4772 /* FormSegmentedControlCell.swift in Sources */,
-				2EC96845D446C4827162A5335122541A /* FormSelector.swift in Sources */,
-				ADA44A67E2BDEC471DF748B4EA33ABC7 /* FormSelectorCell.swift in Sources */,
-				9C65A6C5E2B7E806A9EFEACF1E4A2833 /* FormSliderCell.swift in Sources */,
-				C05F2C0CCE82C9E977FD726EE74B1186 /* FormStepperCell.swift in Sources */,
-				804A92B33DEAA85190C27DC3C14EEC5E /* FormSwitchCell.swift in Sources */,
-				F5B078D46D3988431E6F5DA7B1B4B480 /* FormTextFieldCell.swift in Sources */,
-				42C88F6B557D88EE7E30AB609D5B110D /* FormTextViewCell.swift in Sources */,
-				D16EFA6C078D45B3AB0BDD40C91B5388 /* FormTitleCell.swift in Sources */,
-				CAE604D5C45B383922371CF6DF57DC5B /* FormValueCell.swift in Sources */,
-				73BB324A0B65A50018C0E47D22DA6702 /* FormViewController.swift in Sources */,
-				EBC65BB9927DF4CDECC333C496D3B7CE /* SwiftForms-dummy.m in Sources */,
+				6D8D88BFB10D67282BC3BF1E30B02E3C /* FormBaseCell.swift in Sources */,
+				AF369E6605EF3FFA4E2210A3ADC16A59 /* FormButtonCell.swift in Sources */,
+				353474EC1234D8EB8E57A37E3538068B /* FormCheckCell.swift in Sources */,
+				A395DC2A1749883D4ED5515999343CBC /* FormDateCell.swift in Sources */,
+				61226CDCBE9251AB1A5D45398EF2B108 /* FormDescriptor.swift in Sources */,
+				B542030AD0EE7A7358BDCDA059BC4804 /* FormOptionsSelectorController.swift in Sources */,
+				770844BEE8A4B88435F78985B22832CC /* FormPickerCell.swift in Sources */,
+				07BDD713FD13CAAB5A9EAFB008FD2855 /* FormRowDescriptor.swift in Sources */,
+				7EC70C6A9A9669FDA618ECF8E7572904 /* FormSectionDescriptor.swift in Sources */,
+				046CD8A79D3D154FBC1DE89136EA2AA5 /* FormSegmentedControlCell.swift in Sources */,
+				DF32908012223948F35D6282484F30E9 /* FormSelector.swift in Sources */,
+				40BABB1D4E003052735B0CD8F12F0830 /* FormSelectorCell.swift in Sources */,
+				9DB346E6EDFD9FD845ECD166C98B49E5 /* FormSliderCell.swift in Sources */,
+				2B0DED6B006A9B11BB812B4222E9E7CA /* FormStepperCell.swift in Sources */,
+				043DD9FD6D53400DA7EBA1DCF76A9529 /* FormSwitchCell.swift in Sources */,
+				2A0947C8B4290F16EACD7F61EBCD0C85 /* FormTextFieldCell.swift in Sources */,
+				36E2CC48E077BD216D43AFB829373282 /* FormTextViewCell.swift in Sources */,
+				668207A9CEE04D20EF225004549F0511 /* FormTitleCell.swift in Sources */,
+				9F3ECAB630F57F73D81C4A40213B05C8 /* FormValueCell.swift in Sources */,
+				57E196A1BDAE4978BBDAE8D51A2CBE50 /* FormViewController.swift in Sources */,
+				34EBBA8440934DCCEE307CC07DD567BD /* SwiftForms-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,56 +487,115 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9238BD01A950FDFF15B6E65315AB8B82 /* Sources */ = {
+		FB4B110DF7C61B5D14CA8AEFAFFA4532 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85A3F94939B24D276157C77BD67A6394 /* FirebaseArray.m in Sources */,
-				A21041255391D8B1AD29B844A98EF294 /* FirebaseCollectionViewDataSource.m in Sources */,
-				CA3CFCF57A0A93B8353A30A366578294 /* FirebaseDataSource.m in Sources */,
-				8D53B93A9CA3F768B744ED1DDF455D50 /* FirebaseTableViewDataSource.m in Sources */,
-				F603AD0C5FC1C51C2D43D54FD8420711 /* FirebaseUI-dummy.m in Sources */,
-				C57D04D847BC08A8FD948518068EF452 /* FirebaseUI.m in Sources */,
+				74BA7A101FD40B394B78D5BD8DDAFFAD /* Pods-Pitchslapp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9AE02A3E0B38F6055CB6C3A8DC4F837F /* PBXTargetDependency */ = {
+		723E1688CA602C23C1B2942A30901DAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Firebase;
+			target = B7AC9326D819482593FE118E915409D7 /* Firebase */;
+			targetProxy = 98AAFC780E1584A09A1275F1B659C427 /* PBXContainerItemProxy */;
+		};
+		8A38FD78540755C128CB85912185090E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftForms;
-			target = 80149029D5CDC710AF2AE432C5256495 /* SwiftForms */;
-			targetProxy = 49239E25563B14E50B3180E2464B35A0 /* PBXContainerItemProxy */;
-		};
-		A07511AB7FE92B1F9D0BEFFE93C108E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FirebaseUI;
-			target = 7F869A0A80C706D6A6D4698DC0918B37 /* FirebaseUI */;
-			targetProxy = 94561EF6BE93DA6075219C3F256B9370 /* PBXContainerItemProxy */;
-		};
-		D66EA1CC298E5ECF7505A764E449F2C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AudioPlayerSwift;
-			target = 36325DFCBCB7959CC6D962AA1890B2E6 /* AudioPlayerSwift */;
-			targetProxy = A8B48DE6EA1E6CCC09D906D736D6DC0D /* PBXContainerItemProxy */;
-		};
-		DA6CAF74EEA0124CD14AA7348BF39B21 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Firebase;
-			target = B7AC9326D819482593FE118E915409D7 /* Firebase */;
-			targetProxy = 77B8040B02E6BDF4D20A1934F1898B8E /* PBXContainerItemProxy */;
-		};
-		DFDD1A8A7DD194B0DA01ECD7FE569B9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Firebase;
-			target = B7AC9326D819482593FE118E915409D7 /* Firebase */;
-			targetProxy = 719C1A57D184F7516990E0AAB8197788 /* PBXContainerItemProxy */;
+			target = 74950BFFEC9AA3A46FD783910C2BF12A /* SwiftForms */;
+			targetProxy = 529D0DF5E386CFEB300A9F2751D18823 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		3846EB3D30639F6B01707FD96BF73BAF /* Debug */ = {
+		66AAEC8EF3466CC76E95FA97645C6C66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7BB14C3C10C7F66D14B29730492034A /* SwiftForms.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftForms/SwiftForms-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftForms/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftForms;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6A12C1AE4F4CCA35BC0F38AE90629255 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 837E26048716F21231D8D726AE9D82A0 /* Firebase.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Firebase/Firebase-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Firebase/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Firebase/Firebase.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Firebase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7224AD649174A88C25AF79BCC0C24B68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 837E26048716F21231D8D726AE9D82A0 /* Firebase.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Firebase/Firebase-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Firebase/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Firebase/Firebase.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Firebase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		80AEFC4D6822313B0DF9C887D05642E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 958B348329FC23444487FE2A6DF0FAAB /* Pods-Pitchslapp.debug.xcconfig */;
 			buildSettings = {
@@ -808,9 +626,9 @@
 			};
 			name = Debug;
 		};
-		5DB6CE7AE382A988DC9F40C7EE7EF152 /* Release */ = {
+		9B84C9E78BE1F8C99058CE7FC4A65F4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46A8B2ABCE76AE8A79C8D89B4A18E6F2 /* SwiftForms.xcconfig */;
+			baseConfigurationReference = B7BB14C3C10C7F66D14B29730492034A /* SwiftForms.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -827,144 +645,6 @@
 				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = SwiftForms;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		67B0B002E990875F95F1820E149A9618 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22E32F9FBC169C353009C3F5629F9181 /* AudioPlayerSwift.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AudioPlayerSwift/AudioPlayerSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AudioPlayerSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AudioPlayerSwift/AudioPlayerSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = AudioPlayer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6A12C1AE4F4CCA35BC0F38AE90629255 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF7D3C3F255CE3CCABDAAAE7B258B4A8 /* Firebase.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Firebase/Firebase-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Firebase/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Firebase/Firebase.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Firebase;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7224AD649174A88C25AF79BCC0C24B68 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF7D3C3F255CE3CCABDAAAE7B258B4A8 /* Firebase.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Firebase/Firebase-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Firebase/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Firebase/Firebase.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Firebase;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9AC2F1123D73DDB30CACE5E86A42F6D8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D64DAE6ABDE5EC9BDC5D02FAB23F5853 /* FirebaseUI.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FirebaseUI/FirebaseUI-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FirebaseUI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FirebaseUI/FirebaseUI.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FirebaseUI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9BDB769236848260D63D8D1DAC4EEB37 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35DFC7AA7DD16004750396190E85F3D2 /* Pods-Pitchslapp.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Pitchslapp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_Pitchslapp;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1012,9 +692,9 @@
 			};
 			name = Debug;
 		};
-		C5C9E90020A89969A0AC1DD0C69EEEE4 /* Debug */ = {
+		C6E2144C55C4132E1660C0ED59140D38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D64DAE6ABDE5EC9BDC5D02FAB23F5853 /* FirebaseUI.xcconfig */;
+			baseConfigurationReference = 35DFC7AA7DD16004750396190E85F3D2 /* Pods-Pitchslapp.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1023,77 +703,24 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FirebaseUI/FirebaseUI-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FirebaseUI/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pitchslapp/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FirebaseUI/FirebaseUI.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = FirebaseUI;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_Pitchslapp;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
-		};
-		DB4B75A32F383B7827A3A64C28D9F8D9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46A8B2ABCE76AE8A79C8D89B4A18E6F2 /* SwiftForms.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftForms/SwiftForms-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftForms/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftForms/SwiftForms.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftForms;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DFED1D7C32D146E7BFA5E92258F4D097 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22E32F9FBC169C353009C3F5629F9181 /* AudioPlayerSwift.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AudioPlayerSwift/AudioPlayerSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AudioPlayerSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AudioPlayerSwift/AudioPlayerSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = AudioPlayer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
+			name = Release;
 		};
 		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1132,6 +759,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		13179893A78D05C50E4CA1A612B7A88D /* Build configuration list for PBXNativeTarget "Pods-Pitchslapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80AEFC4D6822313B0DF9C887D05642E6 /* Debug */,
+				C6E2144C55C4132E1660C0ED59140D38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FEC0B2AEFB372FF60015E4146F731A4 /* Build configuration list for PBXNativeTarget "SwiftForms" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66AAEC8EF3466CC76E95FA97645C6C66 /* Debug */,
+				9B84C9E78BE1F8C99058CE7FC4A65F4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1146,42 +791,6 @@
 			buildConfigurations = (
 				6A12C1AE4F4CCA35BC0F38AE90629255 /* Debug */,
 				7224AD649174A88C25AF79BCC0C24B68 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5FC05A15F8D1913D7D057A2D6FC1227D /* Build configuration list for PBXNativeTarget "AudioPlayerSwift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DFED1D7C32D146E7BFA5E92258F4D097 /* Debug */,
-				67B0B002E990875F95F1820E149A9618 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7B62BA4C89EC135028805D85A64AB8CC /* Build configuration list for PBXNativeTarget "SwiftForms" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DB4B75A32F383B7827A3A64C28D9F8D9 /* Debug */,
-				5DB6CE7AE382A988DC9F40C7EE7EF152 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ACBBA0BCB24F30C4AB81571B765B4FAD /* Build configuration list for PBXNativeTarget "Pods-Pitchslapp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3846EB3D30639F6B01707FD96BF73BAF /* Debug */,
-				9BDB769236848260D63D8D1DAC4EEB37 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B3C98459C37B4900B80313ABDE86C711 /* Build configuration list for PBXNativeTarget "FirebaseUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C5C9E90020A89969A0AC1DD0C69EEEE4 /* Debug */,
-				9AC2F1123D73DDB30CACE5E86A42F6D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

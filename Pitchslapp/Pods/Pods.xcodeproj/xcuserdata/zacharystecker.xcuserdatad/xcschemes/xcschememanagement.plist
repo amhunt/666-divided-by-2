@@ -4,17 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AudioPlayerSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Firebase.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FirebaseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,22 +22,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>36325DFCBCB7959CC6D962AA1890B2E6</key>
+		<key>2D26A9E47BF0BE6577423144EDDE9B9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7348545B5199B6C01C0632234EB668AC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7F869A0A80C706D6A6D4698DC0918B37</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>80149029D5CDC710AF2AE432C5256495</key>
+		<key>74950BFFEC9AA3A46FD783910C2BF12A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
