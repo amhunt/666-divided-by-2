@@ -26,7 +26,6 @@ class LoginViewController: UIViewController {
                 let email = authData.providerData["email"] as! String
                 self.ref.childByAppendingPath("users").childByAppendingPath(authData.uid).setValue(["login":email])
                 self.performSegueWithIdentifier("PickGroup", sender: nil)
-                print("should pick group")
             }
         })
     }

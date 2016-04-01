@@ -20,6 +20,7 @@
 		DA71903B1CA9847D00FEDE0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */; };
 		DA7190461CA9847D00FEDE0D /* PitchslappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190451CA9847D00FEDE0D /* PitchslappTests.swift */; };
 		DA7190511CA9847D00FEDE0D /* PitchslappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */; };
+		DA859BB31CAE119D00F5CD3C /* Pitches in Resources */ = {isa = PBXBuildFile; fileRef = DA859BB21CAE119D00F5CD3C /* Pitches */; };
 		DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */; };
 		DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502C1CAB1348003DFF24 /* SongItem.swift */; };
 		DAFDCADC1CADAD9E005DDB64 /* GroupPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */; };
@@ -64,6 +65,7 @@
 		DA71904C1CA9847D00FEDE0D /* PitchslappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchslappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappUITests.swift; sourceTree = "<group>"; };
 		DA7190521CA9847D00FEDE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA859BB21CAE119D00F5CD3C /* Pitches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pitches; sourceTree = "<group>"; };
 		DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		DAE2502C1CAB1348003DFF24 /* SongItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongItem.swift; sourceTree = "<group>"; };
 		DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				DA60DA2E1CACEE4500E7F2B1 /* Models */,
 				DAFDCADA1CADAD5C005DDB64 /* LoginFlow */,
 				DA7190301CA9847D00FEDE0D /* AppDelegate.swift */,
+				DA859BB21CAE119D00F5CD3C /* Pitches */,
 				DA7190341CA9847D00FEDE0D /* Main.storyboard */,
 				DA7190371CA9847D00FEDE0D /* Assets.xcassets */,
 				DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */,
@@ -303,6 +306,7 @@
 				DA71903B1CA9847D00FEDE0D /* LaunchScreen.storyboard in Resources */,
 				DA7190381CA9847D00FEDE0D /* Assets.xcassets in Resources */,
 				DA7190361CA9847D00FEDE0D /* Main.storyboard in Resources */,
+				DA859BB31CAE119D00F5CD3C /* Pitches in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

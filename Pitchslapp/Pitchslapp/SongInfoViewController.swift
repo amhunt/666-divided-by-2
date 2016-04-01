@@ -19,6 +19,7 @@ class SongInfoViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
         titleLabel.text = song.name
         soloistLabel.text = song.soloist
         keyLabel.text = song.key

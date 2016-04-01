@@ -9,12 +9,33 @@
 import UIKit
 import Firebase
 import Foundation
+import AVFoundation
 
 class SongsTableViewController: UITableViewController {
     var myRootRef = Firebase(url:"https://popping-inferno-1963.firebaseio.com")
     var songs = [SongItem]()
     var user: User!
     var groupKey: String?
+    var player: AVAudioPlayer!
+    
+    let pitchDict = [
+        "A":"A",
+        "A#":"Bb",
+        "Ab":"Ab",
+        "B":"B",
+        "Bb":"Bb",
+        "C":"C",
+        "C#":"C#",
+        "D":"D",
+        "Db":"C#",
+        "Eb":"Eb",
+        "E":"EHigh",
+        "F":"F",
+        "F#":"F#",
+        "G":"G",
+        "Gb":"F#",
+        "G#":"Ab"
+    ]
     
     override func viewDidAppear(animated: Bool) {
         myRootRef.observeAuthEventWithBlock { (authData) in
@@ -70,11 +91,42 @@ class SongsTableViewController: UITableViewController {
         return cell
     }
     
+    // swipe actions for pitch and delete
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let pitchText = songs[indexPath.row].key as String
+        let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
+            let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
+            let url = NSURL(fileURLWithPath: path)
+            let stopAlert = UIAlertController(title: "Stop pitch", message: "Slap that pitch!", preferredStyle: .Alert)
+            let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
+                if self.player != nil {
+                    self.player.stop()
+                    self.player = nil
+                }
+                self.tableView.editing = false
+            }
+            stopAlert.addAction(stopAction)
+            do {
+                let sound = try AVAudioPlayer(contentsOfURL: url)
+                self.player = sound
+                sound.play()
+                self.presentViewController(stopAlert, animated: true, completion: nil)
+            } catch {
+                // couldn't load file :(
+            }
+        }
+        pitch.backgroundColor = UIColor.purpleColor()
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
+            let songItem = self.songs[indexPath.row]
+            songItem.ref?.removeValue()
+            self.tableView.reloadData()
+        }
+        return [pitch, delete]
+    }
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let songItem = songs[indexPath.row]
-            songItem.ref?.removeValue()
-            tableView.reloadData()
+            
         }
     }
     

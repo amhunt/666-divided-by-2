@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '681DF8F9CD67ED896B102A33'
-               BlueprintName = 'Firebase'
+               BlueprintIdentifier = '92C7C92F3A5CFB3F36466F3E'
+               BlueprintName = 'AudioPlayerSwift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Firebase.framework'>
+               BuildableName = 'AudioPlayer.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
