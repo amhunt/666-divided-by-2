@@ -47,11 +47,12 @@
       };
 
       ref.on('child_removed', function(snapshot) {  
-        deletedSong = snapshot.val();
-        console.log("The song titled '" + snapshot.name() + "' has been deleted");
-        $('#messagesDiv').find('[data-id="'+snapshot.key()+'"]').remove();
-      });
+        deletedSong = snapshot.val().name;
+        console.log("The song titled '" + deletedSong + "' has been deleted");
+        $('#messagesDiv').find( ":contains('"+ deletedSong+ "')" ).remove();
 
+        // $('#messagesDiv').find('[data-id="'+snapshot.key()+'"]').remove();
+      });
       ref.on('child_removed', function(snapshot) {
           $('#messagesDiv').find('[data-id="'+snapshot.name()+'"]').remove();
       });
