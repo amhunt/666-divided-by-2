@@ -125,7 +125,9 @@ class GroupPickerTableViewController: UITableViewController {
             let destinationNav = destinationTab.viewControllers![0] as! UINavigationController
             let destination = destinationNav.topViewController as! SongsTableViewController
             let groupKey = self.groups[(self.tableView.indexPathForSelectedRow?.row)!].uid
+//            let groupName = self.groups[(self.tableView.indexPathForSelectedRow?.row)!].groupName
             destination.groupKey = groupKey
+//            destination.groupName = [groupName]
         }
     }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftyDropbox
 
 class SongInfoViewController: UITableViewController {
     
@@ -20,6 +21,7 @@ class SongInfoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tabBarController?.tabBar.hidden = false
         titleLabel.text = song.name
         soloistLabel.text = song.soloist
         keyLabel.text = song.key
@@ -31,7 +33,21 @@ class SongInfoViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func linkToDB(sender: AnyObject) {
+        Dropbox.authorizeFromController(self)
+    }
 
+    @IBAction func dbChooser(sender: AnyObject) {
+        DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypePreview, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
+            if results == nil {
+                print("user cancelled")
+            } else {
+                print(results.description)
+            }
+        })
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -84,10 +84,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-Pitchslapp/Alamofire.framework"
   install_framework "Pods-Pitchslapp/Firebase.framework"
   install_framework "Pods-Pitchslapp/SwiftForms.framework"
+  install_framework "Pods-Pitchslapp/SwiftyDropbox.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-Pitchslapp/Alamofire.framework"
   install_framework "Pods-Pitchslapp/Firebase.framework"
   install_framework "Pods-Pitchslapp/SwiftForms.framework"
+  install_framework "Pods-Pitchslapp/SwiftyDropbox.framework"
 fi

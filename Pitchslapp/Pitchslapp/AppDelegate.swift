@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyDropbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .setTitleTextAttributes(["NSFontAttributeName" : UIFont(name: "Avenir-Heavy", size: 16.0)!],
                 forState: UIControlState.Normal)
         
+        Dropbox.setupWithAppKey("0t2k59m96bjkpw3")
+        
         return true
+    }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        if let authResult = Dropbox.handleRedirectURL(url) {
+            switch authResult {
+            case .Success(let token):
+                print("Success! User is logged into Dropbox with token: \(token)")
+            case .Error(let error, let description):
+                print("Error \(error): \(description)")
+            }
+        }
+        
+        return false
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        
+        if (DBChooser.defaultChooser().handleOpenURL(url)) {
+            return true
+        }
+        return false
     }
 
     func applicationWillResignActive(application: UIApplication) {
