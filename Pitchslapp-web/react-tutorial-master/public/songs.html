@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+<html lang="en-US">
 <html>
   <head>
     <meta charset="utf-8">
-    <title>React Tutorial</title>
+    <title>Pitchslapp</title>
     <!-- Not present in the tutorial. Just for basic styling. -->
     <link rel="stylesheet" href="css/base.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
@@ -12,16 +13,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
   </head>
-  <body>
+  <body style="text-align: center; background-color: #F7CAC9";>
+    <h1>Pitchslapp</h1>
     <div id='messagesDiv'></div>
-    <input type='text' id='nameInput' placeholder='Name of Song'>
+    <input style="text-align:center" type='text' id='nameInput' placeholder='Name of Song'>
+    <form action="action_page.php">
+      <select name="cars">
+        <option value="C">C</option>
+        <option value="C#/Db">C#/Db</option>
+        <option value="D">D</option>
+        <option value="D#/Eb">D#/Eb</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="F#/Gb">F#/Gb</option>
+        <option value="G">G</option>
+        <option value="G#/Ab">G#/Ab</option>
+        <option value="A">A</option>
+        <option value="A#/Bb">A#/Bb</option>
+        <option value="B">B</option>
+      </select>
+      <br><br>
+      <input type="submit">
+    </form>
     <br>
-    <input type='text' id='soloInput' placeholder='Name of Soloist'>
+    <input style="text-align:center" type='text' id='soloInput' placeholder='Name of Soloist'>
     <br>
-    <input type='text' id='keyInput' placeholder='Key of Song'>
-
+    <input style="text-align:center" type='text' id='keyInput' placeholder='Key of Song'>
+    <button type="button" onclick="alert('Hello World!')">Click Me!</button>
     <ul id="records"></ul>
     <div id="content"></div>
+    <h2><a href="index.html">Back to Groups</a>
     <script type="text/babel">
     var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/-KE2t-HbseflgtLhuV8-/songs");
 
@@ -35,21 +56,27 @@
             name: name,
             key: keyVal
           });
-          $('#messagesDiv')[0].remove();
-          $('#messagesDiv')[1].remove();
-          $('#nameInput').val(' ');
-          $('#soloInput').val(' ');
-          $('#keyInput').val('Your song has been added!');
+          $('#nameInput').val('');
+          $('#soloInput').val('');
+          $('#keyInput').val('Song Added!');
         }
       });
       ref.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.solo, message.key);
       });
-      function displayChatMessage(name, solo, key) {
-        $('<div/>').text(solo).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+      function displayChatMessage(name, soloist, key) {
+        $('<div/>').text(soloist).prepend($('<button onclick="myFunction()">Click me</button><em/>').text(name+' ('+key+'): ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
+      function myFunction() {
+
+      };
+      ref.on('child_removed', function(snapshot) {  
+        var deletedSong = snapshot.val().name;
+        console.log("The song titled '" + deletedSong + "' has been deleted");
+        $('#messagesDiv').find( ":contains('"+ deletedSong + "')" ).remove();
+      });
     </script>
   </body>
 </html>
