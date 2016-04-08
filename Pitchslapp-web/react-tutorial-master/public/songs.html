@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Pitchslapp</title>
     <!-- Not present in the tutorial. Just for basic styling. -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/base.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
@@ -13,6 +14,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="0t2k59m96bjkpw3"></script>
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+      }
+    </style>
 
   </head>
   <body style="text-align: center; background-color: #F7CAC9";>
@@ -35,35 +42,29 @@
         alert("removed!");
       };
     var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/-KE2t-HbseflgtLhuV8-/songs");
+    var pdfUrl = "";
 
-      $('#submitButton').click(function (e) {
+      function addSong() {
         var name = $('#nameInput').val();
         var solo = $('#soloInput').val();
         var keyVal = $('#keyInput').val();
         var id = ref.push({
           solo: solo,
           name: name,
-          key: keyVal
+          key: keyVal,
+          pdfUrl: pdfUrl
         });
         console.log(id);
         $('#nameInput').val('');
         $('#soloInput').val('');
         $('#keyInput').val('Song Added!');
+      }
+      $('#submitButton').click(function (e) {
+        addSong();
       });
       $('#keyInput').keypress(function (e) {
         if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var solo = $('#soloInput').val();
-          var keyVal = $('#keyInput').val();
-          var id = ref.push({
-            solo: solo,
-            name: name,
-            key: keyVal
-          });
-          console.log(id);
-          $('#nameInput').val('');
-          $('#soloInput').val('');
-          $('#keyInput').val('Song Added!');
+          addSong();
         }
       });
       ref.on('child_added', function(snapshot) {
@@ -87,7 +88,7 @@
       var options = {
         // Required. Called when a user selects an item in the Chooser.
         success: function(files) {
-            alert("Here's the file link: " + files[0].link)
+            pdfUrl = files[0].link;
         },
         // Optional. Called when the user closes the dialog without selecting a file
         // and does not include any parameters.
@@ -107,8 +108,9 @@
         // only be able to select files with these extensions. You may also specify
         // file types, such as "video" or "images" in the list. For more information,
         // see File types below. By default, all extensions are allowed.
-        extensions: ['.pdf', '.doc', '.docx'],
+        extensions: ['.pdf', '.doc', '.docx', '.jpg'],
       };
+      
       var button = Dropbox.createChooseButton(options);
       document.getElementById("container").appendChild(button);
     </script>
