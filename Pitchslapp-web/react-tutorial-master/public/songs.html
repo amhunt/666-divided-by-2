@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Pitchslapp</title>
     <!-- Not present in the tutorial. Just for basic styling. -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/base.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
@@ -16,6 +17,13 @@
     <link rel="icon" 
           type="image/png" 
           href="resources/favicon.png">
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+      }
+    </style>
+
   </head>
   <body style="text-align: center; background-color: #F7CAC9";>
     <h1>Pitchslapp</h1>
@@ -50,47 +58,41 @@
       console.log(group);
 
     var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group+"/songs");
+    var pdfUrl = "";
 
-      $('#submitButton').click(function (e) {
+      function addSong() {
         var name = $('#nameInput').val();
         var solo = $('#soloInput').val();
         var keyVal = $('#keyInput').val();
         var id = ref.push({
           solo: solo,
           name: name,
-          key: keyVal
+          key: keyVal,
+          pdfUrl: pdfUrl
         });
         console.log(id);
         $('#nameInput').val('');
         $('#soloInput').val('');
         $('#keyInput').val('Song Added!');
+      }
+      $('#submitButton').click(function (e) {
+        addSong();
       });
       $('#keyInput').keypress(function (e) {
         if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var solo = $('#soloInput').val();
-          var keyVal = $('#keyInput').val();
-          var id = ref.push({
-            solo: solo,
-            name: name,
-            key: keyVal
-          });
-          console.log(id);
-          $('#nameInput').val('');
-          $('#soloInput').val('');
-          $('#keyInput').val('Song Added!');
+          addSong();
         }
       });
       ref.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        displayChatMessage(message.name, message.solo, message.key, snapshot.key());
+        displayChatMessage(message.name, message.solo, message.key, snapshot.key(), message.pdfUrl);
       });
       function deleteSong(deletedSong) {
         var newRef = ref.child(deletedSong);
         newRef.remove();
       }
-      function displayChatMessage(name, soloist, key, id) {
-        $('<div/>').text(soloist).prepend($('<em/>').html('<button id="'+id+'">Delete</button>' + '<a href=' + id + '.pdf target="_blank" style="color:black"> '+name+' ('+key+'): ')).appendTo($('#messagesDiv'));
+      function displayChatMessage(name, soloist, key, id, dropbox_link) {
+        $('<div/>').text(soloist).prepend($('<em/>').html('<button id="'+id+'">Delete</button>' + '<a href='+ dropbox_link + '   style="color:black" target="_blank" > '+name+' ('+key+'): ')).appendTo($('#messagesDiv'));
         document.getElementById(id).onclick = function() {deleteSong(id)};
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
@@ -102,7 +104,7 @@
       var options = {
         // Required. Called when a user selects an item in the Chooser.
         success: function(files) {
-            alert("Here's the file link: " + files[0].link)
+            pdfUrl = files[0].link;
         },
         // Optional. Called when the user closes the dialog without selecting a file
         // and does not include any parameters.
@@ -122,8 +124,9 @@
         // only be able to select files with these extensions. You may also specify
         // file types, such as "video" or "images" in the list. For more information,
         // see File types below. By default, all extensions are allowed.
-        extensions: ['.pdf', '.doc', '.docx'],
+        extensions: ['.pdf', '.doc', '.docx', '.jpg'],
       };
+      
       var button = Dropbox.createChooseButton(options);
       document.getElementById("container").appendChild(button);
     </script>

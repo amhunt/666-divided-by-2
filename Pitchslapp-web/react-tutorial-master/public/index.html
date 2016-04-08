@@ -12,6 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <link rel="icon" 
+          type="image/png" 
+          href="resources/favicon.png">
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+      }
+    </style>
   </head>
   <body style="text-align: center; background-color: #F7CAC9;">
     <h1>Pitchslapp</h1>
@@ -51,7 +60,7 @@
      });
 
       function displayChatMessage(name, school, id) {
-        $('<div/>').text(school).prepend($('<em/>').html('<button id="'+id+'">Delete</button>' + '<a href=songs.html?group=' + id + '&yo=hi target="_blank" style="color:black"> '+name+": ")).appendTo($('#messagesDiv'));
+        $('<div/>').text(school).prepend($('<em/>').html('<a href=songs.html?group=' + id + ' target="_blank" style="color:black"> '+name+": ")).appendTo($('#messagesDiv'));
         // $('<div/>').text(school).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
