@@ -13,7 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="0t2k59m96bjkpw3"></script>
-
+    <link rel="icon" 
+          type="image/png" 
+          href="resources/favicon.png">
   </head>
   <body style="text-align: center; background-color: #F7CAC9";>
     <h1>Pitchslapp</h1>
@@ -34,7 +36,20 @@
       function myFunction() {        
         alert("removed!");
       };
-    var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/-KE2t-HbseflgtLhuV8-/songs");
+      function getQueryVariable(variable)
+      {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length+1;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+      }
+      var group = getQueryVariable("group");
+      console.log(group);
+
+    var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group+"/songs");
 
       $('#submitButton').click(function (e) {
         var name = $('#nameInput').val();

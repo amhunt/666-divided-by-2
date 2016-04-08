@@ -40,19 +40,19 @@
 
       ref.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        displayChatMessage(message.name, message.school);
+        displayChatMessage(message.name, message.school, snapshot.key());
       });
 
-      ref.on('child_removed', function(snapshot) {  
-        deletedSong = snapshot.val().name;
-        console.log("The song titled '" + deletedSong + "' has been deleted");
-        $('#messagesDiv').find( ":contains('"+ deletedSong+ "')" ).remove();
+      ref.on('child_removed', function(snapshot) {
+        deletedGroup = snapshot.val().name;
+        $('#messagesDiv').find( ":contains('"+ deletedGroup+ "')" ).remove();
 
        // $('#messagesDiv').find('[data-id="'+snapshot.key()+'"]').remove();
      });
 
-      function displayChatMessage(name, school) {
-        $('<div/>').text(school).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+      function displayChatMessage(name, school, id) {
+        $('<div/>').text(school).prepend($('<em/>').html('<button id="'+id+'">Delete</button>' + '<a href=songs.html?group=' + id + '&yo=hi target="_blank" style="color:black"> '+name+": ")).appendTo($('#messagesDiv'));
+        // $('<div/>').text(school).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>
