@@ -84,7 +84,7 @@
         console.log("The song titled '" + deletedSong + "' has been deleted");
         $('#messagesDiv').find( ":contains('"+ deletedSong + "')" ).remove();
       });
-      options = {
+      var options = {
         // Required. Called when a user selects an item in the Chooser.
         success: function(files) {
             alert("Here's the file link: " + files[0].link)
