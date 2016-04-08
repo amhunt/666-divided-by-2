@@ -23,8 +23,7 @@
 		DA7190461CA9847D00FEDE0D /* PitchslappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190451CA9847D00FEDE0D /* PitchslappTests.swift */; };
 		DA7190511CA9847D00FEDE0D /* PitchslappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */; };
 		DA859BB31CAE119D00F5CD3C /* Pitches in Resources */ = {isa = PBXBuildFile; fileRef = DA859BB21CAE119D00F5CD3C /* Pitches */; };
-		DADF0D451CB6E576009456CC /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DADF0D431CB6E576009456CC /* DBChooser.bundle */; };
-		DADF0D461CB6E576009456CC /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADF0D441CB6E576009456CC /* DBChooser.framework */; };
+		DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */; };
 		DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */; };
 		DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502C1CAB1348003DFF24 /* SongItem.swift */; };
 		DAFDCADC1CADAD9E005DDB64 /* GroupPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */; };
@@ -72,9 +71,8 @@
 		DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappUITests.swift; sourceTree = "<group>"; };
 		DA7190521CA9847D00FEDE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA859BB21CAE119D00F5CD3C /* Pitches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pitches; sourceTree = "<group>"; };
-		DADF0D431CB6E576009456CC /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
-		DADF0D441CB6E576009456CC /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
-		DADF0D471CB6E60C009456CC /* Pitchslapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pitchslapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSongViewController.swift; sourceTree = "<group>"; };
+		DADF0D4C1CB7469B009456CC /* Pitchslapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pitchslapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		DAE2502C1CAB1348003DFF24 /* SongItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongItem.swift; sourceTree = "<group>"; };
 		DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DADF0D461CB6E576009456CC /* DBChooser.framework in Frameworks */,
 				B8E3D7672F119F415DF34EF4 /* Pods_Pitchslapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,8 +118,6 @@
 		BA90421040DAD1C2E52D50A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DADF0D431CB6E576009456CC /* DBChooser.bundle */,
-				DADF0D441CB6E576009456CC /* DBChooser.framework */,
 				E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */,
 			);
 			name = Frameworks;
@@ -132,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */,
+				DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */,
 				DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */,
 				DA4DC4151CB5E376008F062E /* PDFViewController.swift */,
 			);
@@ -174,7 +170,6 @@
 		DA71902F1CA9847D00FEDE0D /* Pitchslapp */ = {
 			isa = PBXGroup;
 			children = (
-				DADF0D471CB6E60C009456CC /* Pitchslapp-Bridging-Header.h */,
 				DA60DA2E1CACEE4500E7F2B1 /* Models */,
 				DAFDCADA1CADAD5C005DDB64 /* LoginFlow */,
 				DA4DC4191CB6B2C9008F062E /* SongViews */,
@@ -183,6 +178,7 @@
 				DA7190341CA9847D00FEDE0D /* Main.storyboard */,
 				DA7190371CA9847D00FEDE0D /* Assets.xcassets */,
 				DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */,
+				DADF0D4C1CB7469B009456CC /* Pitchslapp-Bridging-Header.h */,
 				DA71903C1CA9847D00FEDE0D /* Info.plist */,
 				DA4DC4171CB5E38F008F062E /* MakeYouFeel.pdf */,
 			);
@@ -331,7 +327,6 @@
 				DA7190381CA9847D00FEDE0D /* Assets.xcassets in Resources */,
 				DA7190361CA9847D00FEDE0D /* Main.storyboard in Resources */,
 				DA859BB31CAE119D00F5CD3C /* Pitches in Resources */,
-				DADF0D451CB6E576009456CC /* DBChooser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +402,7 @@
 				DAFDCAE01CADBDEF005DDB64 /* Group.swift in Sources */,
 				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
 				DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */,
+				DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */,
 				DA4DC4161CB5E376008F062E /* PDFViewController.swift in Sources */,
 				DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */,
 				DA2F68FE1CAD70440028033E /* SignupFormViewController.swift in Sources */,
@@ -563,7 +559,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = Pitchslapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -585,7 +581,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = Pitchslapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

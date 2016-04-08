@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '51B8FF507DCE132E84449801'
+               BlueprintIdentifier = 'E5D277D762B0A665E2966CFD'
                BlueprintName = 'SwiftForms'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'SwiftForms.framework'>

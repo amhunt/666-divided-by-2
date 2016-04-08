@@ -7,7 +7,7 @@ use_frameworks!
 target 'Pitchslapp' do
     pod 'Firebase', '>= 2.5.1'
     pod 'SwiftForms'
-    pod 'SwiftyDropbox'
+    pod 'DBChooser'
 end
 
 target 'PitchslappTests' do

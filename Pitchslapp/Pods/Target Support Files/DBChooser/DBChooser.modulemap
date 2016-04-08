@@ -1,0 +1,6 @@
+framework module DBChooser {
+  umbrella header "DBChooser-umbrella.h"
+
+  export *
+  module * { export * }
+}

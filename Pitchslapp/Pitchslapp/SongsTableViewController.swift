@@ -29,6 +29,7 @@ class SongsTableViewController: UITableViewController {
         "C#":"C#",
         "D":"D",
         "Db":"C#",
+        "D#":"Eb",
         "Eb":"Eb",
         "E":"EHigh",
         "F":"F",
@@ -231,6 +232,7 @@ class SongsTableViewController: UITableViewController {
             let destination = segue.destinationViewController as! SongInfoViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             destination.song = songs[indexPath.row]
+            destination.groupKey = groupKey!
         }
     }
 

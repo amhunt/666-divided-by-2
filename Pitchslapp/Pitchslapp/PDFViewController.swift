@@ -13,13 +13,14 @@ class PDFViewController: UIViewController {
 
     
     @IBOutlet weak var pdfWebView: UIWebView!
+    var pdfUrlString: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.hidden = true
-        let pdfLoc = NSURL(fileURLWithPath:NSBundle.mainBundle().pathForResource("MakeYouFeel", ofType:"pdf")!)
-        let request = NSURLRequest(URL: pdfLoc);
+        let pdfURLtest = NSURL(string: pdfUrlString!)
+        let request = NSURLRequest(URL: pdfURLtest!)
         self.automaticallyAdjustsScrollViewInsets = false;
         self.pdfWebView.loadRequest(request);
 

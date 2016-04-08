@@ -15,6 +15,7 @@ struct SongItem {
     let id: String!
     let key: String!
     let soloist: String!
+    var pdfUrl: String?
     let ref: Firebase?
     
     // Initialize from arbitrary data
@@ -23,6 +24,7 @@ struct SongItem {
         self.name = name
         self.key = key
         self.soloist = soloist
+        self.pdfUrl = nil
         self.ref = nil
     }
     
@@ -31,15 +33,27 @@ struct SongItem {
         name = snapshot.value["name"] as! String
         soloist = snapshot.value["solo"] as! String
         key = snapshot.value["key"] as! String
+        if snapshot.hasChild("pdfUrl") {
+            pdfUrl = snapshot.value["pdfUrl"] as! String
+        }
         ref = snapshot.ref
     }
     
     func toAnyObject() -> AnyObject {
-        return [
-            "name": name,
-            "key": key,
-            "solo": soloist
-        ]
+        if (pdfUrl != nil) {
+            return [
+                "name": name,
+                "key": key,
+                "solo": soloist,
+                "pdfUrl": pdfUrl!
+            ]
+        } else {
+            return [
+                "name": name,
+                "key": key,
+                "solo": soloist
+            ]
+        }
     }
     
 }

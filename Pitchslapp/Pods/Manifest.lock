@@ -1,19 +1,16 @@
 PODS:
-  - Alamofire (3.3.1)
+  - DBChooser (1.1)
   - Firebase (2.5.1)
   - SwiftForms (1.0.2)
-  - SwiftyDropbox (3.0.0):
-    - Alamofire (~> 3.1)
 
 DEPENDENCIES:
+  - DBChooser
   - Firebase (>= 2.5.1)
   - SwiftForms
-  - SwiftyDropbox
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  DBChooser: 42e804d7529ba051a900433b308a9760a21b6562
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   SwiftForms: c439aca9cf462383a1292c028bd14915de42bf6b
-  SwiftyDropbox: e0d4aa3166082ec07ed942e94edb8c732b3376e4
 
 COCOAPODS: 0.39.0

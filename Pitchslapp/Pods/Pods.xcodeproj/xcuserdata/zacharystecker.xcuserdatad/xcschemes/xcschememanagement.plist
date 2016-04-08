@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
+		<key>DBChooser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,35 +24,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyDropbox.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>64E74F0A9230D8B223F56DF0E6115816</key>
+		<key>398AB14B40F9E444E5F87872A5EC99BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D9F76F1B4AEB8CB8F11F1565E4FBF1A</key>
+		<key>5FF989BB38F1FCC300A6817AFE705F30</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<key>6F10854E0129F80348BE75E95C09C07E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B7AC9326D819482593FE118E915409D7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E71A5AF2066B665602D726BF8BD46FAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
