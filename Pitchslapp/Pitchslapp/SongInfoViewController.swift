@@ -8,15 +8,20 @@
 
 import UIKit
 import Firebase
-import SwiftyDropbox
+import DBChooser
 
 class SongInfoViewController: UITableViewController {
     
     var song: SongItem!
+    var groupKey: String!
+    
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var soloistLabel: UILabel!
     @IBOutlet weak var keyLabel: UILabel!
+    
+    @IBOutlet weak var showPdfButton: UIButton!
+    @IBOutlet weak var linkPdfButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +30,13 @@ class SongInfoViewController: UITableViewController {
         titleLabel.text = song.name
         soloistLabel.text = song.soloist
         keyLabel.text = song.key
-        // Do any additional setup after loading the view.
+        
+        //configure buttons
+        if song.pdfUrl == nil {
+            showPdfButton.enabled = false
+            showPdfButton.backgroundColor = UIColor.lightGrayColor()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,28 +45,38 @@ class SongInfoViewController: UITableViewController {
     }
     
     @IBAction func linkToDB(sender: AnyObject) {
-        Dropbox.authorizeFromController(self)
+//        Dropbox.authorizeFromController(self)
     }
 
     @IBAction func dbChooser(sender: AnyObject) {
-        DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypePreview, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
+        DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypeDirect, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
             if results == nil {
                 print("user cancelled")
             } else {
-                print(results.description)
+                self.showPdfButton.enabled = true
+                self.showPdfButton.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+                self.song.pdfUrl = (results[0].link as NSURL).absoluteString
+                let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
+                songItemRef.setValue(self.song.toAnyObject())
             }
         })
     }
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowPDF" {
+            let destination = segue.destinationViewController as! PDFViewController
+            if song.pdfUrl != nil {
+                destination.pdfUrlString = song.pdfUrl
+            }
+        }
     }
-    */
+ 
 
 }
