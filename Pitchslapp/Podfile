@@ -8,6 +8,7 @@ target 'Pitchslapp' do
     pod 'Firebase', '>= 2.5.1'
     pod 'SwiftForms'
     pod 'DBChooser'
+    pod 'TagListView'
 end
 
 target 'PitchslappTests' do

@@ -9,12 +9,12 @@
 import UIKit
 import Firebase
 import DBChooser
+import TagListView
 
-class SongInfoViewController: UITableViewController {
+class SongInfoViewController: UITableViewController, TagListViewDelegate {
     
     var song: SongItem!
     var groupKey: String!
-    
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var soloistLabel: UILabel!
@@ -22,6 +22,8 @@ class SongInfoViewController: UITableViewController {
     
     @IBOutlet weak var showPdfButton: UIButton!
     @IBOutlet weak var linkPdfButton: UIButton!
+    
+    @IBOutlet weak var tagListView: TagListView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,42 +33,64 @@ class SongInfoViewController: UITableViewController {
         soloistLabel.text = song.soloist
         keyLabel.text = song.key
         
-        //configure buttons
+        //configure tag list view
+        tagListView.delegate = self
+        tagListView.textFont = UIFont(name: "Avenir-Book", size: 16.0)!
+        tagListView.marginX = 5.0
+        tagListView.marginY = 5.0
+    
+        tagListView.addTag("slow")
+        tagListView.addTag("fast")
+        tagListView.addTag("pumpup")
+        tagListView.addTag("blah")
+        tagListView.addTag("another tag")
+        tagListView.addTag("yay")
+        tagListView.addTag("slow")
+        tagListView.addTag("fast")
+        tagListView.addTag("pumpup")
+        tagListView.addTag("blah")
+        tagListView.addTag("another tag")
+        tagListView.addTag("yay")
+        
+        //configure sheet music buttons
         if song.pdfUrl == nil {
             showPdfButton.enabled = false
             showPdfButton.backgroundColor = UIColor.lightGrayColor()
         }
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - Dropbox file chooser
+    
+    // given a DB preview url, change dl=0 to dl=1 (making it a direct link)
+    func convertToDirectLink(url: String) -> String {
+        let count = url.characters.count
+        return (url as NSString).substringToIndex(count-1) + "1"
     }
     
-    @IBAction func linkToDB(sender: AnyObject) {
-//        Dropbox.authorizeFromController(self)
-    }
-
     @IBAction func dbChooser(sender: AnyObject) {
-        DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypeDirect, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
+        DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypePreview, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
             if results == nil {
                 print("user cancelled")
             } else {
                 self.showPdfButton.enabled = true
                 self.showPdfButton.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
-                self.song.pdfUrl = (results[0].link as NSURL).absoluteString
+                let pdfUrl = (results[0].link as NSURL).absoluteString
+                self.song.pdfUrl = self.convertToDirectLink(pdfUrl)
                 let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
                 songItemRef.setValue(self.song.toAnyObject())
             }
         })
     }
     
+    // MARK: TagListViewDelegate
     
+    func tagRemoveButtonPressed(title: String, tagView: TagView, sender: TagListView) {
+        print("Tag Remove pressed: \(title), \(sender)")
+        sender.removeTagView(tagView)
+    }
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

@@ -142,7 +142,7 @@ class SongsTableViewController: UITableViewController {
                     // couldn't load file :(
                 }
             }
-            pitch.backgroundColor = UIColor.purpleColor()
+            pitch.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
             let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
                 let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + self.songs[indexPath.row].name + "?", preferredStyle: .Alert)
                 let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
