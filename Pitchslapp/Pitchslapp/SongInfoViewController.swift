@@ -81,11 +81,19 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     // MARK: TagListViewDelegate
     
     func tagRemoveButtonPressed(title: String, tagView: TagView, sender: TagListView) {
-        print("Tag Remove pressed: \(title), \(sender)")
+        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
         sender.removeTagView(tagView)
+        for i in 0 ..< self.song.tags.count {
+            if (self.song.tags[i] == title) {
+                self.song.tags.removeAtIndex(i)
+            }
+        }
+        songItemRef.childByAppendingPath("tags").setValue(self.song.tags)
     }
     
     @IBAction func addTagDidTouch(sender: AnyObject) {
+        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
+        
         let alert = UIAlertController(title: "Add a tag",
             message: "",
             preferredStyle: .Alert)
@@ -98,7 +106,10 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
             let tagField = alert.textFields![0] as UITextField
             if (tagField.text!) != "" {
                 self.tagListView.addTag(tagField.text!)
+                self.song.tags.append(tagField.text!)
+                songItemRef.childByAppendingPath("tags").setValue(self.song.tags)
             }
+            
         }
         let cancelAction = UIAlertAction(title: "Cancel",
             style: .Destructive) { (action: UIAlertAction!) -> Void in

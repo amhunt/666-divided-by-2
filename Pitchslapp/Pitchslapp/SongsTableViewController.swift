@@ -16,7 +16,6 @@ class SongsTableViewController: UITableViewController {
     var songs = [SongItem]()
     var user: User!
     var groupKey: String?
-//    var groupName = [String]()
     var player: AVAudioPlayer!
     
     let pitchDict = [
@@ -52,21 +51,16 @@ class SongsTableViewController: UITableViewController {
                         self.groupKey = snapshot.value["groupid"] as? String
                     }
                     
-//                    self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).observeSingleEventOfType(.Value, withBlock: { snapshot in
-//                        if self.groupName.count == 0 {
-//                            self.groupName = [""]
-//                            self.groupName[0] = (snapshot.value["name"] as? String)!
-//                            self.tableView.reloadData()
-//                        }
-//                    })
-                    
                     // populate table with songs for that group
                     let songsRef = self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs")
                     songsRef.observeEventType(.Value, withBlock: { snapshot in
                         var newSongs = [SongItem]()
                         
                         for item in snapshot.children {
-                            let songItem = SongItem(snapshot: item as! FDataSnapshot)
+                            var songItem = SongItem(snapshot: item as! FDataSnapshot)
+                            if snapshot.hasChild("tags") {
+                                songItem.tags = snapshot.valueForKey("tags") as! [String]
+                            }
                             newSongs.append(songItem)
                         }
                         
@@ -86,80 +80,65 @@ class SongsTableViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 2
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if (section == 1) {
-            return songs.count
-//        } else {
-//            return groupName.count
-//        }
+        return songs.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell", forIndexPath: indexPath) as! SongTableViewCell
+
+        let songItem = songs[indexPath.row]
         
-//        if indexPath.section == 0 {
-//            let group = groupName[indexPath.row]
-//            let cell = tableView.dequeueReusableCellWithIdentifier("GroupNameCell", forIndexPath: indexPath) as UITableViewCell
-//            cell.textLabel!.text = group
-//            
-//        } else if indexPath.section == 1 {
-            let songItem = songs[indexPath.row]
-            
-            cell.titleLabel?.text = songItem.name
-            cell.soloLabel?.text = songItem.soloist
-            cell.keyLabel?.text = songItem.key
-//        }
+        cell.titleLabel?.text = songItem.name
+        cell.soloLabel?.text = songItem.soloist
+        cell.keyLabel?.text = songItem.key
     
         return cell
     }
     
     // swipe actions for pitch and delete
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-//        if (indexPath.section == 1) {
-            let pitchText = songs[indexPath.row].key as String
-            let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
-                let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
-                let url = NSURL(fileURLWithPath: path)
-                let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Make sure your volume switch is on!", preferredStyle: .Alert)
-                let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
-                    if self.player != nil {
-                        self.player.stop()
-                        self.player = nil
-                    }
-                    self.tableView.editing = false
+        let pitchText = songs[indexPath.row].key as String
+        let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
+            let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
+            let url = NSURL(fileURLWithPath: path)
+            let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Make sure your volume switch is on!", preferredStyle: .Alert)
+            let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
+                if self.player != nil {
+                    self.player.stop()
+                    self.player = nil
                 }
-                stopAlert.addAction(stopAction)
-                do {
-                    let sound = try AVAudioPlayer(contentsOfURL: url)
-                    self.player = sound
-                    sound.play()
-                    self.presentViewController(stopAlert, animated: true, completion: nil)
-                } catch {
-                    // couldn't load file :(
-                }
+                self.tableView.editing = false
             }
-            pitch.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
-            let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
-                let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + self.songs[indexPath.row].name + "?", preferredStyle: .Alert)
-                let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
-                    let songItem = self.songs[indexPath.row]
-                    songItem.ref?.removeValue()
-                    self.tableView.reloadData()
-                }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
-                    self.tableView.editing = false
-                }
-                confirmDeleteAlert.addAction(cancelAction)
-                confirmDeleteAlert.addAction(deleteAction)
-                self.presentViewController(confirmDeleteAlert, animated: true, completion: nil)
+            stopAlert.addAction(stopAction)
+            do {
+                let sound = try AVAudioPlayer(contentsOfURL: url)
+                self.player = sound
+                sound.play()
+                self.presentViewController(stopAlert, animated: true, completion: nil)
+            } catch {
+                // couldn't load file :(
             }
-            return [pitch, delete]
-//        }
-//        return []
+        }
+        pitch.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
+            let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + self.songs[indexPath.row].name + "?", preferredStyle: .Alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
+                let songItem = self.songs[indexPath.row]
+                songItem.ref?.removeValue()
+                self.tableView.reloadData()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
+                self.tableView.editing = false
+            }
+            confirmDeleteAlert.addAction(cancelAction)
+            confirmDeleteAlert.addAction(deleteAction)
+            self.presentViewController(confirmDeleteAlert, animated: true, completion: nil)
+        }
+        return [pitch, delete]
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

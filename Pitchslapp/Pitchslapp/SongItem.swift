@@ -36,7 +36,7 @@ struct SongItem {
         soloist = snapshot.value["solo"] as! String
         key = snapshot.value["key"] as! String
         if snapshot.hasChild("pdfUrl") {
-            pdfUrl = snapshot.value["pdfUrl"] as! String
+            pdfUrl = (snapshot.value["pdfUrl"] as! String)
         }
         if snapshot.hasChild("tags") {
             tags = snapshot.value["tags"] as! [String]
@@ -55,9 +55,6 @@ struct SongItem {
         if (pdfUrl != nil) {
             songObject.updateValue(pdfUrl!, forKey: "pdfUrl")
         }
-//        if (tags.count > 0) {
-//            songObject.updateValue(tags, forKey: "tags")
-//        }
 
         return songObject
     }

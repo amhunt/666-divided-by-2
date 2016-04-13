@@ -351,15 +351,30 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="26u-8R-k0a">
-                                        <rect key="frame" x="0.0" y="340" width="600" height="141"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="154" id="26u-8R-k0a">
+                                        <rect key="frame" x="0.0" y="340" width="600" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="26u-8R-k0a" id="6O5-Rv-O3P">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="141"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cA-il-JdV">
+                                                    <rect key="frame" x="15" y="19" width="568" height="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="10"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khf-vN-v85">
+                                                    <rect key="frame" x="45" y="17" width="19" height="19"/>
+                                                    <state key="normal" title="Add tag" image="add_button">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addTagDidTouch:" destination="ssn-QJ-rPP" eventType="touchUpInside" id="y5b-rJ-mBu"/>
+                                                    </connections>
+                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4R-QP-BwJ" customClass="TagListView" customModule="TagListView">
-                                                    <rect key="frame" x="15" y="33" width="577" height="93"/>
+                                                    <rect key="frame" x="15" y="40" width="577" height="93"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
@@ -377,32 +392,22 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TAGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cA-il-JdV">
-                                                    <rect key="frame" x="15" y="14" width="568" height="18"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="10"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khf-vN-v85">
-                                                    <rect key="frame" x="45" y="16" width="13" height="13"/>
-                                                    <state key="normal" title="Add tag" image="add_button">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="addTagDidTouch:" destination="ssn-QJ-rPP" eventType="touchUpInside" id="y5b-rJ-mBu"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="t4R-QP-BwJ" firstAttribute="top" secondItem="6O5-Rv-O3P" secondAttribute="topMargin" constant="25" id="6Ib-EW-mkF"/>
-                                                <constraint firstItem="t4R-QP-BwJ" firstAttribute="leading" secondItem="6O5-Rv-O3P" secondAttribute="leadingMargin" constant="7" id="7iW-6C-7yR"/>
-                                                <constraint firstItem="t4R-QP-BwJ" firstAttribute="trailing" secondItem="6O5-Rv-O3P" secondAttribute="trailingMargin" id="ebt-Ed-PGe"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="t4R-QP-BwJ" secondAttribute="bottom" constant="7" id="vfH-n3-lKX"/>
+                                                <constraint firstItem="9cA-il-JdV" firstAttribute="leading" secondItem="6O5-Rv-O3P" secondAttribute="leadingMargin" constant="7" id="64I-AY-jpc"/>
+                                                <constraint firstItem="9cA-il-JdV" firstAttribute="leading" secondItem="t4R-QP-BwJ" secondAttribute="leading" id="6ey-t7-dTB"/>
+                                                <constraint firstItem="t4R-QP-BwJ" firstAttribute="leading" secondItem="6O5-Rv-O3P" secondAttribute="leadingMargin" constant="7" id="9vb-3k-irR"/>
+                                                <constraint firstItem="9cA-il-JdV" firstAttribute="top" secondItem="6O5-Rv-O3P" secondAttribute="topMargin" constant="11" id="Afe-qw-gFb"/>
+                                                <constraint firstItem="t4R-QP-BwJ" firstAttribute="trailing" secondItem="6O5-Rv-O3P" secondAttribute="trailingMargin" id="Bvj-4W-yQt"/>
+                                                <constraint firstItem="t4R-QP-BwJ" firstAttribute="top" secondItem="6O5-Rv-O3P" secondAttribute="top" constant="40" id="Qx5-64-4ly"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9cA-il-JdV" secondAttribute="trailing" constant="9" id="aSa-NC-K6G"/>
+                                                <constraint firstItem="t4R-QP-BwJ" firstAttribute="top" secondItem="9cA-il-JdV" secondAttribute="bottom" constant="3" id="f8h-sE-ff0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="t4R-QP-BwJ" secondAttribute="bottom" constant="13" id="rCj-sH-1n2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="53" id="yZH-FB-Y27">
-                                        <rect key="frame" x="0.0" y="481" width="600" height="53"/>
+                                        <rect key="frame" x="0.0" y="494" width="600" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yZH-FB-Y27" id="Rdd-Gp-8Q2">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="53"/>
