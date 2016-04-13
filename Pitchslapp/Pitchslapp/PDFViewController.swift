@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import SwiftyDropbox
+import SwiftSpinner
 
-class PDFViewController: UIViewController {
+class PDFViewController: UIViewController, UIWebViewDelegate {
 
     
     @IBOutlet weak var pdfWebView: UIWebView!
@@ -18,6 +18,7 @@ class PDFViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.pdfWebView.delegate = self
         self.tabBarController?.tabBar.hidden = true
         let pdfURLtest = NSURL(string: pdfUrlString!)
         let request = NSURLRequest(URL: pdfURLtest!)
@@ -34,6 +35,19 @@ class PDFViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = false
+    }
+    
+    // MARK: - WebView Delegate Methods: progress indicator
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        // start animating
+        SwiftSpinner.show("Loading sheet music...")
+        return true
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        // stop animating
+        SwiftSpinner.hide()
     }
 
     /*

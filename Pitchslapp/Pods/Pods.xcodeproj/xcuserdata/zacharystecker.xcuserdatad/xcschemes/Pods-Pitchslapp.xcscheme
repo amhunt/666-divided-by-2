@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BEB8C92C63073C55B43CB02C'
+               BlueprintIdentifier = '1333C4CF2FCC482EC3B4388A'
                BlueprintName = 'Pods-Pitchslapp'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Pitchslapp.framework'>

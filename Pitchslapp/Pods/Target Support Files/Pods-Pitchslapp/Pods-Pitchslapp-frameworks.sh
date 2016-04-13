@@ -87,11 +87,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Pitchslapp/DBChooser.framework"
   install_framework "Pods-Pitchslapp/Firebase.framework"
   install_framework "Pods-Pitchslapp/SwiftForms.framework"
+  install_framework "Pods-Pitchslapp/SwiftSpinner.framework"
   install_framework "Pods-Pitchslapp/TagListView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Pitchslapp/DBChooser.framework"
   install_framework "Pods-Pitchslapp/Firebase.framework"
   install_framework "Pods-Pitchslapp/SwiftForms.framework"
+  install_framework "Pods-Pitchslapp/SwiftSpinner.framework"
   install_framework "Pods-Pitchslapp/TagListView.framework"
 fi

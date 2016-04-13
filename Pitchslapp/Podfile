@@ -9,6 +9,7 @@ target 'Pitchslapp' do
     pod 'SwiftForms'
     pod 'DBChooser'
     pod 'TagListView'
+    pod 'SwiftSpinner'
 end
 
 target 'PitchslappTests' do

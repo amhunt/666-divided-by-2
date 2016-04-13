@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TagListView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0039EB62FA17AAFC05A73448E6119C39</key>
+		<key>07F2FF0E2643B51E3643688CF847EF44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>50E1A19D7CDED4BDE4D88DA6AD34AD8C</key>
+		<key>2E061E44FF9EC617215AF2A383DC1BE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>575BE5FCACCCF229E515BD27B7F76A23</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7AC9326D819482593FE118E915409D7</key>
+		<key>AA13053EE3D75FB3B3D78426E774DB62</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD082D64ED7FF7A6E0238C832E33FF94</key>
+		<key>B7AC9326D819482593FE118E915409D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

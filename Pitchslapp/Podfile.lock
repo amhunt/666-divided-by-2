@@ -2,18 +2,21 @@ PODS:
   - DBChooser (1.1)
   - Firebase (2.5.1)
   - SwiftForms (1.0.2)
+  - SwiftSpinner (0.9.5)
   - TagListView (1.0.0)
 
 DEPENDENCIES:
   - DBChooser
   - Firebase (>= 2.5.1)
   - SwiftForms
+  - SwiftSpinner
   - TagListView
 
 SPEC CHECKSUMS:
   DBChooser: 42e804d7529ba051a900433b308a9760a21b6562
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   SwiftForms: c439aca9cf462383a1292c028bd14915de42bf6b
+  SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
 
 COCOAPODS: 0.39.0

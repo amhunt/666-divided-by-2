@@ -173,7 +173,7 @@
                                 <rect key="frame" x="0.0" y="123" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c3h-PV-7NB" id="qLn-jN-lEt">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9a-tX-Dig">
@@ -383,6 +383,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khf-vN-v85">
+                                                    <rect key="frame" x="45" y="16" width="13" height="13"/>
+                                                    <state key="normal" title="Add tag" image="add_button">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addTagDidTouch:" destination="ssn-QJ-rPP" eventType="touchUpInside" id="y5b-rJ-mBu"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="t4R-QP-BwJ" firstAttribute="top" secondItem="6O5-Rv-O3P" secondAttribute="topMargin" constant="25" id="6Ib-EW-mkF"/>
@@ -587,6 +596,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add_button" width="611" height="610"/>
         <image name="songlist" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

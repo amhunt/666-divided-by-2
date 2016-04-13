@@ -38,19 +38,15 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
         tagListView.textFont = UIFont(name: "Avenir-Book", size: 16.0)!
         tagListView.marginX = 5.0
         tagListView.marginY = 5.0
-    
-        tagListView.addTag("slow")
-        tagListView.addTag("fast")
-        tagListView.addTag("pumpup")
-        tagListView.addTag("blah")
-        tagListView.addTag("another tag")
-        tagListView.addTag("yay")
-        tagListView.addTag("slow")
-        tagListView.addTag("fast")
-        tagListView.addTag("pumpup")
-        tagListView.addTag("blah")
-        tagListView.addTag("another tag")
-        tagListView.addTag("yay")
+        
+        // display song's tags
+        for tag in song.tags {
+            tagListView.addTag(tag)
+        }
+        
+        for tag in tagListView.tagViews {
+            print((tag.titleLabel?.text)!)
+        }
         
         //configure sheet music buttons
         if song.pdfUrl == nil {
@@ -87,6 +83,31 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     func tagRemoveButtonPressed(title: String, tagView: TagView, sender: TagListView) {
         print("Tag Remove pressed: \(title), \(sender)")
         sender.removeTagView(tagView)
+    }
+    
+    @IBAction func addTagDidTouch(sender: AnyObject) {
+        let alert = UIAlertController(title: "Add a tag",
+            message: "",
+            preferredStyle: .Alert)
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "Tag"
+        }
+        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) -> Void in
+            let tagField = alert.textFields![0] as UITextField
+            if (tagField.text!) != "" {
+                self.tagListView.addTag(tagField.text!)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+            style: .Destructive) { (action: UIAlertAction!) -> Void in
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(saveAction)
+        presentViewController(alert,
+           animated: true,
+           completion: nil)
     }
     
     // MARK: - Navigation
