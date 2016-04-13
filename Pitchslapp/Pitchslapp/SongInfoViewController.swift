@@ -10,11 +10,18 @@ import UIKit
 import Firebase
 import DBChooser
 import TagListView
+import AVFoundation
 
 class SongInfoViewController: UITableViewController, TagListViewDelegate {
     
     var song: SongItem!
     var groupKey: String!
+    var player: AVAudioPlayer!
+    
+    let pitchDict = ["A":"A", "A#":"Bb", "Ab":"Ab", "B":"B", "Bb":"Bb",
+        "C":"C", "C#":"C#", "D":"D", "Db":"C#", "D#":"Eb", "Eb":"Eb", "E":"EHigh",
+        "F":"F", "F#":"F#", "G":"G", "Gb":"F#", "G#":"Ab"
+    ]
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var soloistLabel: UILabel!
@@ -44,10 +51,6 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
             tagListView.addTag(tag)
         }
         
-        for tag in tagListView.tagViews {
-            print((tag.titleLabel?.text)!)
-        }
-        
         //configure sheet music buttons
         if song.pdfUrl == nil {
             showPdfButton.enabled = false
@@ -55,6 +58,32 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
         }
     }
 
+    
+    // MARK: - Play pitch
+    
+    @IBAction func playPitchDidTouch(sender: AnyObject) {
+        let pitchText = song.key as String
+        let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
+        let url = NSURL(fileURLWithPath: path)
+        let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Make sure your volume switch is on!", preferredStyle: .Alert)
+        let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
+            if self.player != nil {
+                self.player.stop()
+                self.player = nil
+            }
+            self.tableView.editing = false
+        }
+        stopAlert.addAction(stopAction)
+        do {
+            let sound = try AVAudioPlayer(contentsOfURL: url)
+            self.player = sound
+            sound.play()
+            self.presentViewController(stopAlert, animated: true, completion: nil)
+        } catch {
+            // couldn't load file :(
+        }
+    }
+    
     // MARK: - Dropbox file chooser
     
     // given a DB preview url, change dl=0 to dl=1 (making it a direct link)
@@ -86,6 +115,7 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
         for i in 0 ..< self.song.tags.count {
             if (self.song.tags[i] == title) {
                 self.song.tags.removeAtIndex(i)
+                break
             }
         }
         songItemRef.childByAppendingPath("tags").setValue(self.song.tags)

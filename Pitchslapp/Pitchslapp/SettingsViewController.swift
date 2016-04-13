@@ -12,22 +12,50 @@ import Firebase
 class SettingsViewController: UITableViewController {
 
     let ref = Firebase(url: "https://popping-inferno-1963.firebaseio.com")
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    var user: User!
+    
+    @IBOutlet weak var userEmailLabel: UILabel!
+    @IBOutlet weak var groupNameLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        userEmailLabel.text = user.email
+        groupNameLabel.text = user.groupKey
         
         ref.observeAuthEventWithBlock { (authData) -> Void in
-            if authData != nil {
+            if authData == nil {
                 self.performSegueWithIdentifier("LogoutSegue", sender: nil)
             }
             
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            ref.unauth()
-            print("unauthenticated")
+    @IBAction func switchGroupsDidTouch(sender: AnyObject) {
     }
     
+    @IBAction func manageMembershipDidTouch(sender: AnyObject) {
+    }
+    
+    @IBAction func logoutDidTouch(sender: AnyObject) {
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout of your account?", preferredStyle: .Alert)
+        
+        let logoutAction = UIAlertAction(title: "Logout", style: .Destructive) { (action: UIAlertAction!) -> Void in
+            self.ref.unauth()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .Default) { (action: UIAlertAction!) -> Void in
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(logoutAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func backButtonDidTouch(sender: AnyObject) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
     
 }
