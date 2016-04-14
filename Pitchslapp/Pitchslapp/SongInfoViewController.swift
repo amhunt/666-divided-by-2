@@ -59,6 +59,8 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
         }
     }
     
+    // MARK: - Refresh functions (for view and Firebase)
+    
     func refreshLabels() -> Void {
         titleLabel.text = song.name
         soloistLabel.text = song.soloist
@@ -99,7 +101,6 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     // MARK: - Edit song information
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
         
         let editAction = UITableViewRowAction(style: .Normal, title: "Edit") {action, index in
             // display an action with text box to edit information
@@ -141,7 +142,7 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
                     }
                     self.refreshLabels()
                     // update firebase
-                    songItemRef.setValue(self.song.toAnyObject())
+                    self.updateSongInFirebase()
                     self.tableView.editing = false
                 }
                 
@@ -167,7 +168,7 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
                        doneBlock: {picker, selectedIndex, value in
                         self.song.key = keys[selectedIndex]
                         self.refreshLabels()
-                        songItemRef.setValue(self.song.toAnyObject())
+                        self.updateSongInFirebase()
                         self.tableView.editing = false
                     },
                        cancelBlock: {ActionMultipleStringCancelBlock in
@@ -206,8 +207,7 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
                 self.showPdfButton.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
                 let pdfUrl = (results[0].link as NSURL).absoluteString
                 self.song.pdfUrl = self.convertToDirectLink(pdfUrl)
-                let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
-                songItemRef.setValue(self.song.toAnyObject())
+                self.updateSongInFirebase()
             }
         })
     }
@@ -215,7 +215,6 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     // MARK: TagListViewDelegate
     
     func tagRemoveButtonPressed(title: String, tagView: TagView, sender: TagListView) {
-        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
         sender.removeTagView(tagView)
         for i in 0 ..< self.song.tags.count {
             if (self.song.tags[i] == title) {
@@ -223,11 +222,10 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
                 break
             }
         }
-        songItemRef.childByAppendingPath("tags").setValue(self.song.tags)
+        self.updateSongInFirebase()
     }
     
     @IBAction func addTagDidTouch(sender: AnyObject) {
-        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
         
         let alert = UIAlertController(title: "Add a tag",
             message: "",
@@ -242,7 +240,7 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
             if (tagField.text!) != "" {
                 self.tagListView.addTag(tagField.text!)
                 self.song.tags.append(tagField.text!)
-                songItemRef.childByAppendingPath("tags").setValue(self.song.tags)
+                self.updateSongInFirebase()
             }
             
         }
