@@ -201,6 +201,11 @@ class SongsTableViewController: UITableViewController {
             let destination = destinationNav.topViewController as! SettingsViewController
             destination.user = self.user
         }
+        else if segue.identifier == "AddSong" {
+            let destinationNav = segue.destinationViewController as! UINavigationController
+            let destination = destinationNav.topViewController as! AddSongViewController
+            destination.groupKey = groupKey!
+        }
     }
 
     
