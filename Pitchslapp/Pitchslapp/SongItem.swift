@@ -11,10 +11,10 @@ import Firebase
 
 struct SongItem {
     
-    let name: String!
+    var name: String!
     let id: String!
-    let key: String!
-    let soloist: String!
+    var key: String!
+    var soloist: String!
     var pdfUrl: String?
     var tags: [String]
     let ref: Firebase?

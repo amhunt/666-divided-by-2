@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
                 self.performSegueWithIdentifier("PickGroup", sender: nil)
             }
         })
+        emailTextField.autocorrectionType = UITextAutocorrectionType.No
     }
     
     override func viewDidAppear(animated: Bool) {

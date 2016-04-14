@@ -84,6 +84,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-Pitchslapp/ActionSheetPicker_3_0.framework"
   install_framework "Pods-Pitchslapp/DBChooser.framework"
   install_framework "Pods-Pitchslapp/Firebase.framework"
   install_framework "Pods-Pitchslapp/SwiftForms.framework"
@@ -91,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Pitchslapp/TagListView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-Pitchslapp/ActionSheetPicker_3_0.framework"
   install_framework "Pods-Pitchslapp/DBChooser.framework"
   install_framework "Pods-Pitchslapp/Firebase.framework"
   install_framework "Pods-Pitchslapp/SwiftForms.framework"

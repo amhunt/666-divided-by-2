@@ -11,6 +11,7 @@ import Firebase
 import DBChooser
 import TagListView
 import AVFoundation
+import ActionSheetPicker_3_0
 
 class SongInfoViewController: UITableViewController, TagListViewDelegate {
     
@@ -22,6 +23,8 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
         "C":"C", "C#":"C#", "D":"D", "Db":"C#", "D#":"Eb", "Eb":"Eb", "E":"EHigh",
         "F":"F", "F#":"F#", "G":"G", "Gb":"F#", "G#":"Ab"
     ]
+    
+    let infoOrder = ["title", "solo", "key"]
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var soloistLabel: UILabel!
@@ -34,11 +37,9 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
         self.tabBarController?.tabBar.hidden = false
-        titleLabel.text = song.name
-        soloistLabel.text = song.soloist
-        keyLabel.text = song.key
+        refreshLabels()
         
         //configure tag list view
         tagListView.delegate = self
@@ -57,7 +58,18 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
             showPdfButton.backgroundColor = UIColor.lightGrayColor()
         }
     }
-
+    
+    func refreshLabels() -> Void {
+        titleLabel.text = song.name
+        soloistLabel.text = song.soloist
+        keyLabel.text = song.key
+    }
+    
+    func updateSongInFirebase() -> Void {
+        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
+        songItemRef.setValue(self.song.toAnyObject())
+        songItemRef.childByAppendingPath("tags").setValue(self.song.tags)
+    }
     
     // MARK: - Play pitch
     
@@ -81,6 +93,99 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
             self.presentViewController(stopAlert, animated: true, completion: nil)
         } catch {
             // couldn't load file :(
+        }
+    }
+    
+    // MARK: - Edit song information
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
+        
+        let editAction = UITableViewRowAction(style: .Normal, title: "Edit") {action, index in
+            // display an action with text box to edit information
+            var alertTitle: String
+            var alertMessage: String
+            
+            switch self.infoOrder[index.row] {
+            case "title":
+                alertTitle = "Edit title"
+                alertMessage = "Enter a new title for your song."
+            case "solo":
+                alertTitle = "Edit soloist"
+                alertMessage = "Enter a new soloist for your song."
+            default:
+                alertTitle = "ERROR"
+                alertMessage = "ERROR"
+            }
+            
+            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+            
+            alert.addTextFieldWithConfigurationHandler {
+                (textField: UITextField!) -> Void in
+                if self.infoOrder[index.row] == "title" {
+                    textField.text = self.song.name
+                } else if self.infoOrder[index.row] == "solo" {
+                    textField.text = self.song.soloist
+                    textField.autocapitalizationType = UITextAutocapitalizationType.Words
+                }
+            }
+            
+            let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) -> Void in
+                let editedField = alert.textFields![0] as UITextField
+                // update song item
+                if editedField.text != "" {
+                    if self.infoOrder[index.row] == "title" {
+                        self.song.name = editedField.text
+                    } else if self.infoOrder[index.row] == "solo" {
+                        self.song.soloist = editedField.text
+                    }
+                    self.refreshLabels()
+                    // update firebase
+                    songItemRef.setValue(self.song.toAnyObject())
+                    self.tableView.editing = false
+                }
+                
+            }
+            let cancelAction = UIAlertAction(title: "Cancel",
+               style: .Destructive) { (action: UIAlertAction!) -> Void in
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
+            
+            if self.infoOrder[index.row] == "title" || self.infoOrder[index.row] == "solo" {
+                self.presentViewController(alert,
+                                      animated: true,
+                                      completion: nil)
+                self.tableView.editing = false
+            }
+            
+            // change key (pitch)
+            
+            else if self.infoOrder[index.row] == "key" {
+                let keys = ["A", "A#", "Ab", "B", "Bb", "C", "C#", "D", "Db", "D#", "Eb", "E", "F", "F#", "G", "Gb", "G#"]
+                ActionSheetStringPicker.showPickerWithTitle("Change key", rows: keys, initialSelection: keys.indexOf(self.song.key)!,
+                       doneBlock: {picker, selectedIndex, value in
+                        self.song.key = keys[selectedIndex]
+                        self.refreshLabels()
+                        songItemRef.setValue(self.song.toAnyObject())
+                        self.tableView.editing = false
+                    },
+                       cancelBlock: {ActionMultipleStringCancelBlock in
+                        self.tableView.editing = false
+                        return
+                    },
+                       origin: self.view)
+            }
+        }
+        editAction.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+        return [editAction]
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 {
+            return true
+        } else {
+            return false
         }
     }
     

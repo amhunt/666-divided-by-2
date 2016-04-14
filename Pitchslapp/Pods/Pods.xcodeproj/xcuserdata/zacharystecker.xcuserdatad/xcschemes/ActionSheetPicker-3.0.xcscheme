@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '418A9BBD668EFF47DD1E6689'
-               BlueprintName = 'SwiftForms'
+               BlueprintIdentifier = '032553C9A0C4E3FD556B32CA'
+               BlueprintName = 'ActionSheetPicker-3.0'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftForms.framework'>
+               BuildableName = 'ActionSheetPicker_3_0.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -519,7 +519,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpb-mT-H4E">
-                                                    <rect key="frame" x="8" y="8" width="584" height="47.5"/>
+                                                    <rect key="frame" x="8" y="8" width="52" height="47.5"/>
                                                     <connections>
                                                         <action selector="playPitchDidTouch:" destination="ssn-QJ-rPP" eventType="touchUpInside" id="jOX-1O-e9E"/>
                                                     </connections>

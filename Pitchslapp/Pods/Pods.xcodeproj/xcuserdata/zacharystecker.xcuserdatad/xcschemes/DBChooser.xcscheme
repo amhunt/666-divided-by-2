@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3E7B94B400C1D03F279B40EC'
+               BlueprintIdentifier = '1BA20865EFDA58055709D800'
                BlueprintName = 'DBChooser'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'DBChooser.framework'>
