@@ -6,6 +6,7 @@ var data = [1, 2, 2, 3, 4, 5, 5, 5, 6];
 alert(unique(data)[3]);
 
 console.log(unique(data));
+
 },{"uniq":2}],2:[function(require,module,exports){
 "use strict"
 

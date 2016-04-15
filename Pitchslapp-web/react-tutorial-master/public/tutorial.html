@@ -4,13 +4,17 @@
     <meta charset="utf-8">
     <title>React Tutorial</title>
     <!-- Not present in the tutorial. Just for basic styling. -->
-    <link rel="stylesheet" href="css/base.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+    <!-- <link rel="stylesheet" href="css/base.css" /> -->
+  <!--   // <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    // <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    // <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+    // <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    // <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script> -->
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js" type="text/javascript" charset="utf-8"></script>
+    <script src="bower_components/react-sanfona/dist/react-sanfona.js" type="text/javascript" charset="utf-8"></script>
+
   </head>
   <body>
     <div id='messagesDiv'></div>
@@ -19,154 +23,28 @@
     <input type='text' id='soloInput' placeholder='Name of Soloist'>
     <br>
     <input type='text' id='keyInput' placeholder='Key of Song'>
+    <br>
+    <div id="example"></div>
+    <br>
 
-    <ul id="records"></ul>
-    <div id="content"></div>
-    <script type="text/babel">
-    var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/-KE2t-HbseflgtLhuV8-/songs");
-
-      $('#keyInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var solo = $('#soloInput').val();
-          var keyVal = $('#keyInput').val();
-          ref.push({
-            solo: solo,
-            name: name,
-            key: keyVal
-          });
-          $('#nameInput').val(' ');
-          $('#soloInput').val(' ');
-          $('#keyInput').val('Your song has been added!');
-        }
-      });
-      ref.on('child_added', function(snapshot) {
-        var message = snapshot.val();
-        displayChatMessage(message.name, message.solo, message.key);
-      });
-      function displayChatMessage(name, solo, key) {
-        $('<div/>').text(solo).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-      };
-
-      var data = [
-        {id: 1, author: "Pete Hunt", text: "This is one comment"},
-        //{id: 2, author: "Jordan Walke", text: "This is *another* comment"}
-      ];
-      var Comment = React.createClass({
-        rawMarkup: function() {
-          var rawMarkup = marked(this.props.children.toString(), {snitize: true});
-          return { __html: rawMarkup };
-        },
-        render: function() {
-          return (
-            <div className="comment">
-              <h2 className="commentAuthor">
-                {this.props.author}
-              </h2>
-              <span dangerouslySetInnerHTML={this.rawMarkup()} />
-            </div>
-          );
-        }
-      })
-      var CommentList = React.createClass({
-        render: function() {
-          var commentNodes = this.props.data.map(function(comment) {
+    <script type="text/jsx">
+      var Accordion = ReactSanfona.Accordion;
+      var AccordionItem = ReactSanfona.AccordionItem;
+      React.render(
+        <Accordion>
+          {[1, 2, 3, 4, 5].map(function (item) {
             return (
-              <Comment author={comment.author} key={comment.id}>
-                {comment.text}
-              </Comment>
+              <AccordionItem title={'Item ${ item }'} key={item} titleColor="blue">
+                <div>
+                  {'Item ' +  item + ' content'}
+                  {item === 3 ? <p><img src="https://cloud.githubusercontent.com/assets/38787/8015584/2883817e-0bda-11e5-9662-b7daf40e8c27.gif" /></p> : null}
+                </div>
+              </AccordionItem>
             );
-          });
-          return (
-            <div className="commentList">
-              {commentNodes}
-            </div>
-          );
-        }
-      });
-
-      var CommentForm = React.createClass({
-        getInitialState: function() {
-          return {author: '', text: ''};
-        },
-        handleAuthorChange: function(e) {
-          this.setState({author: e.target.value});
-        },
-        handleTextChange: function(e) {
-          this.setState({text: e.target.value});
-        },
-        handleSubmit: function(e) {
-          e.preventDefault();
-          var author = this.state.author.trim();
-          var text = this.state.text.trim();
-          if (!text || !author) {
-            return;
-          }
-          // TODO: send request to the server
-          this.setState({author: '', text: ''});
-        },
-        render: function() {
-          return (
-            <form className="commentForm" onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                placeholder="Your name"
-                value={this.state.author}
-                onChange={this.handleAuthorChange}
-              />
-              <input
-                type="text"
-                placeholder="Say something..."
-                value={this.state.text}
-                onChange={this.handleTextChange}
-              />
-              <input type="submit" value="Post" />
-            </form>
-          );
-        }
-      });
-      var CommentBox = React.createClass({
-        loadCommentsFromServer: function() {
-          $.ajax({
-            url: this.props.url,
-            dataType: 'json',
-            cache: false,
-            success: function(data) {
-              this.setState({data: data});
-            }.bind(this),
-            error: function(xhr, status, err) {
-              console.error(this.props.url, status, err.toString());
-            }.bind(this)
-          });
-        },
-        handleCommentSubmit: function(comment) {
-          // TODO: submit to the server and refresh the list
-        },
-        getInitialState: function() {
-          return {data: []};
-        },
-        componentDidMount: function() {
-          this.loadCommentsFromServer();
-          setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-        },
-        render: function() {
-          return (
-            <div className="commentBox">
-              <h1>Comments</h1>
-              <CommentList data={this.state.data} />
-              <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-            </div>
-          );
-        }
-      });
-
-      ReactDOM.render(
-        <CommentBox url="/api/comments" pollInterval={2000} />,
-        document.getElementById('content')
+          })}
+        </Accordion>,
+        document.getElementById('example')
       );
-      // To get started with this tutorial running your own code, simply remove
-      // the script tag loading scripts/example.js and start writing code here.
-    </script>
+</script>
   </body>
 </html>

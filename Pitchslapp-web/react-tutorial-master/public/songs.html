@@ -48,18 +48,40 @@
       {
         var query = window.location.search.substring(1);
         var vars = query.split("&");
-        for (var i=0;i<vars.length+1;i++) {
+        for (var i=0;i<vars.length;i++) {
                var pair = vars[i].split("=");
                if(pair[0] == variable){return pair[1];}
         }
         return(false);
       }
       var group = getQueryVariable("group");
-      console.log(group);
+      var song_of_page = getQueryVariable("song");
+      console.log("your group is " + group);
+      console.log("your song is " + song_of_page);
 
-    var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group+"/songs");
-    var pdfUrl = "";
+      if (song_of_page == false) {
+        var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group+"/songs");
+      } else {
+        var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group+"/songs/"+song_of_page);
 
+            $('#keyInput').remove();
+            $('#nameInput').remove();
+            $('#soloInput').remove();
+            $('#submitButton').remove();
+            $('#container').remove();
+        ref.once("value", function(data) {
+          $('<div/>').html("<h2>Song: " + data.val().name +"</h2>").prepend($('<em/>')).appendTo($('#messagesDiv'));
+            $('<div/>').text("Key: " + data.val().key).prepend($('<em/>').text(' ')).appendTo($('#messagesDiv'));
+            $('<div/>').text("Soloist: " + data.val().solo).prepend($('<em/>').text(' ')).appendTo($('#messagesDiv'));($('<em/>').text(' ')).appendTo($('#messagesDiv'));
+            $('<div/>').text("Tags: " + data.val().tags).prepend($('<em/>').text(' ')).appendTo($('#messagesDiv'));
+            $('<div/>').html("<a href='" + data.val().pdfUrl + "'> To Download Sheet Music - Click Here </a>").prepend($('<em/>').text(' ')).appendTo($('#messagesDiv'));
+            $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+          
+        });
+
+  
+      }
+      var pdfUrl = "";
       function addSong() {
         var name = $('#nameInput').val();
         var solo = $('#soloInput').val();
@@ -85,14 +107,16 @@
       });
       ref.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        displayChatMessage(message.name, message.solo, message.key, snapshot.key(), message.pdfUrl);
+        if (song_of_page == false) {
+        displaySong(message.name, message.solo, message.key, snapshot.key(), message.pdfUrl);
+        } 
       });
       function deleteSong(deletedSong) {
         var newRef = ref.child(deletedSong);
         newRef.remove();
       }
-      function displayChatMessage(name, soloist, key, id, dropbox_link) {
-        $('<div/>').text(soloist).prepend($('<em/>').html('<button id="'+id+'">Delete</button>' + '<a href='+ dropbox_link + '   style="color:black" target="_blank" > '+name+' ('+key+'): ')).appendTo($('#messagesDiv'));
+      function displaySong(name, soloist, key, id, dropbox_link) {
+        $('<div/>').text(soloist).prepend($('<em/>').html('<button id="'+id+'">Delete</button>' + '<a href=songs.html?group=' + group + '&song='+id+'   style="color:black" target="_blank" > '+name+' ('+key+'): ')).appendTo($('#messagesDiv'));
         document.getElementById(id).onclick = function() {deleteSong(id)};
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
