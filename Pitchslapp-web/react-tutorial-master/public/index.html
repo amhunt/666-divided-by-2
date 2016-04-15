@@ -17,7 +17,7 @@
           href="resources/favicon.png">
     <style>
       body {
-        font-family: 'Lato', sans-serif;
+        font-family: 'Avenir', sans-serif;
         font-size: 16px;
       }
     </style>
@@ -25,6 +25,22 @@
   <body style="text-align: center; background-color: #F7CAC9;">
     <h1>Pitchslapp</h1>
     <h2>Available Groups</h2>
+      <section class="loginform cf">
+        <form name="login" action="index_submit" method="get" accept-charset="utf-8">
+          <ul>
+            <li>
+              <label for="usermail">Email</label>
+              <input type="email" name="usermail" placeholder="yourname@email.com" required>
+            </li>
+            <li>
+              <label for="password">Password</label>
+              <input type="password" name="password" placeholder="password" required></li>
+            <li>
+              <input type="submit" value="Login">
+            </li>
+          </ul>
+        </form>
+      </section>
     <div id='messagesDiv'></div>
     <input style="text-align:center" type='text' id='nameInput' placeholder='Group Name'>
     <br>

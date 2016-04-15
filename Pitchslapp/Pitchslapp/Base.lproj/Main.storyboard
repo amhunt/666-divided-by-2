@@ -227,7 +227,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="G8C-ew-uH2">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="addButtonDidTouch:" destination="IJX-gc-Uup" id="iOC-qK-tTc"/>
+                                <segue destination="FId-ey-e3o" kind="presentation" identifier="AddSong" id="KYN-2v-oTY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -650,7 +650,7 @@
             </objects>
             <point key="canvasLocation" x="1003" y="145"/>
         </scene>
-        <!--Add Song View Controller-->
+        <!--Add a Song-->
         <scene sceneID="Jao-BA-Fri">
             <objects>
                 <tableViewController id="S2G-6L-Aix" customClass="AddSongViewController" customModule="Pitchslapp" customModuleProvider="target" sceneMemberID="viewController">
@@ -663,10 +663,24 @@
                             <outlet property="delegate" destination="S2G-6L-Aix" id="Jpo-B5-n6b"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Add a Song" id="N3J-hN-AZH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8ys-GA-Zhd">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelDidTouch:" destination="S2G-6L-Aix" id="tgZ-jz-KrJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" style="done" id="yOx-RX-X0T">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="submitDidTouch:" destination="S2G-6L-Aix" id="GpO-yS-UrR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQK-DT-5nx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-443" y="1818"/>
+            <point key="canvasLocation" x="1143" y="-562"/>
         </scene>
         <!--PDF Viewer-->
         <scene sceneID="YFQ-YJ-LdK">
@@ -812,6 +826,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBa-tn-jXP" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2121" y="-223"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Pri-HJ-UbA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FId-ey-e3o" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VMt-Wj-q53">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.34023255740000002" green="0.20646182029999999" blue="0.63770443539999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="S2G-6L-Aix" kind="relationship" relationship="rootViewController" id="chB-gC-1Pk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wtq-Lv-Bt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="331" y="-562"/>
         </scene>
     </scenes>
     <resources>
