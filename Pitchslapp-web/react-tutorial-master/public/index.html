@@ -4,8 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Pitchslapp</title>
-    <!-- Not present in the tutorial. Just for basic styling. -->
-    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/base.css" href="css/normalize.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
@@ -30,11 +29,11 @@
           <ul>
             <li>
               <label for="usermail">Email</label>
-              <input type="email" name="usermail" placeholder="yourname@email.com" required>
+              <input style="vertical-align:middle" type="email" name="usermail" placeholder="yourname@email.com" required>
             </li>
             <li>
               <label for="password">Password</label>
-              <input type="password" name="password" placeholder="password" required></li>
+              <input style="vertical-align:middle" type="password" name="password" placeholder="password" required></li>
             <li>
               <input type="submit" value="Login">
             </li>
