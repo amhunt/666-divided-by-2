@@ -60,47 +60,105 @@ p, ul {
 ul {
   padding-left: 30px;
 }
-.loginform {
-  width: 410px;
-  margin: 50px auto;
-  padding: 25px;
-  vertical-align: middle;
-  background-color: rgba(250,250,250,0.5);
-  border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2), 
-          inset 0px 1px 0px 0px rgba(250, 250, 250, 0.5);
-    border: 1px solid rgba(0, 0, 0, 0.3);
+
+
+
+/*.loginform-in {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D6E5F5;
+    border-radius: 3px 3px 3px 3px;
+    height: 345px;
+    margin: auto;
+    padding: 0;
+    width: 460px;
 }
-.loginform ul {
-  padding: 0;
-  margin: 0;
+
+.loginform-in fieldset {
+    border-bottom: 1px solid #EFEFEF;
+    margin: 20px auto;
+    padding: 0 0 10px;
+    width: 87%;
 }
-.loginform li {
-  display: inline;
-  float: left;
+
+.loginbutton {
+    background: -moz-linear-gradient(center top , #F1F1F1, #E0E0E0) repeat scroll 0 0 transparent;
+    border: 1px solid #A7A7A7;
+    border-radius: 3px 3px 3px 3px;
+    color: #444444;
+    cursor: pointer;
+    font-family: "Helvetica Neue";
+    font-size: 13px;
+    font-weight: normal;
+    height: 29px;
+    letter-spacing: 1px;
+    width: 92px;
 }
-.loginform input:not([type=submit]) {
-  padding: 5px;
-  margin-right: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 3px;
-  box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 
-        0px 1px 0px 0px rgba(250, 250, 250, 0.5) ;
+
+.loginform-in fieldset label {
+    color: #7D7D7D;
+    float: left;
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 0 0;
+    width: 140px;
 }
-.loginform input[type=submit] {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  background: #64c8ef; /* Old browsers */
-  background: -moz-linear-gradient(top,  #64c8ef 0%, #00a2e2 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#64c8ef), color-stop(100%,#00a2e2)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  #64c8ef 0%,#00a2e2 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  #64c8ef 0%,#00a2e2 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  #64c8ef 0%,#00a2e2 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  #64c8ef 0%,#00a2e2 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64c8ef', endColorstr='#00a2e2',GradientType=0 ); /* IE6-9 */
-  color: #fff;
-  padding: 5px 15px;
-  margin-right: 0;
-  margin-top: 15px;
-  border-radius: 3px;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+
+.loginform-in fieldset input[type="text"], input[type="password"], fieldset select {
+    border: 1px solid #CBC7C5;
+    border-radius: 3px 3px 3px 3px;
+    float: left;
+    height: 33px;
+    padding: 1px 1px 1px 3px;
+    width: 250px;
 }
+
+.loginform-in {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D6E5F5;
+    border-radius: 3px 3px 3px 3px;
+    height: 345px;
+    margin: auto;
+    padding: 0;
+    width: 460px;
+}
+ 
+.loginform-in fieldset {
+    border-bottom: 1px solid #EFEFEF;
+    margin: 20px auto;
+    padding: 0 0 10px;
+    width: 87%;
+}
+ 
+.loginbutton {
+    background: -moz-linear-gradient(center top , #F1F1F1, #E0E0E0) repeat scroll 0 0 transparent;
+    border: 1px solid #A7A7A7;
+    border-radius: 3px 3px 3px 3px;
+    color: #444444;
+    cursor: pointer;
+    font-family: "Helvetica Neue";
+    font-size: 13px;
+    font-weight: normal;
+    height: 29px;
+    letter-spacing: 1px;
+    width: 92px;
+}
+ 
+.loginform-in fieldset label {
+    color: #7D7D7D;
+    float: left;
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 0 0;
+    width: 140px;
+}
+ 
+.loginform-in fieldset input[type="text"], input[type="password"], fieldset select {
+    border: 1px solid #CBC7C5;
+    border-radius: 3px 3px 3px 3px;
+    float: left;
+    height: 33px;
+    padding: 1px 1px 1px 3px;
+    width: 250px;
+}*/
