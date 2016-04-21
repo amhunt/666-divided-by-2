@@ -64,7 +64,7 @@ ul {
   width: 410px;
   margin: 50px auto;
   padding: 25px;
-  vertical-align: text-top;
+  vertical-align: middle;
   background-color: rgba(250,250,250,0.5);
   border-radius: 5px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2), 
@@ -73,18 +73,15 @@ ul {
 }
 .loginform ul {
   padding: 0;
-  vertical-align: middle;
   margin: 0;
 }
 .loginform li {
   display: inline;
-  vertical-align: middle;
   float: left;
 }
 .loginform input:not([type=submit]) {
   padding: 5px;
   margin-right: 10px;
-  vertical-align: middle;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 
