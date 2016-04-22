@@ -12,6 +12,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="0t2k59m96bjkpw3"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#accordion" ).accordion();
+    $( "#accordion" ).accordion({
+      collapsible: true
+    });
+    $( "#accordion_set" ).accordion();
+    $( "#accordion_set" ).accordion({
+      collapsible: true
+    });
+  });
+  </script>
     <link rel="icon" 
           type="image/png" 
           href="resources/favicon.png">
@@ -23,21 +39,26 @@
     </style>
 
   </head>
-  <body style="text-align: center; background-color: #ffffff; color: #77218d";>
+  <body style="text-align: left; background-color: #ffffff; color: #77218d";>
     <h1>Pitchslapp</h1>
-    <div id='messagesDiv'></div>
+    <div id="group_name"></div>
+    <div id="accordion"></div>
+    <!-- <div id='messagesDiv'></div> -->
+    <h3>Add A Song</h3>
     <input style="text-align:center" type='text' id='nameInput' placeholder='Name of Song'>
     <br>
     <input style="text-align:center" type='text' id='soloInput' placeholder='Name of Soloist'>
     <br>
     <input style="text-align:center" type='text' id='keyInput' placeholder='Key of Song'>
     <br>
-    <div id='container'> </div>
+    <div id='container'> hey</div>
     <br>
-    <button type="button" id="submitButton">Submit Song</button>
-    <ul id="records"></ul>
-    <div id="content"></div>
-    <h2><a href="index.html">Back to Groups</a>
+    <button type="button" id="submitButton">Add Song</button>
+    <div id="accordion_set"></div>
+    <h2><a href="index.html">Logout</a>
+    <br>
+    <br>
+    <div style="text-align:center">© 2016 Social Coders</div>
     <script type="text/babel">
       function myFunction() {        
         alert("removed!");
@@ -52,16 +73,26 @@
         }
         return(false);
       }
-      var group = getQueryVariable("group");
-      var song_of_page = getQueryVariable("song");
       console.log("your group is " + group);
       console.log("your song is " + song_of_page);
+      var group = getQueryVariable("group");
+      var song_of_page = getQueryVariable("song");
+
+        alert("hey");
+      var group_ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group);
+
+      group_ref.once("value", function(data) {
+        console.log(data.val());
+        $('#group_name').append("<h2>Group: " + data.val().name + "</h2>");
+      });
+
+        alert("hey");
+      var set_ref = group_ref.child('setlists');
 
       if (song_of_page == false) {
         var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group+"/songs");
       } else {
         var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group+"/songs/"+song_of_page);
-
             $('#keyInput').remove();
             $('#nameInput').remove();
             $('#soloInput').remove();
@@ -77,9 +108,10 @@
           
         });
 
-  
       }
       var pdfUrl = "";
+
+        alert("hey");
       function addSong() {
         var name = $('#nameInput').val();
         var solo = $('#soloInput').val();
@@ -109,19 +141,67 @@
         displaySong(message.name, message.solo, message.key, snapshot.key(), message.pdfUrl);
         } 
       });
+      function displaySet(set_ref, name, songIds, date) {
+        var append_str = '<h3>' + name + ' - ' + date + '</h3><div>';
+        for (int i = 0; var len = songIds.length; i < len; i++) {
+          var song_in_set_ref = set_ref.child(songIds[i]);
+          song_in_set_ref.once("value", function(data) {
+            append_str = append_str + '<p>' + data.val().name + '</p>'
+          });
+        }
+
+        append_str = append_str + '</div>';
+        $('#accordion_set').append(append_str);
+
+            $('#accordion_set')[0].scrollTop = $('#accordion_set')[0].scrollHeight;
+          
+        });
+
+        $(function() {
+          $( "#accordion_set" ).accordion( "refresh" );
+        });
+      };
+      set_ref.on('child_added', function(snapshot) {
+        var message = snapshot.val();
+
+        alert("hey");
+        displaySet(set_ref, message.name,message.songIds,message.date);
+        
+      });
       function deleteSong(deletedSong) {
         var newRef = ref.child(deletedSong);
         newRef.remove();
       }
       function displaySong(name, soloist, key, id, dropbox_link) {
-        $('<div/>').text(soloist).prepend($('<em/>').html('<button id="'+id+'">Delete</button>' + '<a href=songs.html?group=' + group + '&song='+id+'   style="color:black" target="_blank" > '+name+' ('+key+'): ')).appendTo($('#messagesDiv'));
+        // $('<div/>').text(soloist).prepend($('<em/>').html('<button id="'+id+'">Delete</button>' + '<a href=songs.html?group=' + group + '&song='+id+'   style="color:black" target="_blank" > '+name+' ('+key+'): ')).appendTo($('#messagesDiv'));
+        // $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+        // $('<div/>').html('<h3>' + soloist + '</h3><p><button id="'+id+'">Delete</button>' + '<a href=songs.html?group=' + group + '&song='+id+'   style="color:black" target="_blank" > '+name+' ('+key+'): </p>')).appendTo($('#accordion'));
+        var song_ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group+"/songs/"+id);
+
+        song_ref.once("value", function(data) {
+            $('#accordion').append('<h3>' + data.val().name + '</h3><div>' +
+              "<p>Song: " + data.val().name + '</p>' + 
+          "<p>Key: " + data.val().key + '</p>' + 
+          "<p>Soloist: " + data.val().solo + '</p>' +
+          "<p>Tags: " + data.val().tags + '</p>' +
+          "<a href='" + data.val().pdfUrl + "'> To Download Sheet Music - Click Here </a></p>" + 
+          '<p><button id="'+id+'">Delete</button></p>' + "</div>");
+
         document.getElementById(id).onclick = function() {deleteSong(id)};
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+            $('#accordion')[0].scrollTop = $('#accordion')[0].scrollHeight;
+          
+        });
+
+        $(function() {
+          $( "#accordion" ).accordion( "refresh" );
+        });
       };
       ref.on('child_removed', function(snapshot) {  
         var deletedSong = snapshot.val().name;
         console.log("The song titled '" + deletedSong + "' has been deleted");
-        $('#messagesDiv').find( ":contains('"+ deletedSong + "')" ).remove();
+        $('#accordion').find( ":contains('"+ deletedSong + "')" ).remove();
+
+        // $('#messagesDiv').find( ":contains('"+ deletedSong + "')" ).remove();
       });
       var options = {
         // Required. Called when a user selects an item in the Chooser.
@@ -152,5 +232,6 @@
       var button = Dropbox.createChooseButton(options);
       document.getElementById("container").appendChild(button);
     </script>
+ 
   </body>
 </html>

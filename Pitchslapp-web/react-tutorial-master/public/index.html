@@ -22,63 +22,65 @@
       }
     </style>
   </head>
-  <body style="text-align: center; background-color: #ffffff; color: #77218d">
+  <body style="text-align: left; background-color: #ffffff; color: #77218d">
     <h1>Pitchslapp</h1>
     <div class="login">
         <h3>Login:</h3>
-        <div class="err" id="add_err"></div>
-        <fieldset>
-          <form action="./" method="post">
-            <ul>
-              <li> <label for="name">Username</label>
-              <input type="text" size="30" name="name" id="name"/> </li>
-              <li> <label for="name">Password </label>
-              <input type="password" size="30" name="word" id="word"/> </li>
-              <li> <label></label>
-              <input type="submit" id="login" name="login" value="Login" class="loginbutton"></li>
-            </ul>
-          </form>
-        </fieldset>
-        </div>
-    <br>
-    <h2>Available Groups</h2>       
-    <div id='messagesDiv'></div>
-    <br>
-    <h3>Create a new group:</h3>
-    <input style="text-align:center" type='text' id='nameInput' placeholder='Group Name'>
-    <br>
-    <input style="text-align:center" type='text' id='schoolInput' placeholder='School Name'>
+          <ul style="list-style-type:none">
+            <li> <label for="email">Email </label>
+            <input type="text" size="30" name="email" id="email"/> </li>
+            <li> <label for="pw">Password </label>
+            <input type="password" size="30" name="pw" id="pw"/> </li>
+            <li> <label></label>
+            <div id="login_err"></div>
+            <input type="submit" id="login" name="login" value="Login" class="loginbutton"></li>
 
+          </ul>
+        </fieldset>
+    <br>
+    <!-- <h2>Available Groups</h2>        -->
+    <!-- <h3>Create a new group:</h3> -->
+    <!-- <input style="text-align:center" type='text' id='nameInput' placeholder='Group Name'> -->
+    <!-- <br> -->
+    <!-- <input style="text-align:center" type='text' id='schoolInput' placeholder='School Name'> -->
+    <br>
+    <br>
+    <div style="text-align:center">© 2016 Social Coders</div>
     <ul id="records"></ul>
     <div id="content"></div> 
     <script type="text/babel">
       var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups");
       $(document).ready(function(){
-        $("#add_err").css('display', 'none', 'important');
-          $('#login').click(function()) {
-            username=$("#name").val();
-            password=$("#word").val();
-            $.ajax({
-              type: "POST",
-              url: "login.php",
-              data: "name="+username+"&pwd="+password,
-              success: function(html) {
-                if (html==true) {
-                  window.location="dashboard.php"
-                }
-                else {
-                  $('#add_err').css('display', 'inline', 'important');
-                  $("#add_err").html("<img src='images/alert.png' />Wrong username or password");
-                }
-              },
-              beforeSend:function()
-              {
-                $('#add_err').css('display', 'inline', 'important');
-                $("#add_err").html("<img src='images/ajax-loader.gif' /> Loading...")
-              }
-            });
-            return false;
+        // $("#add_err").css('display', 'none', 'important');
+        $('#login').click(function() {
+
+          var email = $("#email").val();
+          var password = $("#pw").val();
+          var ref = new Firebase("https://popping-inferno-1963.firebaseio.com");
+          ref.authWithPassword({
+            "email": email,
+            "password": password
+          }, function(error, authData) {
+            if (error) {
+              $('#login_err').append('<div style="color:red">Invalid Login Info</div>');
+              console.log("Login Failed!", error);
+              alert("Login Failed");
+            } else {
+              console.log("Authenticated successfully with user:", authData);
+              // var user_uid = authData;
+              var user_uid = authData.uid;
+              var user_ref = ref.child('users').child(user_uid);
+              user_ref.once("value", function(snapshot) {
+                var group_id = snapshot.val().groupid;
+                window.location.href ='songs.html?group=' + group_id;
+
+              });
+              
+            }
           });
+
+        });
+      });
       $('#schoolInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
@@ -94,7 +96,7 @@
 
       ref.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        displayChatMessage(message.name, message.school, snapshot.key());
+        // displayChatMessage(message.name, message.school, snapshot.key());
       });
 
       ref.on('child_removed', function(snapshot) {
@@ -105,10 +107,11 @@
      });
 
       function displayChatMessage(name, school, id) {
-        $('<div/>').text(school).prepend($('<em/>').html('<a href=songs.html?group=' + id + ' target="_blank" style="color:black"> '+name+": ")).appendTo($('#messagesDiv'));
+        // $('<div/>').text(school).prepend($('<em/>').html('<a href=songs.html?group=' + id + ' target="_blank" style="color:black"> '+name+": ")).appendTo($('#messagesDiv'));
         // $('<div/>').text(school).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>
+
   </body>
 </html>
