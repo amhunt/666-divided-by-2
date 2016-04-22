@@ -38,7 +38,7 @@ class SongsTableViewController: UITableViewController {
         "G#":"Ab"
     ]
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         myRootRef.observeAuthEventWithBlock { (authData) in
             if authData != nil {
                 self.user = User(authData: authData)

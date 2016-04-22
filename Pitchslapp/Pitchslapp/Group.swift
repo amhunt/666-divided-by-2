@@ -13,12 +13,18 @@ struct Group {
     let uid: String
     let groupName: String
     let schoolName: String
+    let members: [AnyObject]
     
     // Initialize from Firebase
     init(snapshot: FDataSnapshot) {
         self.uid = snapshot.key
         self.groupName = snapshot.value["name"] as! String
         self.schoolName = snapshot.value["school"] as! String
+        if snapshot.hasChild("members") {
+            self.members = snapshot.value["members"] as! [AnyObject]
+        } else {
+            self.members = []
+        }
     }
     
     // Initialize from arbitrary data
@@ -26,5 +32,6 @@ struct Group {
         self.uid = uid
         self.groupName = group
         self.schoolName = school
+        self.members = []
     }
 }

@@ -9,10 +9,16 @@
 /* Begin PBXBuildFile section */
 		B8E3D7672F119F415DF34EF4 /* Pods_Pitchslapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */; };
 		DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */; };
+		DA1F18A91CC9D6B7003CEE3C /* Setlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18A81CC9D6B7003CEE3C /* Setlist.swift */; };
+		DA1F18AB1CC9DB16003CEE3C /* SetlistsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18AA1CC9DB16003CEE3C /* SetlistsTableViewController.swift */; };
+		DA1F18AD1CC9DCE1003CEE3C /* SetlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18AC1CC9DCE1003CEE3C /* SetlistTableViewCell.swift */; };
+		DA1F18AF1CC9EDF9003CEE3C /* SetlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18AE1CC9EDF9003CEE3C /* SetlistTableViewController.swift */; };
+		DA1F18B11CCA003E003CEE3C /* ChooseSongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18B01CCA003E003CEE3C /* ChooseSongsTableViewController.swift */; };
 		DA2F68FE1CAD70440028033E /* SignupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */; };
 		DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */; };
 		DA4DC4161CB5E376008F062E /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DC4151CB5E376008F062E /* PDFViewController.swift */; };
 		DA4DC4181CB5E38F008F062E /* MakeYouFeel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DA4DC4171CB5E38F008F062E /* MakeYouFeel.pdf */; };
+		DA53FC5A1CC0798A003AC1F7 /* PendingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53FC591CC0798A003AC1F7 /* PendingGroupViewController.swift */; };
 		DA60DA2B1CACE05400E7F2B1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */; };
 		DA60DA2D1CACE62600E7F2B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2C1CACE62600E7F2B1 /* User.swift */; };
 		DA60DA301CACEFBC00E7F2B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */; };
@@ -51,10 +57,16 @@
 		CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.release.xcconfig"; sourceTree = "<group>"; };
 		CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.debug.xcconfig"; sourceTree = "<group>"; };
 		DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
+		DA1F18A81CC9D6B7003CEE3C /* Setlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setlist.swift; sourceTree = "<group>"; };
+		DA1F18AA1CC9DB16003CEE3C /* SetlistsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistsTableViewController.swift; sourceTree = "<group>"; };
+		DA1F18AC1CC9DCE1003CEE3C /* SetlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistTableViewCell.swift; sourceTree = "<group>"; };
+		DA1F18AE1CC9EDF9003CEE3C /* SetlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistTableViewController.swift; sourceTree = "<group>"; };
+		DA1F18B01CCA003E003CEE3C /* ChooseSongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSongsTableViewController.swift; sourceTree = "<group>"; };
 		DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupFormViewController.swift; sourceTree = "<group>"; };
 		DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 		DA4DC4151CB5E376008F062E /* PDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		DA4DC4171CB5E38F008F062E /* MakeYouFeel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = MakeYouFeel.pdf; path = ../../../Downloads/MakeYouFeel.pdf; sourceTree = "<group>"; };
+		DA53FC591CC0798A003AC1F7 /* PendingGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingGroupViewController.swift; sourceTree = "<group>"; };
 		DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DA60DA2C1CACE62600E7F2B1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +142,9 @@
 				DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */,
 				DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */,
 				DA4DC4151CB5E376008F062E /* PDFViewController.swift */,
+				DA1F18AA1CC9DB16003CEE3C /* SetlistsTableViewController.swift */,
+				DA1F18AE1CC9EDF9003CEE3C /* SetlistTableViewController.swift */,
+				DA1F18B01CCA003E003CEE3C /* ChooseSongsTableViewController.swift */,
 			);
 			name = SongViews;
 			sourceTree = "<group>";
@@ -140,7 +155,9 @@
 				DAE2502C1CAB1348003DFF24 /* SongItem.swift */,
 				DA60DA2C1CACE62600E7F2B1 /* User.swift */,
 				DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */,
+				DA1F18AC1CC9DCE1003CEE3C /* SetlistTableViewCell.swift */,
 				DAFDCADF1CADBDEF005DDB64 /* Group.swift */,
+				DA1F18A81CC9D6B7003CEE3C /* Setlist.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -208,6 +225,7 @@
 			children = (
 				DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */,
 				DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */,
+				DA53FC591CC0798A003AC1F7 /* PendingGroupViewController.swift */,
 				DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */,
 				DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */,
 			);
@@ -403,14 +421,20 @@
 				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
 				DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */,
 				DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */,
+				DA1F18AD1CC9DCE1003CEE3C /* SetlistTableViewCell.swift in Sources */,
 				DA4DC4161CB5E376008F062E /* PDFViewController.swift in Sources */,
 				DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */,
 				DA2F68FE1CAD70440028033E /* SignupFormViewController.swift in Sources */,
 				DA60DA301CACEFBC00E7F2B1 /* SettingsViewController.swift in Sources */,
+				DA1F18A91CC9D6B7003CEE3C /* Setlist.swift in Sources */,
+				DA53FC5A1CC0798A003AC1F7 /* PendingGroupViewController.swift in Sources */,
+				DA1F18AB1CC9DB16003CEE3C /* SetlistsTableViewController.swift in Sources */,
 				DAFDCADC1CADAD9E005DDB64 /* GroupPickerTableViewController.swift in Sources */,
 				DA60DA2D1CACE62600E7F2B1 /* User.swift in Sources */,
 				DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */,
+				DA1F18B11CCA003E003CEE3C /* ChooseSongsTableViewController.swift in Sources */,
 				DA60DA2B1CACE05400E7F2B1 /* LoginViewController.swift in Sources */,
+				DA1F18AF1CC9EDF9003CEE3C /* SetlistTableViewController.swift in Sources */,
 				DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
