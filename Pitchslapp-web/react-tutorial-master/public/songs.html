@@ -51,7 +51,7 @@
     <br>
     <input style="text-align:center" type='text' id='keyInput' placeholder='Key of Song'>
     <br>
-    <div id='container'> hey</div>
+    <div id='container'> </div>
     <br>
     <button type="button" id="submitButton">Add Song</button>
     <div id="accordion_set"></div>
@@ -74,19 +74,15 @@
         return(false);
       }
       console.log("your group is " + group);
-      console.log("your song is " + song_of_page);
       var group = getQueryVariable("group");
       var song_of_page = getQueryVariable("song");
 
-        alert("hey");
       var group_ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups/"+group);
 
       group_ref.once("value", function(data) {
-        console.log(data.val());
         $('#group_name').append("<h2>Group: " + data.val().name + "</h2>");
       });
 
-        alert("hey");
       var set_ref = group_ref.child('setlists');
 
       if (song_of_page == false) {
@@ -111,7 +107,6 @@
       }
       var pdfUrl = "";
 
-        alert("hey");
       function addSong() {
         var name = $('#nameInput').val();
         var solo = $('#soloInput').val();
@@ -122,7 +117,6 @@
           key: keyVal,
           pdfUrl: pdfUrl
         });
-        console.log(id);
         $('#nameInput').val('');
         $('#soloInput').val('');
         $('#keyInput').val('Song Added!');
@@ -137,25 +131,25 @@
       });
       ref.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        if (song_of_page == false) {
         displaySong(message.name, message.solo, message.key, snapshot.key(), message.pdfUrl);
-        } 
       });
       function displaySet(set_ref, name, songIds, date) {
         var append_str = '<h3>' + name + ' - ' + date + '</h3><div>';
-        for (int i = 0; var len = songIds.length; i < len; i++) {
-          var song_in_set_ref = set_ref.child(songIds[i]);
-          song_in_set_ref.once("value", function(data) {
-            append_str = append_str + '<p>' + data.val().name + '</p>'
-          });
+        if (songIds != null) {
+          var len = songIds.length;
+          for (var i = 0; i < len; i++) {
+            var song_in_set_ref = ref.child(songIds[i]);
+            song_in_set_ref.once("value", function(data) {
+              append_str = append_str + '<p>' + data.val().name + '</p>';
+            });
+          }
         }
 
         append_str = append_str + '</div>';
         $('#accordion_set').append(append_str);
 
-            $('#accordion_set')[0].scrollTop = $('#accordion_set')[0].scrollHeight;
+        $('#accordion_set')[0].scrollTop = $('#accordion_set')[0].scrollHeight;
           
-        });
 
         $(function() {
           $( "#accordion_set" ).accordion( "refresh" );
@@ -163,8 +157,6 @@
       };
       set_ref.on('child_added', function(snapshot) {
         var message = snapshot.val();
-
-        alert("hey");
         displaySet(set_ref, message.name,message.songIds,message.date);
         
       });
@@ -187,8 +179,8 @@
           "<a href='" + data.val().pdfUrl + "'> To Download Sheet Music - Click Here </a></p>" + 
           '<p><button id="'+id+'">Delete</button></p>' + "</div>");
 
-        document.getElementById(id).onclick = function() {deleteSong(id)};
-            $('#accordion')[0].scrollTop = $('#accordion')[0].scrollHeight;
+          document.getElementById(id).onclick = function() {deleteSong(id)};
+          $('#accordion')[0].scrollTop = $('#accordion')[0].scrollHeight;
           
         });
 
