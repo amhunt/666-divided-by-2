@@ -28,11 +28,12 @@ class LoginViewController: UIViewController {
                 self.performSegueWithIdentifier("PickGroup", sender: nil)
             }
         })
-        emailTextField.autocorrectionType = UITextAutocorrectionType.No
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        emailTextField.autocorrectionType = UITextAutocorrectionType.No
         
         ref.observeAuthEventWithBlock { (authData) -> Void in
             if authData != nil {
@@ -57,8 +58,9 @@ class LoginViewController: UIViewController {
         let saveAction = UIAlertAction(title: "Create",
             style: .Default) { (action: UIAlertAction!) -> Void in
                 
-                let emailField = alert.textFields![0]
-                let passwordField = alert.textFields![1]
+                let nameField = alert.textFields![0]
+                let emailField = alert.textFields![1]
+                let passwordField = alert.textFields![2]
                 
                 self.emailTextField.text = emailField.text
                 
@@ -73,6 +75,11 @@ class LoginViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: "Cancel",
             style: .Default) { (action: UIAlertAction!) -> Void in
+        }
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textName) -> Void in
+            textName.placeholder = "Enter Your name"
         }
         
         alert.addTextFieldWithConfigurationHandler {

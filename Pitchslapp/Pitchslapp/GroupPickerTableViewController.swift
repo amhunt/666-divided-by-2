@@ -72,7 +72,7 @@ class GroupPickerTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedGroup = groups[indexPath.row]
-        user = User(uid: user.uid, email: user.email, group: selectedGroup.uid)
+        user = User(uid: user.uid, email: user.email, group: selectedGroup.uid, name: user.name)
         ref.childByAppendingPath("users").childByAppendingPath(user.uid).setValue(user.toAnyObject())
         // TODO: add user id to list of users in group
         
@@ -89,6 +89,8 @@ class GroupPickerTableViewController: UITableViewController {
             let schoolField = alert.textFields![1] as UITextField
             let newGroupRef = self.ref.childByAppendingPath("groups").childByAutoId()
             newGroupRef.setValue(["name":nameField.text!, "school":schoolField.text!])
+            // create new group's members array, initializing it with the first member's info and status
+            newGroupRef.childByAppendingPath("members").setValue([self.user.uid : "member"])
             self.tableView.reloadData()
         }
         
@@ -120,12 +122,12 @@ class GroupPickerTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "ChoseGroup" {
-            let destinationTab = segue.destinationViewController as! UITabBarController
-            let destinationNav = destinationTab.viewControllers![0] as! UINavigationController
-            let destination = destinationNav.topViewController as! SongsTableViewController
-            let groupKey = self.groups[(self.tableView.indexPathForSelectedRow?.row)!].uid
-            destination.groupKey = groupKey
+        if segue.identifier == "ChoseExistingGroup" {
+            let destination = segue.destinationViewController as! PendingGroupViewController
+            destination.group = self.groups[(self.tableView.indexPathForSelectedRow?.row)!]
+        }
+        else if segue.identifier == "ChoseNewGroup" {
+            
         }
     }
 
