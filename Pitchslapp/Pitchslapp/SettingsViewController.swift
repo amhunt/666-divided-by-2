@@ -16,12 +16,20 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         userEmailLabel.text = user.email
-        groupNameLabel.text = user.groupKey
+        userNameLabel.text = user.name
+        
+        
+        ref.childByAppendingPath("groups").childByAppendingPath(user.groupKey).observeSingleEventOfType(.Value, withBlock: {
+            snapshot in
+            self.groupNameLabel.text = snapshot.value["name"] as! String
+            
+        })
         
         ref.observeAuthEventWithBlock { (authData) -> Void in
             if authData == nil {

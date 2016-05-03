@@ -45,6 +45,7 @@
             <li> <label></label>
             <div id="group_location"> </div>
             <input type="submit" id="new_account" name="new_account" value="Create New Account" class="loginbutton"></li>
+            <div id="group_creator_location"> </div>
           </ul>
         </fieldset>
     <br>
@@ -112,7 +113,7 @@
               ref.once("value", function(snapshot) {
                 var groups = snapshot.child("groups").val();
                 console.log(groups);
-                $("#group_location").append("<div><h4>Choose A Group To Join</h4></div>");
+                $("#group_location").append("<br><div><h4>Choose A Group To Join</h4></div>");
                 for (var key in groups) {
                   var group = groups[key];
                   $("#group_location").append('<div><input type="button" id="' + key + '" name="new_account" value="' + 
@@ -129,7 +130,9 @@
                     });
                   })();
                 }
+                $("#group_creator_location").append('<div><input type="button" id="new_group" name="new_group" value="Create New Group" class="loginbutton"> </div>');
               });
+              
             }
           });
         });

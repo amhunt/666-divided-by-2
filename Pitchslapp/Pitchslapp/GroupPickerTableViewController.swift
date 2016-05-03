@@ -72,7 +72,7 @@ class GroupPickerTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedGroup = groups[indexPath.row]
-        user = User(uid: user.uid, email: user.email, group: selectedGroup.uid, name: user.name)
+        user = User(uid: user.uid, email: user.email, group: selectedGroup.uid, name: user.name, status: "pending")
         ref.childByAppendingPath("users").childByAppendingPath(user.uid).setValue(user.toAnyObject())
         // TODO: add user id to list of users in group
         

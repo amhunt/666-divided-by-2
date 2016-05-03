@@ -16,6 +16,7 @@ class ChooseSongsTableViewController: UITableViewController {
     var setlist: Setlist!
     var groupKey: String?
     var songs = [SongItem]()
+    var checked = [Bool]()
     
     override func viewWillAppear(animated: Bool) {
         let songsRef = self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs")
@@ -35,6 +36,8 @@ class ChooseSongsTableViewController: UITableViewController {
             self.songs = newSongs
             self.songs.sortInPlace({$0.name < $1.name})
             self.tableView.reloadData()
+            
+            self.checked = [Bool](count: self.songs.count, repeatedValue: false)
             
             }, withCancelBlock: { error in
                 print(error.description)
@@ -73,11 +76,25 @@ class ChooseSongsTableViewController: UITableViewController {
         cell.soloLabel?.text = songItem.soloist
         cell.keyLabel?.text = songItem.key
         
+        if !checked[indexPath.row] {
+            cell.accessoryType = .None
+        } else if checked[indexPath.row] {
+            cell.accessoryType = .Checkmark
+        }
+        
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if cell.accessoryType == .Checkmark {
+                cell.accessoryType = .None
+                checked[indexPath.row] = false
+            } else {
+                cell.accessoryType = .Checkmark
+                checked[indexPath.row] = true
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
