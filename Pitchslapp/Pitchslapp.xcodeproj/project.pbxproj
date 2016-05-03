@@ -33,6 +33,8 @@
 		DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */; };
 		DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502C1CAB1348003DFF24 /* SongItem.swift */; };
 		DAF583491CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF583481CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift */; };
+		DAF5834B1CD93C6E00CE7A6A /* PitchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF5834A1CD93C6E00CE7A6A /* PitchesTableViewController.swift */; };
+		DAF5834D1CD93F1500CE7A6A /* PitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF5834C1CD93F1500CE7A6A /* PitchTableViewCell.swift */; };
 		DAFDCADC1CADAD9E005DDB64 /* GroupPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */; };
 		DAFDCAE01CADBDEF005DDB64 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFDCADF1CADBDEF005DDB64 /* Group.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +91,8 @@
 		DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		DAE2502C1CAB1348003DFF24 /* SongItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongItem.swift; sourceTree = "<group>"; };
 		DAF583481CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistSongTableViewCell.swift; sourceTree = "<group>"; };
+		DAF5834A1CD93C6E00CE7A6A /* PitchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchesTableViewController.swift; sourceTree = "<group>"; };
+		DAF5834C1CD93F1500CE7A6A /* PitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchTableViewCell.swift; path = ../PitchTableViewCell.swift; sourceTree = "<group>"; };
 		DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPickerTableViewController.swift; sourceTree = "<group>"; };
 		DAFDCADF1CADBDEF005DDB64 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitchslapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +151,7 @@
 				DA1F18AA1CC9DB16003CEE3C /* SetlistsTableViewController.swift */,
 				DA1F18AE1CC9EDF9003CEE3C /* SetlistTableViewController.swift */,
 				DA1F18B01CCA003E003CEE3C /* ChooseSongsTableViewController.swift */,
+				DAF5834A1CD93C6E00CE7A6A /* PitchesTableViewController.swift */,
 			);
 			name = SongViews;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 		DA60DA2E1CACEE4500E7F2B1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DAF5834C1CD93F1500CE7A6A /* PitchTableViewCell.swift */,
 				DAE2502C1CAB1348003DFF24 /* SongItem.swift */,
 				DA60DA2C1CACE62600E7F2B1 /* User.swift */,
 				DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */,
@@ -424,6 +430,7 @@
 				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
 				DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */,
 				DAF583491CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift in Sources */,
+				DAF5834D1CD93F1500CE7A6A /* PitchTableViewCell.swift in Sources */,
 				DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */,
 				DA1F18AD1CC9DCE1003CEE3C /* SetlistTableViewCell.swift in Sources */,
 				DA4DC4161CB5E376008F062E /* PDFViewController.swift in Sources */,
@@ -438,6 +445,7 @@
 				DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */,
 				DA1F18B11CCA003E003CEE3C /* ChooseSongsTableViewController.swift in Sources */,
 				DA60DA2B1CACE05400E7F2B1 /* LoginViewController.swift in Sources */,
+				DAF5834B1CD93C6E00CE7A6A /* PitchesTableViewController.swift in Sources */,
 				DA1F18AF1CC9EDF9003CEE3C /* SetlistTableViewController.swift in Sources */,
 				DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */,
 			);

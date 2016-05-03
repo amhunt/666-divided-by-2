@@ -38,17 +38,17 @@ class AddSongViewController: FormViewController {
         var soloist = "N/A"
         var tags = []
         
-        if formValues.valueForKey("title") != nil {
+        if !(formValues.valueForKey("title") is NSNull) {
             title = formValues.valueForKey("title") as! String
         }
         
-        if formValues.valueForKey("soloist") != nil {
+        if !(formValues.valueForKey("soloist") is NSNull) {
             soloist = formValues.valueForKey("soloist") as! String
         }
         
         key = formValues.valueForKey("key") as! String
         
-        if formValues.valueForKey("tags") != nil {
+        if !(formValues.valueForKey("tags") is NSNull) {
             tags = (formValues.valueForKey("tags") as! String).componentsSeparatedByString(", ")
         }
         
