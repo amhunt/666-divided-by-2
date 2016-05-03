@@ -13,7 +13,15 @@ import AVFoundation
 
 extension SongsTableViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+    }
+}
+
+extension SongsTableViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
@@ -50,6 +58,10 @@ class SongsTableViewController: UITableViewController {
     override func viewDidLoad() {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["Title", "Soloist", "Tags"]
+        searchController.searchBar.barTintColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+        searchController.searchBar.tintColor = UIColor.whiteColor()
+        searchController.searchBar.delegate = self
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
     }
@@ -228,9 +240,23 @@ class SongsTableViewController: UITableViewController {
     
     
     // update view based on search
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
+    func filterContentForSearchText(searchText: String, scope: String = "Title") {
         filteredSongs = songs.filter { song in
-            return song.name.lowercaseString.containsString(searchText.lowercaseString)
+            if scope == "Soloist" {
+                return song.soloist.lowercaseString.containsString(searchText.lowercaseString)
+            } else if scope == "Tags" {
+                //come back to this
+                let lowerTags = song.tags.map({tag in tag.lowercaseString})
+                var contains = false
+                for tag in lowerTags {
+                    if tag.containsString(searchText.lowercaseString) {
+                        contains = true
+                    }
+                }
+                return contains
+            } else {
+                return song.name.lowercaseString.containsString(searchText.lowercaseString)
+            }
         }
         tableView.reloadData()
     }
