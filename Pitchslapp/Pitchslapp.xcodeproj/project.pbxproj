@@ -32,6 +32,7 @@
 		DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */; };
 		DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */; };
 		DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502C1CAB1348003DFF24 /* SongItem.swift */; };
+		DAF583491CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF583481CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift */; };
 		DAFDCADC1CADAD9E005DDB64 /* GroupPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */; };
 		DAFDCAE01CADBDEF005DDB64 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFDCADF1CADBDEF005DDB64 /* Group.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		DADF0D4C1CB7469B009456CC /* Pitchslapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pitchslapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		DAE2502C1CAB1348003DFF24 /* SongItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongItem.swift; sourceTree = "<group>"; };
+		DAF583481CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistSongTableViewCell.swift; sourceTree = "<group>"; };
 		DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPickerTableViewController.swift; sourceTree = "<group>"; };
 		DAFDCADF1CADBDEF005DDB64 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitchslapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 				DAE2502C1CAB1348003DFF24 /* SongItem.swift */,
 				DA60DA2C1CACE62600E7F2B1 /* User.swift */,
 				DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */,
+				DAF583481CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift */,
 				DA1F18AC1CC9DCE1003CEE3C /* SetlistTableViewCell.swift */,
 				DAFDCADF1CADBDEF005DDB64 /* Group.swift */,
 				DA1F18A81CC9D6B7003CEE3C /* Setlist.swift */,
@@ -420,6 +423,7 @@
 				DAFDCAE01CADBDEF005DDB64 /* Group.swift in Sources */,
 				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
 				DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */,
+				DAF583491CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift in Sources */,
 				DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */,
 				DA1F18AD1CC9DCE1003CEE3C /* SetlistTableViewCell.swift in Sources */,
 				DA4DC4161CB5E376008F062E /* PDFViewController.swift in Sources */,

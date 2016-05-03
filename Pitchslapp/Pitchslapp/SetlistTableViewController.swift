@@ -52,12 +52,15 @@ class SetlistTableViewController: UITableViewController {
         
         let songIdsRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id).childByAppendingPath("songIds")
         
-        
-        
+        // monitor list of song ids in the setlist
         songIdsRef.observeEventType(.Value, withBlock: {snapshot in
             var newSongs = [SongItem]()
+            var newSongIds = [String]()
+            // for each song id in the setlist, look up the song data and add it to the
+            // tableview
             for item in snapshot.children {
                 let songId = (item as! FDataSnapshot).value as! String
+                newSongIds.append(songId)
                 self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(songId).observeSingleEventOfType(.Value, withBlock: { songData in
                     let songItem = SongItem(snapshot: songData as FDataSnapshot)
                     
@@ -65,6 +68,7 @@ class SetlistTableViewController: UITableViewController {
                     self.songs = newSongs
                     self.tableView.reloadData()
                 })
+                self.setlist.songIds = newSongIds
             }
         })
         
@@ -94,13 +98,14 @@ class SetlistTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SongCell", forIndexPath: indexPath) as! SongTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SongCell", forIndexPath: indexPath) as! SetlistSongTableViewCell
         
         let songItem = songs[indexPath.row]
         
         cell.titleLabel?.text = songItem.name
         cell.soloLabel?.text = songItem.soloist
         cell.keyLabel?.text = songItem.key
+        cell.indexLabel?.text = String(indexPath.row + 1) // +1 accounts for 0 index
         
         return cell
     }
@@ -130,6 +135,8 @@ class SetlistTableViewController: UITableViewController {
     
     // swipe actions for pitch and delete
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        // pitch-play swipe action
         let pitchText = songs[indexPath.row].key as String
         let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
             let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
@@ -153,8 +160,17 @@ class SetlistTableViewController: UITableViewController {
             }
         }
         pitch.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+        
+        // remove song swipe action
+        let delete = UITableViewRowAction(style: .Destructive, title: "Remove") {action, index in
+            self.setlist.songIds.removeAtIndex(index.row)
+            let setlistRef = self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("setlists").childByAppendingPath(self.setlist.id)
+            setlistRef.childByAppendingPath("songIds").setValue(self.setlist.songIds)
+            self.tableView.reloadData()
+        }
+        
 
-        return [pitch]
+        return [pitch, delete]
     }
 
     
