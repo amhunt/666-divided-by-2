@@ -71,12 +71,20 @@ class SongsTableViewController: UITableViewController {
             if authData != nil {
                 self.user = User(authData: authData)
                 
+                self.myRootRef.childByAppendingPath("users").childByAppendingPath(self.user.uid).observeSingleEventOfType(.Value, withBlock: {
+                    snapshot in
+                    self.user = User(snapshot: snapshot)
+                })
+                
                 // get user's group id
                 self.myRootRef.childByAppendingPath("users").childByAppendingPath(self.user.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+                    
+                    self.user = User(snapshot: snapshot)
+                    
                     // try to get it from the group-choose segue (first-time users)
                     // otherwise, check the user data
                     if self.groupKey == nil {
-                        self.groupKey = snapshot.value["groupid"] as? String
+                        self.groupKey = self.user.groupKey
                     }
                     
                     // populate table with songs for that group

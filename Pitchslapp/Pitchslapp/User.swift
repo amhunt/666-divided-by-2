@@ -14,6 +14,7 @@ struct User {
     let email: String
     var groupKey: String
     var name: String
+    var status: String
     
     // Initialize from Firebase
     init(authData: FAuthData) {
@@ -21,28 +22,32 @@ struct User {
         email = authData.providerData["email"] as! String
         name = "will change"
         groupKey = "will change"
+        status = "will change"
     }
     
     init(snapshot: FDataSnapshot) {
         uid = snapshot.key
-        email = snapshot.value["login"] as! String
+        email = snapshot.value["email"] as! String
         groupKey = snapshot.value["groupid"] as! String
         name = snapshot.value["name"] as! String
+        status = snapshot.value["status"] as! String
     }
     
     // Initialize from arbitrary data
-    init(uid: String, email: String, group: String, name: String) {
+    init(uid: String, email: String, group: String, name: String, status: String) {
         self.uid = uid
         self.email = email
         self.groupKey = group
         self.name = name
+        self.status = status
     }
     
     func toAnyObject() -> AnyObject {
         return [
             "email": self.email,
             "groupid": self.groupKey,
-            "name": self.name
+            "name": self.name,
+            "status": self.status
         ]
     }
 }
