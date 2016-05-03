@@ -119,25 +119,27 @@
               ref.once("value", function(snapshot) {
                 var groups = snapshot.child("groups").val();
                 console.log(groups);
-                $("#group_location").append("<div>Choose A Group To Join</div>");
+                $("#group_location").append("<div><h4>Choose A Group To Join</h4></div>");
                 for (var key in groups) {
                   var group = groups[key];
                   $("#group_location").append('<div><input type="button" id="' + key + '" name="new_account" value="' + 
                         group.name + ': ' + group.school + '" class="loginbutton"> </div>');
-                  var new_button = Document.getElementById(key);
-                  $("#"+key).click(function() {
-                    alert("clicked " + key);
-                    var obj = {};
-                    obj[user_uid] = {email: email, groupid: key, name: name};
-                    var user_ref = ref.child('users').update(obj);
-                    // window.location.href ='songs.html?group=' + the_group;
-                  });
-                  // $("#group_location").append("<div><a href=songs.html?group=" + key + ">" + group.name + ": " + group.school + "</a> </div>");
+                  // var new_button = Document.getElementById(key);
+                  (function() {
+                    var my_group = key;
+                    $("#"+my_group).click(function() {
+                      alert("clicked " + my_group);
+                      var obj = {};
+                      obj[user_uid] = {email: email, groupid: my_group, name: name};
+                      var user_ref = ref.child('users').update(obj);
+                      window.location.href ='songs.html?group=' + my_group;
+                    });
+
+                  })();
                 }
               });
             }
           });
-
         });
       });
       $('#schoolInput').keypress(function (e) {
