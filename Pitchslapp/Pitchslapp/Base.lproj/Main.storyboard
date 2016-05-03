@@ -293,7 +293,7 @@
                                 <rect key="frame" x="0.0" y="123" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c3h-PV-7NB" id="qLn-jN-lEt">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4G-yf-sB4">
@@ -374,7 +374,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CC2-Kf-JBq" id="aZ5-i8-OUG">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhh-Kl-8VJ">
@@ -442,15 +442,15 @@
                             </items>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="66" id="23w-Gx-1D7" customClass="SongTableViewCell" customModule="Pitchslapp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="66" id="23w-Gx-1D7" customClass="SetlistSongTableViewCell" customModule="Pitchslapp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="23w-Gx-1D7" id="2EM-ot-AKu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21O-u3-izE">
-                                            <rect key="frame" x="16" y="34" width="221" height="16"/>
+                                            <rect key="frame" x="40" y="35" width="221" height="16"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -465,9 +465,15 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBl-ae-cq8">
-                                            <rect key="frame" x="16" y="14" width="221" height="21"/>
+                                            <rect key="frame" x="40" y="15" width="221" height="21"/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4a-NC-wbz">
+                                            <rect key="frame" x="8" y="18" width="29" height="29"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                            <color key="textColor" red="0.34023255740000002" green="0.20646182029999999" blue="0.63770443539999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -477,9 +483,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="keyLabel" destination="bg1-cF-S0I" id="noP-XB-AHD"/>
-                                    <outlet property="soloLabel" destination="21O-u3-izE" id="5cX-3B-w0e"/>
-                                    <outlet property="titleLabel" destination="nBl-ae-cq8" id="HmD-wf-YQg"/>
+                                    <outlet property="indexLabel" destination="R4a-NC-wbz" id="Pxx-Hm-b0a"/>
+                                    <outlet property="keyLabel" destination="bg1-cF-S0I" id="bAU-j0-h5N"/>
+                                    <outlet property="soloLabel" destination="21O-u3-izE" id="SGq-U1-MwR"/>
+                                    <outlet property="titleLabel" destination="nBl-ae-cq8" id="LJ7-2k-NiM"/>
                                     <segue destination="ssn-QJ-rPP" kind="show" identifier="ShowSong" id="6QF-7G-bKh"/>
                                 </connections>
                             </tableViewCell>
@@ -499,7 +506,7 @@
         <scene sceneID="Thb-uo-YxH">
             <objects>
                 <navigationController id="XhP-tZ-jhk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Setlists" id="yHC-xP-xzH"/>
+                    <tabBarItem key="tabBarItem" title="Setlists" image="setlists" id="yHC-xP-xzH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MxI-fV-aTI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -971,7 +978,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m0J-rW-4AB">
+                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m0J-rW-4AB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
@@ -1005,7 +1012,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oJZ-0C-WXc" id="kZx-VO-oJj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGC-QE-OG6">
@@ -1225,12 +1232,13 @@
     </scenes>
     <resources>
         <image name="add_button" width="611" height="610"/>
+        <image name="setlists" width="25" height="25"/>
         <image name="settings" width="22" height="22"/>
         <image name="songlist" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tx7-UJ-Hcc"/>
         <segue reference="o4p-6X-Fly"/>
+        <segue reference="bVd-Ne-Bis"/>
         <segue reference="6QF-7G-bKh"/>
     </inferredMetricsTieBreakers>
 </document>
