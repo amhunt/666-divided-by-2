@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title>Pitchslapp</title>
     <link rel="stylesheet" href="css/base.css"/>
-    <!-- <link rel="stylesheet" href="css/normalize.css"/> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
@@ -34,7 +33,18 @@
             <li> <label></label>
             <div id="login_err"></div>
             <input type="submit" id="login" name="login" value="Login" class="loginbutton"></li>
-
+          </ul>
+        <h3>Create New User:</h3>
+          <ul style="list-style-type:none">
+            <li> <label for="name_new">Name </label>
+            <input type="text" size="30" name="name_new" id="name_new"/> </li>
+            <li> <label for="email_new">Email </label>
+            <input type="text" size="30" name="email_new" id="email_new"/> </li>
+            <li> <label for="pw_new">Password </label>
+            <input type="password" size="30" name="pw_new" id="pw_new"/> </li>
+            <li> <label></label>
+            <div id="group_location"> </div>
+            <input type="submit" id="new_account" name="new_account" value="Create New Account" class="loginbutton"></li>
           </ul>
         </fieldset>
     <br>
@@ -53,7 +63,6 @@
       $(document).ready(function(){
         // $("#add_err").css('display', 'none', 'important');
         $('#login').click(function() {
-
           var email = $("#email").val();
           var password = $("#pw").val();
           var ref = new Firebase("https://popping-inferno-1963.firebaseio.com");
@@ -73,9 +82,59 @@
               user_ref.once("value", function(snapshot) {
                 var group_id = snapshot.val().groupid;
                 window.location.href ='songs.html?group=' + group_id;
-
               });
-              
+            }
+          });
+        });
+        $('#new_account').click(function() {
+          var name = $("#name_new").val();
+          var email = $("#email_new").val();
+          var password = $("#pw_new").val();
+          var ref = new Firebase("https://popping-inferno-1963.firebaseio.com");
+          ref.createUser({
+            "email": email,
+            "password": password
+          }, function(error, authData) {
+            if (error) { 
+              switch (error.code) {
+                case "EMAIL_TAKEN":
+                  $('#login_err').append('<div style="color:red">User already exists, email in use</div>');
+                  console.log("The new user account cannot be created because the email is already in use.");
+                  break;
+                case "INVALID_EMAIL":
+                  $('#login_err').append('<div style="color:red">Invalid Email Address</div>');
+                  console.log("The specified email is not a valid email.");
+                  break;
+                default:
+                  $('#login_err').append('<div style="color:red">Error Creating User</div>');
+                  console.log("Error creating user:", error);
+              }
+            } else {
+              console.log("Succesfully created user:", authData);
+              var user_uid = authData.uid;
+              // var obj = {};
+              // obj[user_uid] = {email: email, groupid: "", name: name};
+              // var user_ref = ref.child('users').update(obj);
+
+              ref.once("value", function(snapshot) {
+                var groups = snapshot.child("groups").val();
+                console.log(groups);
+                $("#group_location").append("<div>Choose A Group To Join</div>");
+                for (var key in groups) {
+                  var group = groups[key];
+                  $("#group_location").append('<div><input type="button" id="' + key + '" name="new_account" value="' + 
+                        group.name + ': ' + group.school + '" class="loginbutton"> </div>');
+                  var new_button = Document.getElementById(key);
+                  $("#"+key).click(function() {
+                    alert("clicked " + key);
+                    var obj = {};
+                    obj[user_uid] = {email: email, groupid: key, name: name};
+                    var user_ref = ref.child('users').update(obj);
+                    // window.location.href ='songs.html?group=' + the_group;
+                  });
+                  // $("#group_location").append("<div><a href=songs.html?group=" + key + ">" + group.name + ": " + group.school + "</a> </div>");
+                }
+              });
             }
           });
 
