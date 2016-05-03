@@ -55,7 +55,7 @@
     <!-- <input style="text-align:center" type='text' id='schoolInput' placeholder='School Name'> -->
     <br>
     <br>
-    <div style="text-align:center">© 2016</div>
+    <div style="text-align:center">© 2016 Andrew Hunt, Caroline Congdon, Zachary Stecker</div>
     <ul id="records"></ul>
     <div id="content"></div> 
     <script type="text/babel">
@@ -78,11 +78,7 @@
               console.log("Authenticated successfully with user:", authData);
               // var user_uid = authData;
               var user_uid = authData.uid;
-              var user_ref = ref.child('users').child(user_uid);
-              user_ref.once("value", function(snapshot) {
-                var group_id = snapshot.val().groupid;
-                window.location.href ='songs.html?group=' + group_id;
-              });
+              window.location.href ='songs.html?user=' + user_uid + "&";
             }
           });
         });
@@ -112,9 +108,6 @@
             } else {
               console.log("Succesfully created user:", authData);
               var user_uid = authData.uid;
-              // var obj = {};
-              // obj[user_uid] = {email: email, groupid: "", name: name};
-              // var user_ref = ref.child('users').update(obj);
 
               ref.once("value", function(snapshot) {
                 var groups = snapshot.child("groups").val();
@@ -130,11 +123,10 @@
                     $("#"+my_group).click(function() {
                       alert("clicked " + my_group);
                       var obj = {};
-                      obj[user_uid] = {email: email, groupid: my_group, name: name};
+                      obj[user_uid] = {email: email, groupid: my_group, name: name, status:"pending"};
                       var user_ref = ref.child('users').update(obj);
-                      window.location.href ='songs.html?group=' + my_group;
+                      window.location.href ='songs.html?user=' + user_uid + "&";
                     });
-
                   })();
                 }
               });
