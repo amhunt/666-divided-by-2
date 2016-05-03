@@ -41,13 +41,21 @@ class SetlistTableViewController: UITableViewController {
     ]
 
     override func viewWillAppear(animated: Bool) {
+       
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.navigationItem.title = setlist.name
         
         let songIdsRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id).childByAppendingPath("songIds")
         
-        var newSongs = [SongItem]()
+        
         
         songIdsRef.observeEventType(.Value, withBlock: {snapshot in
+            var newSongs = [SongItem]()
             for item in snapshot.children {
                 let songId = (item as! FDataSnapshot).value as! String
                 self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(songId).observeSingleEventOfType(.Value, withBlock: { songData in
@@ -59,11 +67,6 @@ class SetlistTableViewController: UITableViewController {
                 })
             }
         })
-    }
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -161,26 +164,17 @@ class SetlistTableViewController: UITableViewController {
         let songToMove = setlist.songIds[fromIndexPath.row]
         setlist.songIds.removeAtIndex(fromIndexPath.row)
         setlist.songIds.insert(songToMove, atIndex: toIndexPath.row)
-
+        
+        let setlistRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id)
+        setlistRef.childByAppendingPath("songIds").setValue(setlist.songIds)
+        
     }
 
 
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let setlistRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id)
-        setlistRef.childByAppendingPath("songIds").setValue(setlist.songIds)
 
         if segue.identifier == "ShowSong" {
             let destination = segue.destinationViewController as! SongInfoViewController
@@ -197,8 +191,7 @@ class SetlistTableViewController: UITableViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        let setlistRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id)
-        setlistRef.childByAppendingPath("songIds").setValue(setlist.songIds)
+        
     }
 
 }
