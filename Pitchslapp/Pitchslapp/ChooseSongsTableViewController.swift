@@ -27,7 +27,9 @@ class ChooseSongsTableViewController: UITableViewController {
                 if snapshot.hasChild("tags") {
                     songItem.tags = snapshot.valueForKey("tags") as! [String]
                 }
-                newSongs.append(songItem)
+                if self.setlist.songIds.contains(songItem.id) != true {
+                    newSongs.append(songItem)
+                }
             }
             
             self.songs = newSongs

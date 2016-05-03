@@ -62,11 +62,17 @@ class SetlistTableViewController: UITableViewController {
                 let songId = (item as! FDataSnapshot).value as! String
                 newSongIds.append(songId)
                 self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(songId).observeSingleEventOfType(.Value, withBlock: { songData in
-                    let songItem = SongItem(snapshot: songData as FDataSnapshot)
                     
-                    newSongs.append(songItem)
-                    self.songs = newSongs
-                    self.tableView.reloadData()
+                    if songData.value is NSNull {
+                        
+                    } else {
+                        let songItem = SongItem(snapshot: songData as FDataSnapshot)
+                        
+                        newSongs.append(songItem)
+                        self.songs = newSongs
+                        self.tableView.reloadData()
+                    }
+                    
                 })
                 self.setlist.songIds = newSongIds
             }

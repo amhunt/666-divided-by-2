@@ -11,12 +11,21 @@ import Firebase
 import Foundation
 import AVFoundation
 
+extension SongsTableViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
 class SongsTableViewController: UITableViewController {
     var myRootRef = Firebase(url:"https://popping-inferno-1963.firebaseio.com")
     var songs = [SongItem]()
     var user: User!
     var groupKey: String?
     var player: AVAudioPlayer!
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredSongs = [SongItem]()
     
     let pitchDict = [
         "A":"A",
@@ -37,6 +46,13 @@ class SongsTableViewController: UITableViewController {
         "Gb":"F#",
         "G#":"Ab"
     ]
+    
+    override func viewDidLoad() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+    }
     
     override func viewWillAppear(animated: Bool) {
         myRootRef.observeAuthEventWithBlock { (authData) in
@@ -84,13 +100,22 @@ class SongsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active && searchController.searchBar.text != "" {
+            return filteredSongs.count
+        }
         return songs.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell", forIndexPath: indexPath) as! SongTableViewCell
 
-        let songItem = songs[indexPath.row]
+        let songItem: SongItem
+        
+        if searchController.active && searchController.searchBar.text != "" {
+            songItem = filteredSongs[indexPath.row]
+        } else {
+            songItem = songs[indexPath.row]
+        }
         
         cell.titleLabel?.text = songItem.name
         cell.soloLabel?.text = songItem.soloist
@@ -101,7 +126,15 @@ class SongsTableViewController: UITableViewController {
     
     // swipe actions for pitch and delete
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let pitchText = songs[indexPath.row].key as String
+        let songItem: SongItem
+        if self.searchController.active && self.searchController.searchBar.text != "" {
+            songItem = self.filteredSongs[indexPath.row]
+        } else {
+            songItem = self.songs[indexPath.row]
+        }
+        
+        // swipe for pitch
+        let pitchText = songItem.key as String
         let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
             let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
             let url = NSURL(fileURLWithPath: path)
@@ -124,11 +157,15 @@ class SongsTableViewController: UITableViewController {
             }
         }
         pitch.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+        
+        // swipe for delete
         let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
-            let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + self.songs[indexPath.row].name + "?", preferredStyle: .Alert)
+            let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + songItem.name + "?", preferredStyle: .Alert)
             let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
-                let songItem = self.songs[indexPath.row]
                 songItem.ref?.removeValue()
+                if self.searchController.active && self.searchController.searchBar.text != "" {
+                    self.filteredSongs.removeAtIndex(index.row)
+                }
                 self.tableView.reloadData()
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
@@ -189,11 +226,24 @@ class SongsTableViewController: UITableViewController {
             completion: nil)
     }
     
+    
+    // update view based on search
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredSongs = songs.filter { song in
+            return song.name.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        tableView.reloadData()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowSong" {
             let destination = segue.destinationViewController as! SongInfoViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            destination.song = songs[indexPath.row]
+            if searchController.active && searchController.searchBar.text != "" {
+                destination.song = filteredSongs[indexPath.row]
+            } else {
+                destination.song = songs[indexPath.row]
+            }
             destination.groupKey = groupKey!
         }
         else if segue.identifier == "ShowSettings" {
