@@ -23,37 +23,62 @@
   </head>
   <body style="text-align: left; background-color: #ffffff; color: #77218d">
     <h1>Pitchslapp</h1>
-    <div class="login">
-        <h3>Login:</h3>
-          <ul style="list-style-type:none">
-            <li> <label for="email">Email </label>
-            <input type="text" size="30" name="email" id="email"/> </li>
-            <li> <label for="pw">Password </label>
-            <input type="password" size="30" name="pw" id="pw"/> </li>
-            <li> <label></label>
-            <div id="login_err"></div>
-            <input type="submit" id="login" name="login" value="Login" class="loginbutton"></li>
-          </ul>
-        <h3>Create New User:</h3>
-          <ul style="list-style-type:none">
-            <li> <label for="name_new">Name </label>
-            <input type="text" size="30" name="name_new" id="name_new"/> </li>
-            <li> <label for="email_new">Email </label>
-            <input type="text" size="30" name="email_new" id="email_new"/> </li>
-            <li> <label for="pw_new">Password </label>
-            <input type="password" size="30" name="pw_new" id="pw_new"/> </li>
-            <li> <label></label>
-            <div id="group_location"> </div>
-            <input type="submit" id="new_account" name="new_account" value="Create New Account" class="loginbutton"></li>
-            <div id="group_creator_location"> </div>
-          </ul>
-        </fieldset>
+    <div class="login" id="login_tables">
+      <h3>Login:</h3>
+      <table width="50%" style="border-collapse:collapse;">
+        <tbody>
+          <td>
+            Email
+          </td>
+          <td>
+            <input type="text" size="30" name="email" id="email"/>
+          </td>
+        </tbody>
+        <tbody>
+          <td>
+            Password
+          </td>
+          <td>
+            <input type="password" size="30" name="pw" id="pw"/>
+          </td>
+        </tbody>
+      </table>
+      <div id="login_err"></div>
+      <input type="submit" id="login" name="login" value="Login" class="loginbutton">
+      <br>
+      <br>
+      <h3>Create New User:</h3>
+      <table width="50%" style="border-collapse:collapse;">
+        <tbody>
+          <td>
+            Name
+          </td>
+          <td>
+            <input type="text" size="30" name="name_new" id="name_new"/>
+          </td>
+        </tbody>
+        <tbody>
+          <td>
+            Email
+          </td>
+          <td>
+            <input type="text" size="30" name="email_new" id="email_new"/>
+          </td>
+        </tbody>
+        <tbody>
+          <td>
+            Password
+          </td>
+          <td>
+            <input type="password" size="30" name="pw_new" id="pw_new"/>
+          </td>
+        </tbody>
+      </table>
+    </div>
+    <div id="group_location"> </div>
+    <input type="submit" id="new_account" name="new_account" value="Create New Account" class="loginbutton"></li>
+    <div id="group_creator_location"> </div>
     <br>
-    <!-- <h2>Available Groups</h2>        -->
-    <!-- <h3>Create a new group:</h3> -->
-    <!-- <input style="text-align:center" type='text' id='nameInput' placeholder='Group Name'> -->
-    <!-- <br> -->
-    <!-- <input style="text-align:center" type='text' id='schoolInput' placeholder='School Name'> -->
     <br>
     <br>
     <div style="text-align:center">© 2016 Andrew Hunt, Caroline Congdon, Zachary Stecker</div>
@@ -63,7 +88,7 @@
       var ref = new Firebase("https://popping-inferno-1963.firebaseio.com/groups");
       $(document).ready(function(){
         // $("#add_err").css('display', 'none', 'important');
-        $('#login').click(function() {
+        function login() {
           var email = $("#email").val();
           var password = $("#pw").val();
           var ref = new Firebase("https://popping-inferno-1963.firebaseio.com");
@@ -82,8 +107,8 @@
               window.location.href ='songs.html?user=' + user_uid + "&";
             }
           });
-        });
-        $('#new_account').click(function() {
+        }
+        function create_user() {
           var name = $("#name_new").val();
           var email = $("#email_new").val();
           var password = $("#pw_new").val();
@@ -113,12 +138,13 @@
               ref.once("value", function(snapshot) {
                 var groups = snapshot.child("groups").val();
                 console.log(groups);
-                $("#group_location").append("<br><div><h4>Choose A Group To Join</h4></div>");
+                $("#login_tables").remove();
+                $("$new_account").remove();
+                $("#group_location").append("<br><div><h3>Choose A Group To Join</h3></div>");
                 for (var key in groups) {
                   var group = groups[key];
                   $("#group_location").append('<div><input type="button" id="' + key + '" name="new_account" value="' + 
                         group.name + ': ' + group.school + '" class="loginbutton"> </div>');
-                  // var new_button = Document.getElementById(key);
                   (function() {
                     var my_group = key;
                     $("#"+my_group).click(function() {
@@ -137,6 +163,18 @@
               
             }
           });
+        }
+        $('#login').click(login);
+        $('#pw').keypress(function (e) {
+          if (e.keyCode == 13) {
+            login();
+          }
+        });
+        $('#new_account').click(create_user);
+        $('#pw_new').keypress(function (e) {
+          if (e.keyCode == 13) {
+            create_user();
+          }
         });
       });
       $('#schoolInput').keypress(function (e) {
