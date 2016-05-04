@@ -76,7 +76,7 @@
       </table>
     </div>
     <div id="group_location"> </div>
-    <input type="submit" id="new_account" name="new_account" value="Create New Account" class="loginbutton"></li>
+    <input type="submit" id="new_account" value="Create New Account" class="loginbutton"></li>
     <div id="group_creator_location"> </div>
     <br>
     <br>
@@ -143,7 +143,7 @@
                 $("#group_location").append("<br><div><h3>Choose A Group To Join</h3></div>");
                 for (var key in groups) {
                   var group = groups[key];
-                  $("#group_location").append('<div><input type="button" id="' + key + '" name="new_account" value="' + 
+                  $("#group_location").append('<div><input type="button" id="' + key + '" value="' + 
                         group.name + ': ' + group.school + '" class="loginbutton"> </div>');
                   (function() {
                     var my_group = key;
