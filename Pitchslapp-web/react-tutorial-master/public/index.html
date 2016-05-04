@@ -139,7 +139,7 @@
                 var groups = snapshot.child("groups").val();
                 console.log(groups);
                 $("#login_tables").remove();
-                $("$new_account").remove();
+                $("#new_account").remove();
                 $("#group_location").append("<br><div><h3>Choose A Group To Join</h3></div>");
                 for (var key in groups) {
                   var group = groups[key];
