@@ -122,10 +122,12 @@
                   (function() {
                     var my_group = key;
                     $("#"+my_group).click(function() {
-                      alert("clicked " + my_group);
                       var obj = {};
                       obj[user_uid] = {email: email, groupid: my_group, name: name, status:"pending"};
                       var user_ref = ref.child('users').update(obj);
+                      obj = {};
+                      obj[user_uid] = "pending";
+                      ref.child("groups").child(my_group).child("members").update(obj);
                       window.location.href ='songs.html?user=' + user_uid + "&";
                     });
                   })();

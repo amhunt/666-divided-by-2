@@ -123,21 +123,21 @@
               var gen_ref = new Firebase("https://popping-inferno-1963.firebaseio.com/");
               var user_ref = gen_ref.child("users").child(key);
               user_ref.once("value", function(data) {
-                $('#pending_members').append("<div><p>" + data.val().name + ": "+data.val().email +'<input type="button" id="' + key + 
-                  '" value="Approve" class="loginbutton">' +  "</p><div>");
+                $('#pending_members').append("<div id='d"+ key +"'><p>" + data.val().name + ": "+data.val().email +'  <input type="button" id="' + key + '" value="Approve" class="loginbutton">' +  "</p><div>");
                 (function() {
                   var my_user = key;
                   $("#"+my_user).click(function() {
-                    gen_ref.child('users').child(my_user).update({"status":"member"});
-                    var obj2 = {};
-                    obj2[my_user] = "member";
-                    members_ref.update(obj2);
+                    console.log("removing " + my_user);
+                    gen_ref.child('users').child(my_user).child("status").set("member");
+                    members_ref.child(my_user).set("member");
+                    $("#d"+my_user).remove();
                   });
                 })();
               });
             }
           }
         });
+        
 
         var pdfUrl = "";
 
@@ -212,7 +212,6 @@
 
             document.getElementById(id).onclick = function() {deleteSong(id)};
             $('#accordion')[0].scrollTop = $('#accordion')[0].scrollHeight;
-            
           });
 
           $(function() {
