@@ -73,8 +73,12 @@ class GroupPickerTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedGroup = groups[indexPath.row]
         user = User(uid: user.uid, email: user.email, group: selectedGroup.uid, name: user.name, status: "pending")
+        
+        // add user to database with groupid and pending flag
         ref.childByAppendingPath("users").childByAppendingPath(user.uid).setValue(user.toAnyObject())
-        // TODO: add user id to list of users in group
+        
+        // add user to list of members in group with pending flag
+        ref.childByAppendingPath("groups").childByAppendingPath(selectedGroup.uid).childByAppendingPath(user.uid).setValue("pending")
         
     }
 
@@ -89,9 +93,15 @@ class GroupPickerTableViewController: UITableViewController {
             let schoolField = alert.textFields![1] as UITextField
             let newGroupRef = self.ref.childByAppendingPath("groups").childByAutoId()
             newGroupRef.setValue(["name":nameField.text!, "school":schoolField.text!])
+            
             // create new group's members array, initializing it with the first member's info and status
             newGroupRef.childByAppendingPath("members").setValue([self.user.uid : "member"])
-            self.tableView.reloadData()
+                
+            // add user to database
+            self.user = User(uid: self.user.uid, email: self.user.email, group: newGroupRef.key, name: nameField.text!, status: "member")
+            self.ref.childByAppendingPath("users").childByAppendingPath(self.user.uid).setValue(self.user.toAnyObject())
+                
+            self.performSegueWithIdentifier("ChoseNewGroup", sender: nil)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",

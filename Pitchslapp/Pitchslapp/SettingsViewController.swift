@@ -27,7 +27,7 @@ class SettingsViewController: UITableViewController {
         
         ref.childByAppendingPath("groups").childByAppendingPath(user.groupKey).observeSingleEventOfType(.Value, withBlock: {
             snapshot in
-            self.groupNameLabel.text = snapshot.value["name"] as! String
+            self.groupNameLabel.text = (snapshot.value["name"] as! String)
             
         })
         

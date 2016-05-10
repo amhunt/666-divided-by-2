@@ -21,6 +21,13 @@ class PitchesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // play with mute switch on
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print("audio error")
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

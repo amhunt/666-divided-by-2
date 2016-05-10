@@ -57,6 +57,13 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
             showPdfButton.enabled = false
             showPdfButton.backgroundColor = UIColor.lightGrayColor()
         }
+        
+        // play with mute switch on
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print("audio error")
+        }
     }
     
     // MARK: - Refresh functions (for view and Firebase)
@@ -79,7 +86,7 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
         let pitchText = song.key as String
         let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
         let url = NSURL(fileURLWithPath: path)
-        let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Make sure your volume switch is on!", preferredStyle: .Alert)
+        let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Tap below to stop the pitch.", preferredStyle: .Alert)
         let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
             if self.player != nil {
                 self.player.stop()
