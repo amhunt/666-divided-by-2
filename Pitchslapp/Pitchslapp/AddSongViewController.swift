@@ -64,7 +64,6 @@ class AddSongViewController: FormViewController {
         let alert = UIAlertController(title: "Don't save?", message: "Are you sure you don't want to save this song?", preferredStyle: .Alert)
         
         let continueAction = UIAlertAction(title: "Keep working", style: .Default) { (action: UIAlertAction!) -> Void in
-            
         }
         
         let cancelAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
@@ -74,7 +73,13 @@ class AddSongViewController: FormViewController {
         alert.addAction(cancelAction)
         alert.addAction(continueAction)
         
-        presentViewController(alert, animated: true, completion: nil)
+        let formValues = self.form.formValues()
+        
+        if (formValues.valueForKey("title") is NSNull) && (formValues.valueForKey("soloist") is NSNull) && (formValues.valueForKey("tags") is NSNull) {
+            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     private func loadForm() {

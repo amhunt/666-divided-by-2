@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
         
         alert.addTextFieldWithConfigurationHandler {
             (textName) -> Void in
-            textName.placeholder = "Enter Your name"
+            textName.placeholder = "Enter your name"
         }
         
         alert.addTextFieldWithConfigurationHandler {

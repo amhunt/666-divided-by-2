@@ -50,6 +50,13 @@ class SetlistTableViewController: UITableViewController {
         
         self.navigationItem.title = setlist.name
         
+        // play with mute switch on
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print("audio error")
+        }
+        
         let songIdsRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id).childByAppendingPath("songIds")
         
         // monitor list of song ids in the setlist
@@ -147,7 +154,7 @@ class SetlistTableViewController: UITableViewController {
         let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
             let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
             let url = NSURL(fileURLWithPath: path)
-            let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Make sure your volume switch is on!", preferredStyle: .Alert)
+            let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Tap below to stop the pitch.", preferredStyle: .Alert)
             let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
                 if self.player != nil {
                     self.player.stop()
