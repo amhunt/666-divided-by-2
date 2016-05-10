@@ -1,1 +1,0 @@
-../../../DBChooser/DBChooser/UI/DBCStyledErrorView.h
