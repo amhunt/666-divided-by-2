@@ -13,6 +13,10 @@ import Firebase
 class LoginViewController: UIViewController {
     
     let ref = Firebase(url: "https://popping-inferno-1963.firebaseio.com")
+    
+    var groupKey: String?
+    
+    var newName: String?
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -20,12 +24,21 @@ class LoginViewController: UIViewController {
     func checkIfUserExists(authData: FAuthData) -> Void {
         let usersRef = ref.childByAppendingPath("users")
         usersRef.childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
-            if snapshot.value["login"] != nil {
-                self.performSegueWithIdentifier("LoginSegue", sender: nil)
-            } else {
+            // user is new
+            if snapshot.value is NSNull {
                 let email = authData.providerData["email"] as! String
-                self.ref.childByAppendingPath("users").childByAppendingPath(authData.uid).setValue(["login":email])
+                self.ref.childByAppendingPath("users").childByAppendingPath(authData.uid).setValue(["login":email, "name":self.newName!])
                 self.performSegueWithIdentifier("PickGroup", sender: nil)
+            }
+            // user's status is still pending
+            else if snapshot.value["status"] as! String == "pending" {
+                self.groupKey = (snapshot.value["groupid"] as! String)
+                self.performSegueWithIdentifier("Pending", sender: nil)
+            }
+            // user exists and is approved
+            else {
+                print("gonna log in")
+                self.performSegueWithIdentifier("LoginSegue", sender: nil)
             }
         })
         
@@ -34,6 +47,8 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         emailTextField.autocorrectionType = UITextAutocorrectionType.No
+        
+//        ref.unauth()
         
         ref.observeAuthEventWithBlock { (authData) -> Void in
             if authData != nil {
@@ -64,13 +79,17 @@ class LoginViewController: UIViewController {
                 
                 self.emailTextField.text = emailField.text
                 
+                
                 self.ref.createUser(emailField.text, password: passwordField.text) { (error: NSError!) in
                     if error == nil {
                         self.ref.authUser(emailField.text, password: passwordField.text,
                             withCompletionBlock: { (error, auth) -> Void in
+                                self.newName = nameField.text
                         })
                     }
                 }
+                
+                
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
@@ -109,6 +128,13 @@ class LoginViewController: UIViewController {
             animated: true,
             completion: nil)
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Pending" {
+            let destination = segue.destinationViewController as! PendingGroupViewController
+            destination.groupKey = groupKey!
+        }
     }
     
 }

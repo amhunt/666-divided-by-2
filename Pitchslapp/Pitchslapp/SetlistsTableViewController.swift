@@ -46,6 +46,7 @@ class SetlistsTableViewController: UITableViewController {
                         }
                         
                         self.setlists = newSetlists
+                        self.setlists.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
                         self.tableView.reloadData()
                         
                         }, withCancelBlock: { error in
@@ -132,42 +133,25 @@ class SetlistsTableViewController: UITableViewController {
                               completion: nil)
 
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let setlist = self.setlists[indexPath.row]
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
+            let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + setlist.name + "?", preferredStyle: .Alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
+                self.ref.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id).removeValue()
+                self.tableView.reloadData()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
+                self.tableView.editing = false
+            }
+            confirmDeleteAlert.addAction(cancelAction)
+            confirmDeleteAlert.addAction(deleteAction)
+            self.presentViewController(confirmDeleteAlert, animated: true, completion: nil)
+        }
+        return [delete]
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     
     // MARK: - Navigation
 
@@ -175,11 +159,13 @@ class SetlistsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let destination = segue.destinationViewController as! SetlistTableViewController
-        destination.groupKey = self.groupKey
-        
-        let indexPath = self.tableView.indexPathForSelectedRow!
-        destination.setlist = self.setlists[indexPath.row]
+        if (segue.identifier == "ShowSetlist") {
+            let destination = segue.destinationViewController as! SetlistTableViewController
+            destination.groupKey = self.groupKey
+            
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            destination.setlist = self.setlists[indexPath.row]
+        }
     }
     
 

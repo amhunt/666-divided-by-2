@@ -7,14 +7,40 @@
 //
 
 import UIKit
+import Firebase
 
 class PendingGroupViewController: UITableViewController {
 
     @IBOutlet weak var groupNameLabel: UILabel!
-    var group: Group!
+    var groupKey: String!
+    
+    var status: String!
+    
+    let ref = Firebase(url: "https://popping-inferno-1963.firebaseio.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        status = "pending"
+        
+        ref.childByAppendingPath("groups").childByAppendingPath(self.groupKey).observeSingleEventOfType(.Value, withBlock: {
+            snapshot in
+            self.groupNameLabel.text = (snapshot.value["name"] as! String)
+        })
+        
+        ref.observeAuthEventWithBlock { (authData) in
+            if authData != nil {
+                let user = User(authData: authData)
+                self.ref.childByAppendingPath("users").childByAppendingPath(user.uid).observeEventType(.Value, withBlock: {snapshot in
+                    self.status = snapshot.value["status"] as! String
+                    
+                    if self.status == "member" {
+                        self.performSegueWithIdentifier("MemberApproved", sender: nil)
+                    }
+                    
+                })
+            }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

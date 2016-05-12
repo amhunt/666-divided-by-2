@@ -15,6 +15,9 @@ class GroupPickerTableViewController: UITableViewController {
     var ref = Firebase(url:"https://popping-inferno-1963.firebaseio.com")
     var groups = [Group]()
     var user: User!
+    var userId: String!
+    var userEmail: String!
+    var userName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +43,13 @@ class GroupPickerTableViewController: UITableViewController {
         
         ref.observeAuthEventWithBlock { (authData) in
             if authData != nil {
-                self.user = User(authData: authData)
+                let tempUser = User(authData: authData)
+                self.userId = tempUser.uid
+                self.userEmail = tempUser.email
+                self.ref.childByAppendingPath("users").childByAppendingPath(self.userId).observeSingleEventOfType(.Value, withBlock: {
+                    snapshot in
+                    self.userName = snapshot.value["name"] as! String
+                })
             } else {
                 self.performSegueWithIdentifier("LogoutSegue", sender: nil)
             }
@@ -72,13 +81,13 @@ class GroupPickerTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedGroup = groups[indexPath.row]
-        user = User(uid: user.uid, email: user.email, group: selectedGroup.uid, name: user.name, status: "pending")
+        user = User(uid: userId, email: userEmail, group: selectedGroup.uid, name: userName, status: "pending")
         
         // add user to database with groupid and pending flag
         ref.childByAppendingPath("users").childByAppendingPath(user.uid).setValue(user.toAnyObject())
         
-        // add user to list of members in group with pending flag
-        ref.childByAppendingPath("groups").childByAppendingPath(selectedGroup.uid).childByAppendingPath(user.uid).setValue("pending")
+        // add user to list of members for the group
+        ref.childByAppendingPath("groups").childByAppendingPath(selectedGroup.uid).childByAppendingPath("members").childByAppendingPath(user.uid).setValue("pending")
         
     }
 
@@ -95,10 +104,10 @@ class GroupPickerTableViewController: UITableViewController {
             newGroupRef.setValue(["name":nameField.text!, "school":schoolField.text!])
             
             // create new group's members array, initializing it with the first member's info and status
-            newGroupRef.childByAppendingPath("members").setValue([self.user.uid : "member"])
+            newGroupRef.childByAppendingPath("members").setValue([self.userId : "member"])
                 
             // add user to database
-            self.user = User(uid: self.user.uid, email: self.user.email, group: newGroupRef.key, name: nameField.text!, status: "member")
+            self.user = User(uid: self.userId, email: self.userEmail, group: newGroupRef.key, name: self.userName, status: "member")
             self.ref.childByAppendingPath("users").childByAppendingPath(self.user.uid).setValue(self.user.toAnyObject())
                 
             self.performSegueWithIdentifier("ChoseNewGroup", sender: nil)
@@ -134,7 +143,7 @@ class GroupPickerTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "ChoseExistingGroup" {
             let destination = segue.destinationViewController as! PendingGroupViewController
-            destination.group = self.groups[(self.tableView.indexPathForSelectedRow?.row)!]
+            destination.groupKey = self.groups[(self.tableView.indexPathForSelectedRow?.row)!].uid
         }
         else if segue.identifier == "ChoseNewGroup" {
             

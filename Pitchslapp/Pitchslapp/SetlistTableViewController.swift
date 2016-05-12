@@ -71,7 +71,7 @@ class SetlistTableViewController: UITableViewController {
                 self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(songId).observeSingleEventOfType(.Value, withBlock: { songData in
                     
                     if songData.value is NSNull {
-                        
+                        // TODO: clean out dead references
                     } else {
                         let songItem = SongItem(snapshot: songData as FDataSnapshot)
                         

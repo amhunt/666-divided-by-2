@@ -29,6 +29,7 @@
 		DA7190461CA9847D00FEDE0D /* PitchslappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190451CA9847D00FEDE0D /* PitchslappTests.swift */; };
 		DA7190511CA9847D00FEDE0D /* PitchslappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */; };
 		DA859BB31CAE119D00F5CD3C /* Pitches in Resources */ = {isa = PBXBuildFile; fileRef = DA859BB21CAE119D00F5CD3C /* Pitches */; };
+		DA954D201CE4D4AD00D39194 /* GroupMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA954D1F1CE4D4AD00D39194 /* GroupMembersTableViewController.swift */; };
 		DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */; };
 		DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */; };
 		DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502C1CAB1348003DFF24 /* SongItem.swift */; };
@@ -86,6 +87,7 @@
 		DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappUITests.swift; sourceTree = "<group>"; };
 		DA7190521CA9847D00FEDE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA859BB21CAE119D00F5CD3C /* Pitches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pitches; sourceTree = "<group>"; };
+		DA954D1F1CE4D4AD00D39194 /* GroupMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewController.swift; sourceTree = "<group>"; };
 		DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSongViewController.swift; sourceTree = "<group>"; };
 		DADF0D4C1CB7469B009456CC /* Pitchslapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pitchslapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				DA53FC591CC0798A003AC1F7 /* PendingGroupViewController.swift */,
 				DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */,
 				DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */,
+				DA954D1F1CE4D4AD00D39194 /* GroupMembersTableViewController.swift */,
 			);
 			name = LoginFlow;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				DAFDCAE01CADBDEF005DDB64 /* Group.swift in Sources */,
 				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
 				DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */,
+				DA954D201CE4D4AD00D39194 /* GroupMembersTableViewController.swift in Sources */,
 				DAF583491CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift in Sources */,
 				DAF5834D1CD93F1500CE7A6A /* PitchTableViewCell.swift in Sources */,
 				DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */,

@@ -66,4 +66,11 @@ class SettingsViewController: UITableViewController {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowMembers" {
+            let destination = segue.destinationViewController as! GroupMembersTableViewController
+            destination.groupKey = user.groupKey
+        }
+    }
+    
 }
