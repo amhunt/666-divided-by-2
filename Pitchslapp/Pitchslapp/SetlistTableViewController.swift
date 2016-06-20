@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import Firebase
 import AVFoundation
+import ZAlertView
 
 class SetlistTableViewController: UITableViewController {
 
@@ -18,7 +19,13 @@ class SetlistTableViewController: UITableViewController {
     var user: User!
     var setlist: Setlist!
     var groupKey: String?
-    var player: AVAudioPlayer!
+    
+    var pitchPlayer: PitchPlayer!
+    var currentPitch: String?
+    var pitchView: PitchView!
+    var longPressRecognizer: UILongPressGestureRecognizer!
+    
+    var watchEvent: UInt?
     
     let pitchDict = [
         "A":"A",
@@ -32,7 +39,7 @@ class SetlistTableViewController: UITableViewController {
         "Db":"C#",
         "D#":"Eb",
         "Eb":"Eb",
-        "E":"EHigh",
+        "E":"E",
         "F":"F",
         "F#":"F#",
         "G":"G",
@@ -41,26 +48,12 @@ class SetlistTableViewController: UITableViewController {
     ]
 
     override func viewWillAppear(animated: Bool) {
-       
-    }
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationItem.title = setlist.name
-        
-        // play with mute switch on
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        } catch {
-            print("audio error")
-        }
+        pitchPlayer.changeOctave()
         
         let songIdsRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id).childByAppendingPath("songIds")
         
         // monitor list of song ids in the setlist
-        songIdsRef.observeEventType(.Value, withBlock: {snapshot in
+        watchEvent = songIdsRef.observeEventType(.Value, withBlock: {snapshot in
             var newSongs = [SongItem]()
             var newSongIds = [String]()
             // for each song id in the setlist, look up the song data and add it to the
@@ -84,14 +77,39 @@ class SetlistTableViewController: UITableViewController {
                 self.setlist.songIds = newSongIds
             }
         })
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.title = setlist.name
+        
+        // set up pitch gesture
+        longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(SetlistTableViewController.longPress(_:)))
+        longPressRecognizer.minimumPressDuration = 0.3
+        self.view.addGestureRecognizer(longPressRecognizer)
+        pitchPlayer = PitchPlayer()
+        
+        pitchView = PitchView(frame: self.view.frame)
+        
+        // play with mute switch on
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print("audio error")
+        }
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        let songIdsRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id).childByAppendingPath("songIds")
+        if watchEvent != nil {
+            songIdsRef.removeObserverWithHandle(watchEvent!)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -122,25 +140,22 @@ class SetlistTableViewController: UITableViewController {
         
         return cell
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        if editing {
+            self.view.removeGestureRecognizer(longPressRecognizer)
+        } else {
+            self.view.addGestureRecognizer(longPressRecognizer)
+        }
+        super.setEditing(editing, animated: animated)
     }
-    */
 
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             setlist.songIds.removeAtIndex(indexPath.row)
-
-            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -148,31 +163,6 @@ class SetlistTableViewController: UITableViewController {
     
     // swipe actions for pitch and delete
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        
-        // pitch-play swipe action
-        let pitchText = songs[indexPath.row].key as String
-        let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
-            let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
-            let url = NSURL(fileURLWithPath: path)
-            let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Tap below to stop the pitch.", preferredStyle: .Alert)
-            let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
-                if self.player != nil {
-                    self.player.stop()
-                    self.player = nil
-                }
-                self.tableView.editing = false
-            }
-            stopAlert.addAction(stopAction)
-            do {
-                let sound = try AVAudioPlayer(contentsOfURL: url)
-                self.player = sound
-                sound.play()
-                self.presentViewController(stopAlert, animated: true, completion: nil)
-            } catch {
-                // couldn't load file :(
-            }
-        }
-        pitch.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
         
         // remove song swipe action
         let delete = UITableViewRowAction(style: .Destructive, title: "Remove") {action, index in
@@ -182,23 +172,54 @@ class SetlistTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
         
-
-        return [pitch, delete]
+        return [delete]
     }
 
     
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         
-        let songToMove = setlist.songIds[fromIndexPath.row]
-        setlist.songIds.removeAtIndex(fromIndexPath.row)
-        setlist.songIds.insert(songToMove, atIndex: toIndexPath.row)
+        var idsOfSongsInView = [String]()
+        for song in songs {
+            idsOfSongsInView.append(song.id)
+        }
+        
+        let songIdToMove = idsOfSongsInView[fromIndexPath.row]
+        idsOfSongsInView.removeAtIndex(fromIndexPath.row)
+        idsOfSongsInView.insert(songIdToMove, atIndex: toIndexPath.row)
+        
+        setlist.songIds = idsOfSongsInView
         
         let setlistRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id)
         setlistRef.childByAppendingPath("songIds").setValue(setlist.songIds)
         
     }
+    
+    func longPress(longPressRecognizer: UILongPressGestureRecognizer) {
+        let touchPoint = longPressRecognizer.locationInView(self.view)
 
+        if longPressRecognizer.state == .Began {
+            if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
+                
+                let pitchText = songs[indexPath.row].key
+                currentPitch = self.pitchDict[pitchText]!
+                pitchPlayer.play(self.pitchDict[pitchText]!)
+                tableView.cellForRowAtIndexPath(indexPath)?.selected = true
+                pitchView.showInView(self.tabBarController?.view, withMessage: pitchText, animated: true)
+            }
+        }
+        
+        if longPressRecognizer.state == .Ended {
+            if currentPitch != nil {
+                pitchPlayer.stop(currentPitch!)
+            }
+            let visibleRows = tableView.indexPathsForVisibleRows
+            for row in visibleRows! {
+                tableView.cellForRowAtIndexPath(row)?.selected = false
+            }
+            pitchView.removeFromView()
+        }
+}
 
     // MARK: - Navigation
 

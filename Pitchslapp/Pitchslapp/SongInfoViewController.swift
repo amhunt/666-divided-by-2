@@ -11,7 +11,8 @@ import Firebase
 import DBChooser
 import TagListView
 import AVFoundation
-import ActionSheetPicker_3_0
+import ZAlertView
+import NVActivityIndicatorView
 
 class SongInfoViewController: UITableViewController, TagListViewDelegate {
     
@@ -19,8 +20,15 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     var groupKey: String!
     var player: AVAudioPlayer!
     
+    var pitchPlayer: PitchPlayer!
+    var currentPitch: String?
+    var pitchView: PitchView!
+    var activityView: NVActivityIndicatorView!
+    
+    var songRefEvent: UInt?
+    
     let pitchDict = ["A":"A", "A#":"Bb", "Ab":"Ab", "B":"B", "Bb":"Bb",
-        "C":"C", "C#":"C#", "D":"D", "Db":"C#", "D#":"Eb", "Eb":"Eb", "E":"EHigh",
+        "C":"C", "C#":"C#", "D":"D", "Db":"C#", "D#":"Eb", "Eb":"Eb", "E":"E",
         "F":"F", "F#":"F#", "G":"G", "Gb":"F#", "G#":"Ab"
     ]
     
@@ -29,6 +37,7 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var soloistLabel: UILabel!
     @IBOutlet weak var keyLabel: UILabel!
+    @IBOutlet weak var keyCell: UITableViewCell!
     
     @IBOutlet weak var showPdfButton: UIButton!
     @IBOutlet weak var linkPdfButton: UIButton!
@@ -56,7 +65,22 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
         if song.pdfUrl == nil {
             showPdfButton.enabled = false
             showPdfButton.backgroundColor = UIColor.lightGrayColor()
+            showPdfButton.setTitle("Tap Edit to link sheet music", forState: .Normal)
         }
+        
+        // configure circle buttons
+        keyLabel.layer.cornerRadius = keyLabel.frame.size.width / 2
+        keyLabel.layer.masksToBounds = true
+        
+        // set up pitch gesture
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(SongInfoViewController.longPress(_:)))
+        longPressRecognizer.minimumPressDuration = 0.1
+        self.keyLabel.addGestureRecognizer(longPressRecognizer)
+        pitchPlayer = PitchPlayer()
+        
+        let activityFrame = keyCell.convertRect(keyLabel.frame, toView: self.view)
+        
+        activityView = NVActivityIndicatorView(frame: activityFrame, type: .BallScaleRipple)
         
         // play with mute switch on
         do {
@@ -66,12 +90,40 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        // update song from db
+        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
+        songRefEvent = songItemRef.observeEventType(.Value, withBlock: {snapshot in
+            self.song = SongItem(snapshot: snapshot)
+            self.refreshLabels()
+        })
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        let songItemRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com").childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAppendingPath(self.song.id)
+        if songRefEvent != nil {
+            songItemRef.removeObserverWithHandle(songRefEvent!)
+        }
+    }
+    
     // MARK: - Refresh functions (for view and Firebase)
     
     func refreshLabels() -> Void {
         titleLabel.text = song.name
         soloistLabel.text = song.soloist
         keyLabel.text = song.key
+        
+        if song.pdfUrl != nil {
+            self.showPdfButton.enabled = true
+            self.showPdfButton.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+            self.showPdfButton.setTitle("🎹 Show sheet music", forState: .Normal)
+        }
+        
+        tagListView.removeAllTags()
+        for tag in song.tags {
+            tagListView.addTag(tag)
+        }
     }
     
     func updateSongInFirebase() -> Void {
@@ -82,141 +134,30 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     
     // MARK: - Play pitch
     
-    @IBAction func playPitchDidTouch(sender: AnyObject) {
-        let pitchText = song.key as String
-        let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
-        let url = NSURL(fileURLWithPath: path)
-        let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Tap below to stop the pitch.", preferredStyle: .Alert)
-        let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
-            if self.player != nil {
-                self.player.stop()
-                self.player = nil
-            }
-            self.tableView.editing = false
-        }
-        stopAlert.addAction(stopAction)
-        do {
-            let sound = try AVAudioPlayer(contentsOfURL: url)
-            self.player = sound
-            sound.play()
-            self.presentViewController(stopAlert, animated: true, completion: nil)
-        } catch {
-            // couldn't load file :(
-        }
-    }
-    
-    // MARK: - Edit song information
-    
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    func longPress(longPressRecognizer: UILongPressGestureRecognizer) {
         
-        let editAction = UITableViewRowAction(style: .Normal, title: "Edit") {action, index in
-            // display an action with text box to edit information
-            var alertTitle: String
-            var alertMessage: String
+        if longPressRecognizer.state == .Began {
+            let pitchText = song.key
+            currentPitch = self.pitchDict[pitchText]!
+            pitchPlayer.play(self.pitchDict[pitchText]!)
             
-            switch self.infoOrder[index.row] {
-            case "title":
-                alertTitle = "Edit title"
-                alertMessage = "Enter a new title for your song."
-            case "solo":
-                alertTitle = "Edit soloist"
-                alertMessage = "Enter a new soloist for your song."
-            default:
-                alertTitle = "ERROR"
-                alertMessage = "ERROR"
-            }
-            
-            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
-            
-            alert.addTextFieldWithConfigurationHandler {
-                (textField: UITextField!) -> Void in
-                if self.infoOrder[index.row] == "title" {
-                    textField.text = self.song.name
-                } else if self.infoOrder[index.row] == "solo" {
-                    textField.text = self.song.soloist
-                    textField.autocapitalizationType = UITextAutocapitalizationType.Words
-                }
-            }
-            
-            let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) -> Void in
-                let editedField = alert.textFields![0] as UITextField
-                // update song item
-                if editedField.text != "" {
-                    if self.infoOrder[index.row] == "title" {
-                        self.song.name = editedField.text
-                    } else if self.infoOrder[index.row] == "solo" {
-                        self.song.soloist = editedField.text
-                    }
-                    self.refreshLabels()
-                    // update firebase
-                    self.updateSongInFirebase()
-                    self.tableView.editing = false
-                }
-                
-            }
-            let cancelAction = UIAlertAction(title: "Cancel",
-               style: .Destructive) { (action: UIAlertAction!) -> Void in
-            }
-            alert.addAction(cancelAction)
-            alert.addAction(saveAction)
-            
-            if self.infoOrder[index.row] == "title" || self.infoOrder[index.row] == "solo" {
-                self.presentViewController(alert,
-                                      animated: true,
-                                      completion: nil)
-                self.tableView.editing = false
-            }
-            
-            // change key (pitch)
-            
-            else if self.infoOrder[index.row] == "key" {
-                let keys = ["A", "A#", "Ab", "B", "Bb", "C", "C#", "D", "Db", "D#", "Eb", "E", "F", "F#", "G", "Gb", "G#"]
-                ActionSheetStringPicker.showPickerWithTitle("Change key", rows: keys, initialSelection: keys.indexOf(self.song.key)!,
-                       doneBlock: {picker, selectedIndex, value in
-                        self.song.key = keys[selectedIndex]
-                        self.refreshLabels()
-                        self.updateSongInFirebase()
-                        self.tableView.editing = false
-                    },
-                       cancelBlock: {ActionMultipleStringCancelBlock in
-                        self.tableView.editing = false
-                        return
-                    },
-                       origin: self.view)
+            let activityFrame = keyCell.convertRect(keyLabel.frame, toView: self.view)
+            activityView.frame = activityFrame
+            self.view.addSubview(activityView)
+            activityView.startAnimation()
+        }
+        
+        if longPressRecognizer.state == .Ended {
+            if currentPitch != nil {
+                pitchPlayer.stop(currentPitch!)
+                activityView.removeFromSuperview()
+                activityView.stopAnimation()
             }
         }
-        editAction.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
-        return [editAction]
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    // MARK: - Dropbox file chooser
-    
-    // given a DB preview url, change dl=0 to dl=1 (making it a direct link)
-    func convertToDirectLink(url: String) -> String {
-        let count = url.characters.count
-        return (url as NSString).substringToIndex(count-1) + "1"
-    }
-    
-    @IBAction func dbChooser(sender: AnyObject) {
-        DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypePreview, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
-            if results == nil {
-                print("user cancelled")
-            } else {
-                self.showPdfButton.enabled = true
-                self.showPdfButton.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
-                let pdfUrl = (results[0].link as NSURL).absoluteString
-                self.song.pdfUrl = self.convertToDirectLink(pdfUrl)
-                self.updateSongInFirebase()
-            }
-        })
+        return false
     }
     
     // MARK: TagListViewDelegate
@@ -234,31 +175,22 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
     
     @IBAction func addTagDidTouch(sender: AnyObject) {
         
-        let alert = UIAlertController(title: "Add a tag",
-            message: "",
-            preferredStyle: .Alert)
+        let addTagAlert = ZAlertView(title: "Add a Tag", message: "", isOkButtonLeft: false, okButtonText: "Save", cancelButtonText: "Cancel",
+            okButtonHandler: {alert in
+                let newTag = alert.getTextFieldWithIdentifier("newtag")?.text
+                if newTag != "" {
+                    self.tagListView.addTag(newTag!)
+                    self.song.tags.append(newTag!)
+                    self.updateSongInFirebase()
+                }
+                alert.dismiss()
+            },
+            cancelButtonHandler: {alert in alert.dismiss()})
         
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "Tag"
-        }
-        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) -> Void in
-            let tagField = alert.textFields![0] as UITextField
-            if (tagField.text!) != "" {
-                self.tagListView.addTag(tagField.text!)
-                self.song.tags.append(tagField.text!)
-                self.updateSongInFirebase()
-            }
-            
-        }
-        let cancelAction = UIAlertAction(title: "Cancel",
-            style: .Destructive) { (action: UIAlertAction!) -> Void in
-        }
-        alert.addAction(cancelAction)
-        alert.addAction(saveAction)
-        presentViewController(alert,
-           animated: true,
-           completion: nil)
+        addTagAlert.addTextField("newtag", placeHolder: "")
+        addTagAlert.getTextFieldWithIdentifier("newtag")?.autocapitalizationType = .None
+        
+        addTagAlert.show()
     }
     
     // MARK: - Navigation
@@ -271,6 +203,12 @@ class SongInfoViewController: UITableViewController, TagListViewDelegate {
             if song.pdfUrl != nil {
                 destination.pdfUrlString = song.pdfUrl
             }
+        }
+        if segue.identifier == "EditSong" {
+            let destinationNav = segue.destinationViewController as! UINavigationController
+            let destinatinon = destinationNav.topViewController as! AddSongFormViewController
+            destinatinon.song = self.song
+            destinatinon.groupKey = self.groupKey
         }
     }
  

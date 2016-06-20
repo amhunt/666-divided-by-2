@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import Foundation
 import AVFoundation
+import ZAlertView
 
 extension SongsTableViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -30,7 +31,10 @@ class SongsTableViewController: UITableViewController {
     var songs = [SongItem]()
     var user: User!
     var groupKey: String?
-    var player: AVAudioPlayer!
+    
+    var pitchPlayer: PitchPlayer!
+    var currentPitch: String?
+    var pitchView: PitchView!
     
     let searchController = UISearchController(searchResultsController: nil)
     var filteredSongs = [SongItem]()
@@ -47,7 +51,7 @@ class SongsTableViewController: UITableViewController {
         "Db":"C#",
         "D#":"Eb",
         "Eb":"Eb",
-        "E":"EHigh",
+        "E":"E",
         "F":"F",
         "F#":"F#",
         "G":"G",
@@ -65,6 +69,14 @@ class SongsTableViewController: UITableViewController {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
+        // set up pitch gesture
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(SongsTableViewController.longPress(_:)))
+        longPressRecognizer.minimumPressDuration = 0.2
+        self.view.addGestureRecognizer(longPressRecognizer)
+        pitchPlayer = PitchPlayer()
+        
+        pitchView = PitchView(frame: self.view.frame)
+        
         // play with mute switch on
         do {
            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -74,6 +86,8 @@ class SongsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        pitchPlayer.changeOctave()
+        
         myRootRef.observeAuthEventWithBlock { (authData) in
             if authData != nil {
                 self.user = User(authData: authData)
@@ -151,6 +165,7 @@ class SongsTableViewController: UITableViewController {
         return cell
     }
     
+    
     // swipe actions for pitch and delete
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let songItem: SongItem
@@ -160,49 +175,26 @@ class SongsTableViewController: UITableViewController {
             songItem = self.songs[indexPath.row]
         }
         
-        // swipe for pitch
-        let pitchText = songItem.key as String
-        let pitch = UITableViewRowAction(style: .Normal, title: " " + pitchText + " ") {action, index in
-            let path = NSBundle.mainBundle().pathForResource(self.pitchDict[pitchText], ofType:"mp3", inDirectory: "Pitches")!
-            let url = NSURL(fileURLWithPath: path)
-            let stopAlert = UIAlertController(title: "Playing: " + pitchText, message: "Tap below to stop the pitch.", preferredStyle: .Alert)
-            let stopAction = UIAlertAction(title: "Stop", style: .Destructive) { (action: UIAlertAction!) -> Void in
-                if self.player != nil {
-                    self.player.stop()
-                    self.player = nil
-                }
-                self.tableView.editing = false
-            }
-            stopAlert.addAction(stopAction)
-            do {
-                let sound = try AVAudioPlayer(contentsOfURL: url)
-                self.player = sound
-                sound.play()
-                self.presentViewController(stopAlert, animated: true, completion: nil)
-            } catch {
-                // couldn't load file :(
-            }
-        }
-        pitch.backgroundColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
-        
         // swipe for delete
         let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
-            let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + songItem.name + "?", preferredStyle: .Alert)
-            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
-                songItem.ref?.removeValue()
-                if self.searchController.active && self.searchController.searchBar.text != "" {
-                    self.filteredSongs.removeAtIndex(index.row)
-                }
-                self.tableView.reloadData()
-            }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
-                self.tableView.editing = false
-            }
-            confirmDeleteAlert.addAction(cancelAction)
-            confirmDeleteAlert.addAction(deleteAction)
-            self.presentViewController(confirmDeleteAlert, animated: true, completion: nil)
+            
+            let deleteAlert = ZAlertView(title: "Delete", message: "Are you sure you want to delete " + songItem.name + "?", isOkButtonLeft: true, okButtonText: "Cancel", cancelButtonText: "Delete",
+                okButtonHandler: {alert in
+                    self.tableView.editing = false
+                    alert.dismiss()
+                }, cancelButtonHandler: {alert in
+                    self.tableView.editing = false
+                    songItem.ref?.removeValue()
+                    if self.searchController.active && self.searchController.searchBar.text != "" {
+                        self.filteredSongs.removeAtIndex(index.row)
+                    }
+                    self.tableView.reloadData()
+                    alert.dismiss()
+            })
+            
+            deleteAlert.show()
         }
-        return [pitch, delete]
+        return [delete]
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -211,48 +203,39 @@ class SongsTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func addButtonDidTouch(sender: AnyObject) {
-        let alert = UIAlertController(title: "Add a Song",
-            message: "Enter information here",
-            preferredStyle: .Alert)
+    func longPress(longPressRecognizer: UILongPressGestureRecognizer) {
+        let touchPoint = longPressRecognizer.locationInView(self.view)
         
-        let saveAction = UIAlertAction(title: "Save",
-            style: .Default) { (action: UIAlertAction!) -> Void in
+        if longPressRecognizer.state == .Began {
+            if let indexPath = tableView.indexPathForRowAtPoint(touchPoint) {
                 
-                let nameField = alert.textFields![0] as UITextField
-                let keyField = alert.textFields![1] as UITextField
-                let soloField = alert.textFields![2] as UITextField
-                let songItem = SongItem(name: nameField.text!, key: keyField.text!, soloist: soloField.text!)
-                let songItemRef = self.myRootRef.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("songs").childByAutoId()
-                songItemRef.setValue(songItem.toAnyObject())
-                self.tableView.reloadData()
+                let songItem: SongItem
+                
+                if searchController.active && searchController.searchBar.text != "" {
+                    songItem = filteredSongs[indexPath.row]
+                } else {
+                    songItem = songs[indexPath.row]
+                }
+                
+                let pitchText = songItem.key
+                currentPitch = self.pitchDict[pitchText]!
+                pitchPlayer.play(self.pitchDict[pitchText]!)
+                tableView.cellForRowAtIndexPath(indexPath)?.selected = true
+                pitchView.showInView(self.tabBarController?.view, withMessage: pitchText, animated: true)
+            }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel",
-            style: .Default) { (action: UIAlertAction!) -> Void in
+        if longPressRecognizer.state == .Ended {
+            if currentPitch != nil {
+                pitchPlayer.stop(currentPitch!)
+            }
+            let visibleRows = tableView.indexPathsForVisibleRows
+            for row in visibleRows! {
+                tableView.cellForRowAtIndexPath(row)?.selected = false
+            }
+            pitchView.removeFromView()
         }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "Title"
-        }
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "Key"
-        }
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "Soloist"
-        }
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        presentViewController(alert,
-            animated: true,
-            completion: nil)
     }
-    
     
     // update view based on search
     func filterContentForSearchText(searchText: String, scope: String = "Title") {
@@ -294,7 +277,7 @@ class SongsTableViewController: UITableViewController {
         }
         else if segue.identifier == "AddSong" {
             let destinationNav = segue.destinationViewController as! UINavigationController
-            let destination = destinationNav.topViewController as! AddSongViewController
+            let destination = destinationNav.topViewController as! AddSongFormViewController
             destination.groupKey = groupKey!
         }
     }

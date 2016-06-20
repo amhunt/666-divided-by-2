@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 import Firebase
+import SwiftSpinner
+import ZAlertView
 
 class LoginViewController: UIViewController {
     
@@ -17,6 +19,8 @@ class LoginViewController: UIViewController {
     var groupKey: String?
     
     var newName: String?
+    
+    var authEvent: UInt?
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -26,108 +30,127 @@ class LoginViewController: UIViewController {
         usersRef.childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
             // user is new
             if snapshot.value is NSNull {
-                let email = authData.providerData["email"] as! String
-                self.ref.childByAppendingPath("users").childByAppendingPath(authData.uid).setValue(["login":email, "name":self.newName!])
+
+            }
+            // user still needs to pick a group
+            else if snapshot.value["groupid"] as! String == "must_pick_group" {
                 self.performSegueWithIdentifier("PickGroup", sender: nil)
             }
             // user's status is still pending
-            else if snapshot.value["status"] as! String == "pending" {
+            else if snapshot.value["status"] as! String == "pending" ||  snapshot.value["status"] as! String == "hosed" {
                 self.groupKey = (snapshot.value["groupid"] as! String)
                 self.performSegueWithIdentifier("Pending", sender: nil)
             }
             // user exists and is approved
             else {
-                print("gonna log in")
                 self.performSegueWithIdentifier("LoginSegue", sender: nil)
             }
         })
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         emailTextField.autocorrectionType = UITextAutocorrectionType.No
         
-//        ref.unauth()
-        
-        ref.observeAuthEventWithBlock { (authData) -> Void in
+        authEvent = ref.observeAuthEventWithBlock { (authData) -> Void in
             if authData != nil {
                self.checkIfUserExists(authData)
             }
         }
+        
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        if authEvent != nil {
+            ref.removeAuthEventObserverWithHandle(authEvent!)
+        }
+    }
     
-    @IBAction func loginDidTouch(sender: AnyObject) {
-        ref.authUser(emailTextField.text, password: passwordTextField.text,
-            withCompletionBlock: { (error, auth) in
-                
+    @IBAction func forgotPasswordDidTouch(sender: AnyObject) {
+        let resetAlert = ZAlertView(title: "Reset Password",
+                                    message: "Enter the email address you used to sign up for Pitchslapp. You will receive an email with a temporary password.",
+                                    isOkButtonLeft: false,
+                                    okButtonText: "Reset", cancelButtonText: "Cancel",
+                                    okButtonHandler: {alertview in
+                                        let email = alertview.getTextFieldWithIdentifier("email")?.text
+                                        self.resetPassword(email!)
+                                        alertview.dismiss()
+                                        
+            },
+                                    cancelButtonHandler: {alertview in alertview.dismiss()})
+        
+        resetAlert.addTextField("email", placeHolder: "Enter your email address")
+        
+        resetAlert.show()
+        
+    }
+    
+    func resetPassword(email: String) {
+        ref.resetPasswordForUser(email, withCompletionBlock: {error in
+            
+            if error != nil {
+                let errorAlert = ZAlertView(title: "We couldn't find your account", message: "We are unable to locate an account with the email address you gave. Please double-check and try again.", closeButtonText: "OK", closeButtonHandler: {alert in alert.dismiss()})
+                errorAlert.show()
+            } else {
+                let errorAlert = ZAlertView(title: "Your password has been reset", message: "Check your email for a temporary password. You have 24 hours to login before it resets again!", closeButtonText: "OK", closeButtonHandler: {alert in alert.dismiss()})
+                errorAlert.show()
+            }
+        
         })
     }
     
-    @IBAction func signupDidTouch(sender: AnyObject) {
-        let alert = UIAlertController(title: "Register",
-            message: "Enter your email and create a new password",
-            preferredStyle: .Alert)
-        
-        let saveAction = UIAlertAction(title: "Create",
-            style: .Default) { (action: UIAlertAction!) -> Void in
-                
-                let nameField = alert.textFields![0]
-                let emailField = alert.textFields![1]
-                let passwordField = alert.textFields![2]
-                
-                self.emailTextField.text = emailField.text
-                
-                
-                self.ref.createUser(emailField.text, password: passwordField.text) { (error: NSError!) in
-                    if error == nil {
-                        self.ref.authUser(emailField.text, password: passwordField.text,
-                            withCompletionBlock: { (error, auth) -> Void in
-                                self.newName = nameField.text
-                        })
-                    }
+    @IBAction func loginDidTouch(sender: AnyObject) {
+        SwiftSpinner.show("Logging in")
+        self.dismissKeyboard()
+        ref.authUser(emailTextField.text, password: passwordTextField.text,
+            withCompletionBlock: { (error, auth) in
+                SwiftSpinner.hide()
+                if (error != nil) {
+                    self.handleLoginErrors(error)
                 }
-                
-                
-        }
+        })
+    }
+    
+    func handleLoginErrors(error: NSError) {
+         let loginErrorAlert = ZAlertView(title: "Oops!", message: "Please enter your first and last name in order to create your account.", closeButtonText: "OK", closeButtonHandler: {alertView in alertView.dismiss()})
         
-        let cancelAction = UIAlertAction(title: "Cancel",
-            style: .Default) { (action: UIAlertAction!) -> Void in
-        }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textName) -> Void in
-            textName.placeholder = "Enter your name"
-        }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textEmail) -> Void in
-            if self.emailTextField.text != "" {
-                textEmail.text = self.emailTextField.text
-            } else {
-                textEmail.placeholder = "Enter your email"
+        if let errorCode = FAuthenticationError(rawValue: error.code) {
+            switch (errorCode) {
+            case .UserDoesNotExist:
+                loginErrorAlert.alertTitle = "Invalid Email"
+                loginErrorAlert.message = "There is no user associated with the email address you entered. Please check your spelling and try again!"
+                loginErrorAlert.show()
+            case .InvalidPassword:
+                loginErrorAlert.alertTitle = "Invalid Password"
+                loginErrorAlert.message = "The password you entered is incorrect. Please try again, or tap \"I Forgot My Password\" below."
+                loginErrorAlert.show()
+            case .InvalidEmail:
+                loginErrorAlert.alertTitle = "No Information Entered"
+                loginErrorAlert.message = "To login, please enter your account email and password."
+                loginErrorAlert.show()
+            case .NetworkError:
+                loginErrorAlert.alertTitle = "Trouble Connecting"
+                loginErrorAlert.message = "Pitchslapp is unable to connect to the internet. Please check your connection and try again."
+                loginErrorAlert.show()
+            default:
+                print(error)
+                loginErrorAlert.message = "An unknown error has occured. Please check your internet connection and try again."
+                loginErrorAlert.show()
+
             }
-            
         }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textPassword) -> Void in
-            textPassword.secureTextEntry = true
-            if self.passwordTextField.text != "" {
-                textPassword.text = self.passwordTextField.text
-            } else {
-                textPassword.placeholder = "Choose a password"
-            }
-        }
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        presentViewController(alert,
-            animated: true,
-            completion: nil)
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

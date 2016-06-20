@@ -109,20 +109,22 @@ class ChooseSongsTableViewController: UITableViewController {
         // get indices of selected items
         let rows = self.tableView.indexPathsForSelectedRows?.map{$0.row}
         
-        var selectedSongs = [SongItem]()
-        for index in rows! {
-            selectedSongs.append(songs[index])
-        }
-        
-        for song in selectedSongs {
-            // check if song has already been added to setlist
-            if setlist.songIds.contains(song.id) != true {
-                setlist.songIds.append(song.id)
+        if rows != nil {
+            var selectedSongs = [SongItem]()
+            for index in rows! {
+                selectedSongs.append(songs[index])
             }
+            
+            for song in selectedSongs {
+                // check if song has already been added to setlist
+                if setlist.songIds.contains(song.id) != true {
+                    setlist.songIds.append(song.id)
+                }
+            }
+            
+            let setlistRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id)
+            setlistRef.childByAppendingPath("songIds").setValue(self.setlist.songIds)
         }
-        
-        let setlistRef = myRootRef.childByAppendingPath("groups").childByAppendingPath(groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id)
-        setlistRef.childByAppendingPath("songIds").setValue(self.setlist.songIds)
         
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }

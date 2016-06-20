@@ -9,18 +9,38 @@
 import UIKit
 import Foundation
 import Firebase
+import ZAlertView
+
+extension GroupPickerTableViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
+extension GroupPickerTableViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!)
+    }
+}
 
 class GroupPickerTableViewController: UITableViewController {
 
     var ref = Firebase(url:"https://popping-inferno-1963.firebaseio.com")
     var groups = [Group]()
     var user: User!
-    var userId: String!
-    var userEmail: String!
-    var userName: String!
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredGroups = [Group]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.barTintColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+        searchController.searchBar.tintColor = UIColor.whiteColor()
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -43,12 +63,9 @@ class GroupPickerTableViewController: UITableViewController {
         
         ref.observeAuthEventWithBlock { (authData) in
             if authData != nil {
-                let tempUser = User(authData: authData)
-                self.userId = tempUser.uid
-                self.userEmail = tempUser.email
-                self.ref.childByAppendingPath("users").childByAppendingPath(self.userId).observeSingleEventOfType(.Value, withBlock: {
+                self.ref.childByAppendingPath("users").childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: {
                     snapshot in
-                    self.userName = snapshot.value["name"] as! String
+                    self.user = User(snapshot: snapshot)
                 })
             } else {
                 self.performSegueWithIdentifier("LogoutSegue", sender: nil)
@@ -65,13 +82,22 @@ class GroupPickerTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active && searchController.searchBar.text != "" {
+            return filteredGroups.count
+        }
         return groups.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GroupCell", forIndexPath: indexPath)
 
-        let group = groups[indexPath.row]
+        let group: Group
+        
+        if searchController.active && searchController.searchBar.text != "" {
+            group = filteredGroups[indexPath.row]
+        } else {
+            group = groups[indexPath.row]
+        }
         
         cell.textLabel?.text = group.groupName
         cell.detailTextLabel?.text = group.schoolName
@@ -79,9 +105,17 @@ class GroupPickerTableViewController: UITableViewController {
         return cell
     }
     
+    // user chose a group
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedGroup = groups[indexPath.row]
-        user = User(uid: userId, email: userEmail, group: selectedGroup.uid, name: userName, status: "pending")
+        let selectedGroup: Group
+            
+        if searchController.active && searchController.searchBar.text != "" {
+            selectedGroup = filteredGroups[indexPath.row]
+        } else {
+            selectedGroup = groups[indexPath.row]
+        }
+        
+        user = User(uid: user.uid, email: user.email, group: selectedGroup.uid, name: user.name, status: "pending")
         
         // add user to database with groupid and pending flag
         ref.childByAppendingPath("users").childByAppendingPath(user.uid).setValue(user.toAnyObject())
@@ -92,46 +126,68 @@ class GroupPickerTableViewController: UITableViewController {
     }
 
     @IBAction func addGroupDidTouch(sender: AnyObject) {
-        let alert = UIAlertController(title: "Create a new group",
-            message: "Enter information here",
-            preferredStyle: .Alert)
         
-        let saveAction = UIAlertAction(title: "Save",
-            style: .Default) { (action: UIAlertAction!) -> Void in
-            let nameField = alert.textFields![0] as UITextField
-            let schoolField = alert.textFields![1] as UITextField
-            let newGroupRef = self.ref.childByAppendingPath("groups").childByAutoId()
-            newGroupRef.setValue(["name":nameField.text!, "school":schoolField.text!])
-            
-            // create new group's members array, initializing it with the first member's info and status
-            newGroupRef.childByAppendingPath("members").setValue([self.userId : "member"])
-                
-            // add user to database
-            self.user = User(uid: self.userId, email: self.userEmail, group: newGroupRef.key, name: self.userName, status: "member")
-            self.ref.childByAppendingPath("users").childByAppendingPath(self.user.uid).setValue(self.user.toAnyObject())
-                
-            self.performSegueWithIdentifier("ChoseNewGroup", sender: nil)
+        let newGroupAlert = ZAlertView(title: "Create a New Group", message: "Enter the name of your group and an easy identifier, such as your school or city, for other members to find you.", isOkButtonLeft: false, okButtonText: "Save", cancelButtonText: "Cancel",
+            okButtonHandler: {alert in
+                let groupName = alert.getTextFieldWithIdentifier("groupname")?.text
+                let schoolName = alert.getTextFieldWithIdentifier("schoolname")?.text
+                if groupName! != "" && schoolName! != "" {
+                    let newGroupRef = self.ref.childByAppendingPath("groups").childByAutoId()
+                    newGroupRef.setValue(["name":groupName!, "school":schoolName!])
+                    
+                    // create new group's members array, initializing it with the first member's info and status
+                    newGroupRef.childByAppendingPath("members").setValue([self.user.uid : "member"])
+                    
+                    // add user to database
+                    self.user = User(uid: self.user.uid, email: self.user.email, group: newGroupRef.key, name: self.user.name, status: "member")
+                    self.ref.childByAppendingPath("users").childByAppendingPath(self.user.uid).setValue(self.user.toAnyObject())
+                    
+                    self.performSegueWithIdentifier("ChoseNewGroup", sender: nil)
+                    
+                    alert.dismiss()
+                }
+            },
+            cancelButtonHandler: {alert in alert.dismiss()})
+        
+        newGroupAlert.addTextField("groupname", placeHolder: "Group name (e.g., The Footnotes)")
+        newGroupAlert.addTextField("schoolname", placeHolder: "Identifier (e.g., Princeton University)")
+        newGroupAlert.getTextFieldWithIdentifier("groupname")?.autocapitalizationType = .Words
+        newGroupAlert.getTextFieldWithIdentifier("groupname")?.autocorrectionType = .No
+        newGroupAlert.getTextFieldWithIdentifier("schoolname")?.autocapitalizationType = .Words
+        newGroupAlert.getTextFieldWithIdentifier("schoolname")?.autocorrectionType = .No
+        
+        newGroupAlert.show()
+    }
+    
+    @IBAction func cancelDidTouch(sender: AnyObject) {
+
+        let alert = UIAlertController(title: "Are you sure you don't want to make an account?",
+                                      message: "If you select Quit, your new account will be deleted. Tap Cancel to continue joining a group.",
+                                      preferredStyle: .Alert)
+        
+        let quitAction = UIAlertAction(title: "Quit", style: .Destructive) { (action: UIAlertAction!) -> Void in
+            self.ref.childByAppendingPath("users").childByAppendingPath(self.user.uid).removeValue()
+            self.ref.unauth()
+            // need to delete actual user, not just ref
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
-            style: .Destructive) { (action: UIAlertAction!) -> Void in
-        }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "Group Name"
-        }
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "School Name"
+                                         style: .Default) { (action: UIAlertAction!) -> Void in
         }
         
         alert.addAction(cancelAction)
-        alert.addAction(saveAction)
+        alert.addAction(quitAction)
         
-        presentViewController(alert,
-            animated: true,
-            completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    // update view based on search
+    func filterContentForSearchText(searchText: String) {
+        filteredGroups = groups.filter { group in
+            return group.groupName.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        tableView.reloadData()
     }
     
     
@@ -143,10 +199,12 @@ class GroupPickerTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "ChoseExistingGroup" {
             let destination = segue.destinationViewController as! PendingGroupViewController
-            destination.groupKey = self.groups[(self.tableView.indexPathForSelectedRow?.row)!].uid
-        }
-        else if segue.identifier == "ChoseNewGroup" {
             
+            if searchController.active && searchController.searchBar.text != "" {
+                destination.groupKey = self.filteredGroups[(self.tableView.indexPathForSelectedRow?.row)!].uid
+            } else {
+                destination.groupKey = self.groups[(self.tableView.indexPathForSelectedRow?.row)!].uid
+            }
         }
     }
 

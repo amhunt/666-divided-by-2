@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		B8E3D7672F119F415DF34EF4 /* Pods_Pitchslapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */; };
 		DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */; };
+		DA1007911CE53F410088EF15 /* SignupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1007901CE53F410088EF15 /* SignupFormViewController.swift */; };
 		DA1F18A91CC9D6B7003CEE3C /* Setlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18A81CC9D6B7003CEE3C /* Setlist.swift */; };
 		DA1F18AB1CC9DB16003CEE3C /* SetlistsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18AA1CC9DB16003CEE3C /* SetlistsTableViewController.swift */; };
 		DA1F18AD1CC9DCE1003CEE3C /* SetlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18AC1CC9DCE1003CEE3C /* SetlistTableViewCell.swift */; };
 		DA1F18AF1CC9EDF9003CEE3C /* SetlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18AE1CC9EDF9003CEE3C /* SetlistTableViewController.swift */; };
 		DA1F18B11CCA003E003CEE3C /* ChooseSongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F18B01CCA003E003CEE3C /* ChooseSongsTableViewController.swift */; };
-		DA2F68FE1CAD70440028033E /* SignupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */; };
 		DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */; };
 		DA4DC4161CB5E376008F062E /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DC4151CB5E376008F062E /* PDFViewController.swift */; };
 		DA4DC4181CB5E38F008F062E /* MakeYouFeel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DA4DC4171CB5E38F008F062E /* MakeYouFeel.pdf */; };
@@ -22,15 +22,22 @@
 		DA60DA2B1CACE05400E7F2B1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */; };
 		DA60DA2D1CACE62600E7F2B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2C1CACE62600E7F2B1 /* User.swift */; };
 		DA60DA301CACEFBC00E7F2B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */; };
+		DA6804421CEBC01A003D4949 /* HighStakesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6804411CEBC01A003D4949 /* HighStakesViewController.swift */; };
 		DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190301CA9847D00FEDE0D /* AppDelegate.swift */; };
 		DA7190361CA9847D00FEDE0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7190341CA9847D00FEDE0D /* Main.storyboard */; };
 		DA7190381CA9847D00FEDE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7190371CA9847D00FEDE0D /* Assets.xcassets */; };
 		DA71903B1CA9847D00FEDE0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */; };
 		DA7190461CA9847D00FEDE0D /* PitchslappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190451CA9847D00FEDE0D /* PitchslappTests.swift */; };
 		DA7190511CA9847D00FEDE0D /* PitchslappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */; };
+		DA730DC51CF755C40022FA4D /* DropboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA730DC41CF755C40022FA4D /* DropboxCell.xib */; };
 		DA859BB31CAE119D00F5CD3C /* Pitches in Resources */ = {isa = PBXBuildFile; fileRef = DA859BB21CAE119D00F5CD3C /* Pitches */; };
 		DA954D201CE4D4AD00D39194 /* GroupMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA954D1F1CE4D4AD00D39194 /* GroupMembersTableViewController.swift */; };
-		DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */; };
+		DA9E4B421CE5165B00065E58 /* AddSongFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9E4B411CE5165B00065E58 /* AddSongFormViewController.swift */; };
+		DAC588E41CF62A9B007F5CBD /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC588E31CF62A9B007F5CBD /* LaunchScreenViewController.swift */; };
+		DAE229271D0078190053423B /* PitchPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE229261D0078190053423B /* PitchPlayer.swift */; };
+		DAE2292B1D00BF330053423B /* PitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2292A1D00BF330053423B /* PitchView.swift */; };
+		DAE2292E1D00D5D00053423B /* FluidR3Mono_GM.sf3 in Resources */ = {isa = PBXBuildFile; fileRef = DAE229281D007CE90053423B /* FluidR3Mono_GM.sf3 */; };
+		DAE2292F1D00D5D00053423B /* TimGM6mb-MuseScore.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = DAE229291D0082BF0053423B /* TimGM6mb-MuseScore.sf2 */; };
 		DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */; };
 		DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2502C1CAB1348003DFF24 /* SongItem.swift */; };
 		DAF583491CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF583481CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift */; };
@@ -57,16 +64,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		DA9ABBBC1CF81A330094027A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CAB868BAA037B62652FE0F7E /* Pods-Pitchslapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.release.xcconfig"; sourceTree = "<group>"; };
 		CB963C85DFD57A2E6024C7BF /* Pods-Pitchslapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitchslapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pitchslapp/Pods-Pitchslapp.debug.xcconfig"; sourceTree = "<group>"; };
 		DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
+		DA1007901CE53F410088EF15 /* SignupFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupFormViewController.swift; sourceTree = "<group>"; };
 		DA1F18A81CC9D6B7003CEE3C /* Setlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setlist.swift; sourceTree = "<group>"; };
 		DA1F18AA1CC9DB16003CEE3C /* SetlistsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistsTableViewController.swift; sourceTree = "<group>"; };
 		DA1F18AC1CC9DCE1003CEE3C /* SetlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistTableViewCell.swift; sourceTree = "<group>"; };
 		DA1F18AE1CC9EDF9003CEE3C /* SetlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistTableViewController.swift; sourceTree = "<group>"; };
 		DA1F18B01CCA003E003CEE3C /* ChooseSongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSongsTableViewController.swift; sourceTree = "<group>"; };
-		DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupFormViewController.swift; sourceTree = "<group>"; };
 		DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 		DA4DC4151CB5E376008F062E /* PDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		DA4DC4171CB5E38F008F062E /* MakeYouFeel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = MakeYouFeel.pdf; path = ../../../Downloads/MakeYouFeel.pdf; sourceTree = "<group>"; };
@@ -74,6 +94,7 @@
 		DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DA60DA2C1CACE62600E7F2B1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DA6804411CEBC01A003D4949 /* HighStakesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighStakesViewController.swift; sourceTree = "<group>"; };
 		DA71902D1CA9847D00FEDE0D /* Pitchslapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pitchslapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7190301CA9847D00FEDE0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA7190351CA9847D00FEDE0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,10 +107,17 @@
 		DA71904C1CA9847D00FEDE0D /* PitchslappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchslappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7190501CA9847D00FEDE0D /* PitchslappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchslappUITests.swift; sourceTree = "<group>"; };
 		DA7190521CA9847D00FEDE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA730DC41CF755C40022FA4D /* DropboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropboxCell.xib; sourceTree = "<group>"; };
 		DA859BB21CAE119D00F5CD3C /* Pitches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pitches; sourceTree = "<group>"; };
 		DA954D1F1CE4D4AD00D39194 /* GroupMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersTableViewController.swift; sourceTree = "<group>"; };
-		DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSongViewController.swift; sourceTree = "<group>"; };
+		DA9ABBAD1CF81A330094027A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		DA9E4B411CE5165B00065E58 /* AddSongFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSongFormViewController.swift; sourceTree = "<group>"; };
+		DAC588E31CF62A9B007F5CBD /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		DADF0D4C1CB7469B009456CC /* Pitchslapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pitchslapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		DAE229261D0078190053423B /* PitchPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchPlayer.swift; sourceTree = "<group>"; };
+		DAE229281D007CE90053423B /* FluidR3Mono_GM.sf3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FluidR3Mono_GM.sf3; sourceTree = "<group>"; };
+		DAE229291D0082BF0053423B /* TimGM6mb-MuseScore.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TimGM6mb-MuseScore.sf2"; sourceTree = "<group>"; };
+		DAE2292A1D00BF330053423B /* PitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchView.swift; sourceTree = "<group>"; };
 		DAE2502A1CAB0EA3003DFF24 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		DAE2502C1CAB1348003DFF24 /* SongItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongItem.swift; sourceTree = "<group>"; };
 		DAF583481CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetlistSongTableViewCell.swift; sourceTree = "<group>"; };
@@ -139,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				E2AE8B9490730DA983143C25 /* Pods_Pitchslapp.framework */,
+				DA9ABBAD1CF81A330094027A /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,11 +176,12 @@
 			isa = PBXGroup;
 			children = (
 				DA0083C71CAADB82004ACDCC /* SongsTableViewController.swift */,
-				DADF0D4A1CB6F11B009456CC /* AddSongViewController.swift */,
 				DA2F69011CAD8AD30028033E /* SongInfoViewController.swift */,
 				DA4DC4151CB5E376008F062E /* PDFViewController.swift */,
+				DA6804411CEBC01A003D4949 /* HighStakesViewController.swift */,
 				DA1F18AA1CC9DB16003CEE3C /* SetlistsTableViewController.swift */,
 				DA1F18AE1CC9EDF9003CEE3C /* SetlistTableViewController.swift */,
+				DA9E4B411CE5165B00065E58 /* AddSongFormViewController.swift */,
 				DA1F18B01CCA003E003CEE3C /* ChooseSongsTableViewController.swift */,
 				DAF5834A1CD93C6E00CE7A6A /* PitchesTableViewController.swift */,
 			);
@@ -198,14 +228,19 @@
 		DA71902F1CA9847D00FEDE0D /* Pitchslapp */ = {
 			isa = PBXGroup;
 			children = (
+				DAE229281D007CE90053423B /* FluidR3Mono_GM.sf3 */,
+				DAE229291D0082BF0053423B /* TimGM6mb-MuseScore.sf2 */,
 				DA60DA2E1CACEE4500E7F2B1 /* Models */,
 				DAFDCADA1CADAD5C005DDB64 /* LoginFlow */,
 				DA4DC4191CB6B2C9008F062E /* SongViews */,
 				DA7190301CA9847D00FEDE0D /* AppDelegate.swift */,
+				DAE229261D0078190053423B /* PitchPlayer.swift */,
+				DAE2292A1D00BF330053423B /* PitchView.swift */,
 				DA859BB21CAE119D00F5CD3C /* Pitches */,
 				DA7190341CA9847D00FEDE0D /* Main.storyboard */,
 				DA7190371CA9847D00FEDE0D /* Assets.xcassets */,
 				DA7190391CA9847D00FEDE0D /* LaunchScreen.storyboard */,
+				DA730DC41CF755C40022FA4D /* DropboxCell.xib */,
 				DADF0D4C1CB7469B009456CC /* Pitchslapp-Bridging-Header.h */,
 				DA71903C1CA9847D00FEDE0D /* Info.plist */,
 				DA4DC4171CB5E38F008F062E /* MakeYouFeel.pdf */,
@@ -234,12 +269,13 @@
 		DAFDCADA1CADAD5C005DDB64 /* LoginFlow */ = {
 			isa = PBXGroup;
 			children = (
+				DA1007901CE53F410088EF15 /* SignupFormViewController.swift */,
 				DA60DA2A1CACE05400E7F2B1 /* LoginViewController.swift */,
 				DA60DA2F1CACEFBC00E7F2B1 /* SettingsViewController.swift */,
 				DA53FC591CC0798A003AC1F7 /* PendingGroupViewController.swift */,
-				DA2F68FD1CAD70440028033E /* SignupFormViewController.swift */,
 				DAFDCADB1CADAD9E005DDB64 /* GroupPickerTableViewController.swift */,
 				DA954D1F1CE4D4AD00D39194 /* GroupMembersTableViewController.swift */,
+				DAC588E31CF62A9B007F5CBD /* LaunchScreenViewController.swift */,
 			);
 			name = LoginFlow;
 			sourceTree = "<group>";
@@ -257,6 +293,7 @@
 				DA71902B1CA9847D00FEDE0D /* Resources */,
 				61D5FC65F604A6238DF1C389 /* Embed Pods Frameworks */,
 				0DFFF174B447384F7E9617B1 /* Copy Pods Resources */,
+				DA9ABBBC1CF81A330094027A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -352,8 +389,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE2292E1D00D5D00053423B /* FluidR3Mono_GM.sf3 in Resources */,
+				DAE2292F1D00D5D00053423B /* TimGM6mb-MuseScore.sf2 in Resources */,
 				DA71903B1CA9847D00FEDE0D /* LaunchScreen.storyboard in Resources */,
 				DA4DC4181CB5E38F008F062E /* MakeYouFeel.pdf in Resources */,
+				DA730DC51CF755C40022FA4D /* DropboxCell.xib in Resources */,
 				DA7190381CA9847D00FEDE0D /* Assets.xcassets in Resources */,
 				DA7190361CA9847D00FEDE0D /* Main.storyboard in Resources */,
 				DA859BB31CAE119D00F5CD3C /* Pitches in Resources */,
@@ -430,28 +470,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFDCAE01CADBDEF005DDB64 /* Group.swift in Sources */,
+				DA1007911CE53F410088EF15 /* SignupFormViewController.swift in Sources */,
 				DAE2502B1CAB0EA3003DFF24 /* SongTableViewCell.swift in Sources */,
+				DA6804421CEBC01A003D4949 /* HighStakesViewController.swift in Sources */,
 				DA2F69021CAD8AD30028033E /* SongInfoViewController.swift in Sources */,
 				DA954D201CE4D4AD00D39194 /* GroupMembersTableViewController.swift in Sources */,
 				DAF583491CD8FD7900CE7A6A /* SetlistSongTableViewCell.swift in Sources */,
 				DAF5834D1CD93F1500CE7A6A /* PitchTableViewCell.swift in Sources */,
-				DADF0D4B1CB6F11B009456CC /* AddSongViewController.swift in Sources */,
 				DA1F18AD1CC9DCE1003CEE3C /* SetlistTableViewCell.swift in Sources */,
+				DA9E4B421CE5165B00065E58 /* AddSongFormViewController.swift in Sources */,
 				DA4DC4161CB5E376008F062E /* PDFViewController.swift in Sources */,
 				DA0083C81CAADB82004ACDCC /* SongsTableViewController.swift in Sources */,
-				DA2F68FE1CAD70440028033E /* SignupFormViewController.swift in Sources */,
 				DA60DA301CACEFBC00E7F2B1 /* SettingsViewController.swift in Sources */,
 				DA1F18A91CC9D6B7003CEE3C /* Setlist.swift in Sources */,
 				DA53FC5A1CC0798A003AC1F7 /* PendingGroupViewController.swift in Sources */,
 				DA1F18AB1CC9DB16003CEE3C /* SetlistsTableViewController.swift in Sources */,
 				DAFDCADC1CADAD9E005DDB64 /* GroupPickerTableViewController.swift in Sources */,
 				DA60DA2D1CACE62600E7F2B1 /* User.swift in Sources */,
+				DAC588E41CF62A9B007F5CBD /* LaunchScreenViewController.swift in Sources */,
 				DA7190311CA9847D00FEDE0D /* AppDelegate.swift in Sources */,
 				DA1F18B11CCA003E003CEE3C /* ChooseSongsTableViewController.swift in Sources */,
 				DA60DA2B1CACE05400E7F2B1 /* LoginViewController.swift in Sources */,
 				DAF5834B1CD93C6E00CE7A6A /* PitchesTableViewController.swift in Sources */,
+				DAE229271D0078190053423B /* PitchPlayer.swift in Sources */,
 				DA1F18AF1CC9EDF9003CEE3C /* SetlistTableViewController.swift in Sources */,
 				DAE2502D1CAB1348003DFF24 /* SongItem.swift in Sources */,
+				DAE2292B1D00BF330053423B /* PitchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

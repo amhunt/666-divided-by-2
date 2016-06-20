@@ -8,19 +8,49 @@
 
 import UIKit
 import DBChooser
+import ZAlertView
+import Firebase
+import QuartzCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
+    override init() {
+        super.init()
+        Firebase.defaultConfig().persistenceEnabled = true
+        let mainRef = Firebase(url: "https://popping-inferno-1963.firebaseio.com/")
+        mainRef.keepSynced(true)
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         // Override point for customization after application launch.
         UIBarButtonItem.appearance()
             .setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Avenir-Heavy", size: 16.0)!],
                 forState: UIControlState.Normal)
                 
+        // configure ZAlertView
+        ZAlertView.showAnimation = .FlyLeft
+        ZAlertView.hideAnimation = .FlyRight
+        ZAlertView.blurredBackground = true
+        ZAlertView.buttonFont = UIFont(name: "Avenir-Heavy", size: 15.0)!
+        ZAlertView.messageFont = UIFont(name: "Avenir-Medium", size: 15.0)!
+        ZAlertView.alertTitleFont = UIFont(name: "Avenir-Heavy", size: 18.0)!
+        ZAlertView.titleColor = UIColor.init(red: 107/255, green: 80/255, blue: 176/255, alpha: 1)
+        
+        self.window?.layer.cornerRadius = 6.0
+        self.window?.layer.masksToBounds = true
+        self.window?.layer.opaque = false
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if !(defaults.boolForKey("HasLaunched")) {
+            defaults.setBool(true, forKey: "HasLaunched")
+            defaults.setDouble(4.0, forKey: "Octave")
+        }
+        
         return true
     }
     

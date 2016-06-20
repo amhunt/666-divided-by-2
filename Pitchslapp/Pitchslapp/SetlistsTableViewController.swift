@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Firebase
+import ZAlertView
 
 class SetlistsTableViewController: UITableViewController {
     
@@ -86,68 +87,57 @@ class SetlistsTableViewController: UITableViewController {
         let dateText = dateFmt.stringFromDate(setlist.date)
         
         cell.nameLabel?.text = setlist.name
-        cell.dateLabel?.text = dateText
+        cell.dateLabel?.text = "Created " + dateText
         
-     // Configure the cell...
-     
      return cell
      }
  
     
     
     @IBAction func addButtonDidTouch(sender: AnyObject) {
-        let alert = UIAlertController(title: "Create a new setlist",
-                                      message: "",
-                                      preferredStyle: .Alert)
+        let newSetlistAlert = ZAlertView(title: "Create a New Setlist", message: "Enter a name for the new setlist.", isOkButtonLeft: false, okButtonText: "Create", cancelButtonText: "Cancel",
+            okButtonHandler: {alert in
+                let setlistTitle = alert.getTextFieldWithIdentifier("setlisttitle")?.text
+                if setlistTitle! != "" {
+                    let newSetlistRef = self.ref.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("setlists").childByAutoId()
+                    
+                    let date = NSDate()
+                    let dateFmt = NSDateFormatter()
+                    dateFmt.dateFormat = "YYYY-MM-dd"
+                    let currentDateText = dateFmt.stringFromDate(date)
+                    
+                    newSetlistRef.setValue(["name":setlistTitle!, "date":currentDateText])
+                    // create new group's members array, initializing it with the first member's info and status
+                    newSetlistRef.childByAppendingPath("songIds").setValue([])
+                    self.tableView.reloadData()
+                }
+                alert.dismiss()
+            },
+            cancelButtonHandler: {alert in alert.dismiss()})
         
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .Default) { (action: UIAlertAction!) -> Void in
-                                        let nameField = alert.textFields![0] as UITextField
-                                        let newSetlistRef = self.ref.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("setlists").childByAutoId()
-                                        
-                                        let date = NSDate()
-                                        let dateFmt = NSDateFormatter()
-                                        dateFmt.dateFormat = "YYYY-MM-dd"
-                                        let currentDateText = dateFmt.stringFromDate(date)
-                                        
-                                        newSetlistRef.setValue(["name":nameField.text!, "date":currentDateText])
-                                        // create new group's members array, initializing it with the first member's info and status
-                                        newSetlistRef.childByAppendingPath("songIds").setValue([])
-                                        self.tableView.reloadData()
-        }
+        newSetlistAlert.addTextField("setlisttitle", placeHolder: "Setlist title")
+        newSetlistAlert.getTextFieldWithIdentifier("setlisttitle")?.autocapitalizationType = .Words
+        newSetlistAlert.getTextFieldWithIdentifier("setlisttitle")?.autocorrectionType = .No
         
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .Destructive) { (action: UIAlertAction!) -> Void in
-        }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "Setlist Name"
-        }
-        
-        alert.addAction(cancelAction)
-        alert.addAction(saveAction)
-        
-        presentViewController(alert,
-                              animated: true,
-                              completion: nil)
-
+        newSetlistAlert.show()
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let setlist = self.setlists[indexPath.row]
         let delete = UITableViewRowAction(style: .Destructive, title: "Delete") {action, index in
-            let confirmDeleteAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete " + setlist.name + "?", preferredStyle: .Alert)
-            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction!) -> Void in
-                self.ref.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id).removeValue()
-                self.tableView.reloadData()
-            }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
-                self.tableView.editing = false
-            }
-            confirmDeleteAlert.addAction(cancelAction)
-            confirmDeleteAlert.addAction(deleteAction)
-            self.presentViewController(confirmDeleteAlert, animated: true, completion: nil)
+            let deleteAlert = ZAlertView(title: "Delete", message: "Are you sure you want to delete " + setlist.name + "?", isOkButtonLeft: true, okButtonText: "Cancel", cancelButtonText: "Delete",
+                okButtonHandler: {alert in
+                    self.tableView.editing = false
+                    alert.dismiss()
+                }, cancelButtonHandler: {alert in
+                    self.tableView.editing = false
+                    self.ref.childByAppendingPath("groups").childByAppendingPath(self.groupKey).childByAppendingPath("setlists").childByAppendingPath(setlist.id).removeValue()
+                    self.tableView.reloadData()
+                    alert.dismiss()
+            })
+            
+            deleteAlert.show()
+            
         }
         return [delete]
     }

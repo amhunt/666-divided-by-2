@@ -8,12 +8,15 @@
 
 import UIKit
 import Firebase
+import ZAlertView
 
 class GroupMembersTableViewController: UITableViewController {
 
     var ref = Firebase(url:"https://popping-inferno-1963.firebaseio.com")
     var members = [User]()
+    var pendingMembers = [User]()
     var groupKey: String?
+    let headerTitles = ["Approval Required", "Members"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +25,30 @@ class GroupMembersTableViewController: UITableViewController {
         
         memberIdsRef.observeEventType(.Value, withBlock: {snapshot in
             var newMembers = [User]()
+            var newPendingMembers = [User]()
             
+            // get ids of users
             for item in snapshot.children {
                 let memberId = (item as! FDataSnapshot).key as String
+                // get user data for each id
                 self.ref.childByAppendingPath("users").childByAppendingPath(memberId).observeSingleEventOfType(.Value, withBlock: {userData in
                     
                     if userData.value is NSNull {
                         
                     } else {
                         let member = User(snapshot: userData as FDataSnapshot)
-                        newMembers.append(member)
+                        if member.status == "member" {
+                            newMembers.append(member)
+                        } else if member.status == "pending" {
+                            newPendingMembers.append(member)
+                        }
                         self.members = newMembers
+                        self.pendingMembers = newPendingMembers
+                        self.members.sortInPlace({$0.name.lowercaseString < $1.name.lowercaseString})
+                        self.pendingMembers.sortInPlace({$0.name.lowercaseString < $1.name.lowercaseString})
                         self.tableView.reloadData()
                     }
-                    
-                    
+
                 })
             }
             
@@ -45,61 +57,91 @@ class GroupMembersTableViewController: UITableViewController {
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return headerTitles.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return members.count
+        if section == 0 {
+            return pendingMembers.count
+        } else {
+            return members.count
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if pendingMembers.count == 0 {
+            if section == 0 {
+                return nil
+            } else {
+                return headerTitles[1]
+            }
+        }
+        
+        return headerTitles[section]
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        
+        header.textLabel?.font = UIFont(name: "Avenir-Heavy", size: 16.0)!
+        header.textLabel?.frame = header.frame
+        
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath)
         
-        let userItem = members[indexPath.row]
+        var userItem: User
         
-        cell.textLabel?.text = userItem.name
-        
-        if userItem.status == "member" {
-            cell.detailTextLabel?.text = "Member"
-        } else if userItem.status == "pending" {
+        if indexPath.section == 0 {
+            userItem = pendingMembers[indexPath.row]
             cell.detailTextLabel?.text = "Pending"
             cell.detailTextLabel?.textColor = UIColor.redColor()
+        } else {
+            userItem = members[indexPath.row]
+            cell.detailTextLabel?.text = "Member"
+            cell.detailTextLabel?.textColor = UIColor.lightGrayColor()
         }
+        
+        cell.textLabel?.text = userItem.name
 
         return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedUser = members[indexPath.row]
+        var selectedUser: User
         
-        let approveMember = UIAlertController(title: "Approve a new member", message: "Do you want to allow " + selectedUser.name + " to view and edit your group's repertoire?", preferredStyle: .Alert)
-        let approveAction = UIAlertAction(title: "Approve", style: .Default) { (action: UIAlertAction!) -> Void in
+        if indexPath.section == 0 {
+            selectedUser = pendingMembers[indexPath.row]
+        } else {
+            selectedUser = members[indexPath.row]
+        }
+        
+        let approveAlert = ZAlertView(title: "Approve a New Member", message: "Do you want to allow " + selectedUser.name + " to view and edit your group's repertoire?", alertType: .MultipleChoice)
+        
+        approveAlert.addButton("Approve", hexColor: "#479673", hexTitleColor: "#FFFFFF", touchHandler: {alert in
             // add member to group: update user info
             self.ref.childByAppendingPath("users").childByAppendingPath(selectedUser.uid).childByAppendingPath("status").setValue("member")
             // add member to group: update group info
             self.ref.childByAppendingPath("groups").childByAppendingPath(self.groupKey!).childByAppendingPath("members").childByAppendingPath(selectedUser.uid).setValue("member")
-        }
+            alert.dismiss()
+        })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
-        }
+        approveAlert.addButton("Deny", hexColor: "#bf3646", hexTitleColor: "#FFFFFF", touchHandler: {alert in
+            self.ref.childByAppendingPath("users").childByAppendingPath(selectedUser.uid).childByAppendingPath("status").setValue("hosed")
+            self.ref.childByAppendingPath("groups").childByAppendingPath(self.groupKey!).childByAppendingPath("members").childByAppendingPath(selectedUser.uid).removeValue()
+            alert.dismiss()
+        })
         
-        approveMember.addAction(cancelAction)
-        approveMember.addAction(approveAction)
+        approveAlert.addButton("Cancel", hexColor: "#949494", hexTitleColor: "#FFFFFF", touchHandler: {alert in alert.dismiss()})
+
         if selectedUser.status == "pending" {
-            self.presentViewController(approveMember, animated: true, completion: nil)
+            approveAlert.show()
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
 
 }

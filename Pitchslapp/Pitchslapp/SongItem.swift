@@ -30,6 +30,16 @@ struct SongItem {
         self.ref = nil
     }
     
+    init(name: String, id: String = "", key: String, soloist: String, url: String) {
+        self.id = id
+        self.name = name
+        self.key = key
+        self.soloist = soloist
+        self.tags = []
+        self.pdfUrl = url
+        self.ref = nil
+    }
+    
     init(snapshot: FDataSnapshot) {
         id = snapshot.key
         name = snapshot.value["name"] as! String
